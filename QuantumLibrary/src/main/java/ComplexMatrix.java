@@ -185,4 +185,38 @@ public class ComplexMatrix {
         return result;
     }
 
+    /**
+     * Creates new {@link ComplexMatrix} instance which is result
+     * of tensor multiplication of current matrix with argument matrix
+     *
+     * Tensor multiplication theory https://en.wikipedia.org/wiki/Tensor_product
+     *
+     * Tensor multiplication of A(nxn) and B(mxm):
+     *
+     * |a_11 * B, a_12 * B, ..., a_1n * B|
+     * |a_21 * B, a_22 * B, ..., a_1n * B|
+     * |...      ...      ...  ...    |
+     * |a_n1 * B, a_n2 * B, ..., a_nn * B|
+     *
+     * @param multiplier - matrix to multiply.
+     *
+     * @return tensor multiplication of current matrix and multiplier parameter
+     */
+    public ComplexMatrix tensorMultiplication(ComplexMatrix multiplier) {
+        int n = matrix.length;
+        int m = multiplier.matrix.length;
+        ComplexMatrix result = new ComplexMatrix(n * m);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                Complex element = matrix[i][j];
+                for (int k = i * m; k < (i + 1) * m; k++) {
+                    for (int l = j * m; l < (j + 1) * m; l++) {
+                        result.setValue(k, l, element.multiply(multiplier.getValue(k % m, l % m)));
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
 }
