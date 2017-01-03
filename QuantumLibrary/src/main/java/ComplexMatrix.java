@@ -42,6 +42,25 @@ public class ComplexMatrix {
     }
 
     /**
+     * Creates new matrix with size of array passed as a parameter.
+     * Matrix looks much more naturally when is presented as 2-dimension array.
+     * In result matrix all values have only real part (which is double number from array argument).
+     *
+     * @param array - 2-dimension array representation of result matrix.
+     * @return matrix nxn (where n is size of array) of complex numbers filled with double values from array argument
+     */
+    public static ComplexMatrix fromRealArray(double[][] array) {
+        int n = array.length;
+        ComplexMatrix matrix = new ComplexMatrix(n);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix.setValue(i, j, new Complex(array[i][j], 0));
+            }
+        }
+        return matrix;
+    }
+
+    /**
      * Creates new identity matrix with size of n.
      * See comments for {@link ComplexMatrix#isIdentityMatrix()}
      *
@@ -76,6 +95,20 @@ public class ComplexMatrix {
     @Override
     public int hashCode() {
         return Arrays.deepHashCode(matrix);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder("|\t");
+
+        for (Complex[] row : matrix) {
+            for (Complex element : row) {
+                builder.append(element).append("\t");
+            }
+
+            builder.append("|\n").append("|\t");
+        }
+        return builder.delete(builder.length() - 3, builder.length()).toString();
     }
 
     public Complex getValue(int i, int j) {

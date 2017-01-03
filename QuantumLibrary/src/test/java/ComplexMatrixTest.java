@@ -2,8 +2,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import java.util.Map;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -140,78 +138,75 @@ public class ComplexMatrixTest {
          * Matrix:
          *
          * | 1 0 |
-         * | 0 1 |
+         * | 1 1 |
          */
         ComplexMatrix multiplier = ComplexMatrix.identity(2);
         multiplier.setValue(1, 0, new Complex(1, 0));
 
         ComplexMatrix tensor = matrix.tensorMultiplication(multiplier);
 
-        ComplexMatrix expectedMatrix = new ComplexMatrix(2);
-        expectedMatrix.setValue(0, 0, new Complex(5, 0));
-        expectedMatrix.setValue(0, 1, new Complex(0, 0));
-        expectedMatrix.setValue(1, 0, new Complex(5, 0));
-        expectedMatrix.setValue(1, 1, new Complex(5, 0));
+        double[][] array = new double[][] {
+                new double[]{5, 0},
+                new double[]{5, 5}
+        };
+        ComplexMatrix expectedMatrix = ComplexMatrix.fromRealArray(array);
 
         assertEquals(expectedMatrix, tensor);
     }
 
     @Test
     public void testTensorMultiplication() throws Exception {
-        /*
-         * Matrix:
-         *
-         * | 1 2 |
-         * | 3 4 |
-         */
-        ComplexMatrix matrix = new ComplexMatrix(2);
-        matrix.setValue(0, 0, new Complex(1, 0));
-        matrix.setValue(0, 1, new Complex(2, 0));
-        matrix.setValue(1, 0, new Complex(3, 0));
-        matrix.setValue(1, 1, new Complex(4, 0));
+        double[][] array = new double[][] {
+                new double[]{1, 2},
+                new double[]{3, 4}
+        };
+        ComplexMatrix matrix = ComplexMatrix.fromRealArray(array);
 
-        /*
-         * Multiplier matrix:
-         *
-         * | 4 3 |
-         * | 2 1 |
-         */
-        ComplexMatrix multiplier = new ComplexMatrix(2);
-        multiplier.setValue(0, 0, new Complex(4, 0));
-        multiplier.setValue(0, 1, new Complex(3, 0));
-        multiplier.setValue(1, 0, new Complex(2, 0));
-        multiplier.setValue(1, 1, new Complex(1, 0));
+        array = new double[][] {
+                new double[]{4, 3},
+                new double[]{2, 1}
+        };
+        ComplexMatrix multiplier = ComplexMatrix.fromRealArray(array);
 
         ComplexMatrix tensor = matrix.tensorMultiplication(multiplier);
 
-        /*
-         * Expected result:
-         *
-         * | 4  3  8  6  |
-         * | 2  1  4  2  |
-         * | 12 9  16 12 |
-         * | 6  3  8  4  |
-         */
-        ComplexMatrix expectedMatrix = new ComplexMatrix(4);
-        expectedMatrix.setValue(0, 0, new Complex(4, 0));
-        expectedMatrix.setValue(0, 1, new Complex(3, 0));
-        expectedMatrix.setValue(0, 2, new Complex(8, 0));
-        expectedMatrix.setValue(0, 3, new Complex(6, 0));
+        array = new double[][] {
+                new double[]{4, 3, 8, 6},
+                new double[]{2, 1, 4, 2},
+                new double[]{12, 9, 16, 12},
+                new double[]{6, 3, 8, 4},
+        };
+        ComplexMatrix expectedMatrix = ComplexMatrix.fromRealArray(array);
 
-        expectedMatrix.setValue(1, 0, new Complex(2, 0));
-        expectedMatrix.setValue(1, 1, new Complex(1, 0));
-        expectedMatrix.setValue(1, 2, new Complex(4, 0));
-        expectedMatrix.setValue(1, 3, new Complex(2, 0));
+        assertEquals(expectedMatrix, tensor);
+    }
 
-        expectedMatrix.setValue(2, 0, new Complex(12, 0));
-        expectedMatrix.setValue(2, 1, new Complex(9, 0));
-        expectedMatrix.setValue(2, 2, new Complex(16, 0));
-        expectedMatrix.setValue(2, 3, new Complex(12, 0));
+    @Test
+    public void testLargeTensorMultiplication() throws Exception {
+        double[][] array = new double[][] {
+                new double[]{3, 5},
+                new double[]{8, 1}
+        };
+        ComplexMatrix matrix = ComplexMatrix.fromRealArray(array);
 
-        expectedMatrix.setValue(3, 0, new Complex(6, 0));
-        expectedMatrix.setValue(3, 1, new Complex(3, 0));
-        expectedMatrix.setValue(3, 2, new Complex(8, 0));
-        expectedMatrix.setValue(3, 3, new Complex(4, 0));
+        array = new double[][] {
+                new double[]{4, 8, 16},
+                new double[]{8, 4, 2},
+                new double[]{6, 2, 9}
+        };
+        ComplexMatrix multiplier = ComplexMatrix.fromRealArray(array);
+
+        ComplexMatrix tensor = matrix.tensorMultiplication(multiplier);
+
+        array = new double[][] {
+                new double[]{12, 24, 48, 20, 40, 80},
+                new double[]{24, 12, 6, 40, 20, 10},
+                new double[]{18, 6, 27, 30, 10, 45},
+                new double[]{32, 64, 128, 4, 8, 16},
+                new double[]{64, 32, 16, 8, 4, 2},
+                new double[]{48, 16, 72, 6, 2, 9},
+        };
+        ComplexMatrix expectedMatrix = ComplexMatrix.fromRealArray(array);
 
         assertEquals(expectedMatrix, tensor);
     }
