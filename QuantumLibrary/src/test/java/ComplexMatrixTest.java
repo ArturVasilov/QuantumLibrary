@@ -129,6 +129,47 @@ public class ComplexMatrixTest {
     }
 
     @Test
+    public void testPauliMatrixXHermitian() throws Exception {
+        ComplexMatrix matrix = new ComplexMatrix(2);
+        matrix.setValue(0, 0, new Complex(0, 0));
+        matrix.setValue(0, 1, new Complex(1, 0));
+        matrix.setValue(1, 0, new Complex(1, 0));
+        matrix.setValue(1, 1, new Complex(0, 0));
+
+        assertTrue(matrix.isHermitian());
+    }
+
+    @Test
+    public void testPauliMatrixYHermitian() throws Exception {
+        ComplexMatrix matrix = new ComplexMatrix(2);
+        matrix.setValue(0, 0, new Complex(0, 0));
+        matrix.setValue(0, 1, new Complex(0, -1));
+        matrix.setValue(1, 0, new Complex(0, 1));
+        matrix.setValue(1, 1, new Complex(0, 0));
+
+        assertTrue(matrix.isHermitian());
+    }
+
+    @Test
+    public void testPauliMatrixZHermitian() throws Exception {
+        ComplexMatrix matrix = new ComplexMatrix(2);
+        matrix.setValue(0, 0, new Complex(1, 0));
+        matrix.setValue(0, 1, new Complex(0, 0));
+        matrix.setValue(1, 0, new Complex(0, 0));
+        matrix.setValue(1, 1, new Complex(-1, 0));
+
+        assertTrue(matrix.isHermitian());
+    }
+
+    @Test
+    public void testNonHermitianMatrix() throws Exception {
+        ComplexMatrix matrix = ComplexMatrix.identity(3);
+        matrix.setValue(1, 0, new Complex(2, 0));
+
+        assertFalse(matrix.isHermitian());
+    }
+
+    @Test
     public void testSimpleTensor() throws Exception {
         //number 5
         ComplexMatrix matrix = ComplexMatrix.identity(1);

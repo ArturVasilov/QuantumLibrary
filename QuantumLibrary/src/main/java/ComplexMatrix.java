@@ -159,6 +159,9 @@ public class ComplexMatrix {
     /**
      * Theory about unitary matrices https://en.wikipedia.org/wiki/Unitary_matrix
      *
+     * Let A^H = (A^*)^T, which is conjugate transposed matrix.
+     * Matrix A is called unitary iff A * A^H = I (identity matrix).
+     *
      * Unitary matrices play a very important role in quantum mechanics
      * since every quantum operator is unitary matrix (that makes operator invertible)
      *
@@ -168,6 +171,19 @@ public class ComplexMatrix {
         ComplexMatrix transposed = conjugateTranspose();
         ComplexMatrix result = transposed.multiply(this);
         return result.isIdentityMatrix();
+    }
+
+     /**
+      * Theory about hermitian matrices https://en.wikipedia.org/wiki/Hermitian_matrix
+      *
+      * Let A^H = (A^*)^T, which is conjugate transposed matrix.
+      * Matrix A is called hermitian iff A^H = A
+      *
+      * @return true iff current matrix is hermitian
+      */
+    public boolean isHermitian() {
+        ComplexMatrix hermitian = conjugateTranspose();
+        return hermitian.equals(this);
     }
 
     /**
@@ -228,7 +244,7 @@ public class ComplexMatrix {
      *
      * |a_11 * B, a_12 * B, ..., a_1n * B|
      * |a_21 * B, a_22 * B, ..., a_1n * B|
-     * |...      ...      ...  ...    |
+     * |...      ...      ...  ...       |
      * |a_n1 * B, a_n2 * B, ..., a_nn * B|
      *
      * @param multiplier - matrix to multiply.
