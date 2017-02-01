@@ -42,6 +42,25 @@ public class ComplexMatrix {
     }
 
     /**
+     * Creates new matrix with size of array passed as a parameter.
+     * Matrix looks much more naturally when is presented as 2-dimension array.
+     * In result matrix all values have only real part (which is double number from array argument).
+     *
+     * @param array - 2-dimension array representation of result matrix.
+     * @return matrix nxn (where n is size of array) of complex numbers filled with double values from array argument
+     */
+    public static ComplexMatrix fromRealArray(double[][] array) {
+        int n = array.length;
+        ComplexMatrix matrix = new ComplexMatrix(n);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix.setValue(i, j, new Complex(array[i][j], 0));
+            }
+        }
+        return matrix;
+    }
+
+    /**
      * Creates new identity matrix with size of n.
      * See comments for {@link ComplexMatrix#isIdentityMatrix()}
      *
@@ -76,6 +95,20 @@ public class ComplexMatrix {
     @Override
     public int hashCode() {
         return Arrays.deepHashCode(matrix);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder("|\t");
+
+        for (Complex[] row : matrix) {
+            for (Complex element : row) {
+                builder.append(element).append("\t");
+            }
+
+            builder.append("|\n").append("|\t");
+        }
+        return builder.delete(builder.length() - 3, builder.length()).toString();
     }
 
     public Complex getValue(int i, int j) {
@@ -126,6 +159,9 @@ public class ComplexMatrix {
     /**
      * Theory about unitary matrices https://en.wikipedia.org/wiki/Unitary_matrix
      *
+     * Let A^H = (A^*)^T, which is conjugate transposed matrix.
+     * Matrix A is called unitary iff A * A^H = I (identity matrix).
+     *
      * Unitary matrices play a very important role in quantum mechanics
      * since every quantum operator is unitary matrix (that makes operator invertible)
      *
@@ -135,6 +171,19 @@ public class ComplexMatrix {
         ComplexMatrix transposed = conjugateTranspose();
         ComplexMatrix result = transposed.multiply(this);
         return result.isIdentityMatrix();
+    }
+
+     /**
+      * Theory about hermitian matrices https://en.wikipedia.org/wiki/Hermitian_matrix
+      *
+      * Let A^H = (A^*)^T, which is conjugate transposed matrix.
+      * Matrix A is called hermitian iff A^H = A
+      *
+      * @return true iff current matrix is hermitian
+      */
+    public boolean isHermitian() {
+        ComplexMatrix hermitian = conjugateTranspose();
+        return hermitian.equals(this);
     }
 
     /**
@@ -180,6 +229,40 @@ public class ComplexMatrix {
                     sum = sum.add(matrix[i][k].multiply(multiplier.getValue(k, j)));
                 }
                 result.setValue(i, j, sum);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Creates new {@link ComplexMatrix} instance which is result
+     * of tensor multiplication of current matrix with argument matrix
+     *
+     * Tensor multiplication theory https://en.wikipedia.org/wiki/Tensor_product
+     *
+     * Tensor multiplication of A(nxn) and B(mxm):
+     *
+     * |a_11 * B, a_12 * B, ..., a_1n * B|
+     * |a_21 * B, a_22 * B, ..., a_1n * B|
+     * |...      ...      ...  ...       |
+     * |a_n1 * B, a_n2 * B, ..., a_nn * B|
+     *
+     * @param multiplier - matrix to multiply.
+     *
+     * @return tensor multiplication of current matrix and multiplier parameter
+     */
+    public ComplexMatrix tensorMultiplication(ComplexMatrix multiplier) {
+        int n = matrix.length;
+        int m = multiplier.matrix.length;
+        ComplexMatrix result = new ComplexMatrix(n * m);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                Complex element = matrix[i][j];
+                for (int k = i * m; k < (i + 1) * m; k++) {
+                    for (int l = j * m; l < (j + 1) * m; l++) {
+                        result.setValue(k, l, element.multiply(multiplier.getValue(k % m, l % m)));
+                    }
+                }
             }
         }
         return result;
