@@ -2,9 +2,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * @author Artur Vasilov
@@ -186,7 +184,7 @@ public class ComplexMatrixTest {
 
         ComplexMatrix tensor = matrix.tensorMultiplication(multiplier);
 
-        double[][] array = new double[][] {
+        double[][] array = new double[][]{
                 new double[]{5, 0},
                 new double[]{5, 5}
         };
@@ -197,13 +195,13 @@ public class ComplexMatrixTest {
 
     @Test
     public void testTensorMultiplication() throws Exception {
-        double[][] array = new double[][] {
+        double[][] array = new double[][]{
                 new double[]{1, 2},
                 new double[]{3, 4}
         };
         ComplexMatrix matrix = ComplexMatrix.fromRealArray(array);
 
-        array = new double[][] {
+        array = new double[][]{
                 new double[]{4, 3},
                 new double[]{2, 1}
         };
@@ -211,7 +209,7 @@ public class ComplexMatrixTest {
 
         ComplexMatrix tensor = matrix.tensorMultiplication(multiplier);
 
-        array = new double[][] {
+        array = new double[][]{
                 new double[]{4, 3, 8, 6},
                 new double[]{2, 1, 4, 2},
                 new double[]{12, 9, 16, 12},
@@ -224,13 +222,13 @@ public class ComplexMatrixTest {
 
     @Test
     public void testLargeTensorMultiplication() throws Exception {
-        double[][] array = new double[][] {
+        double[][] array = new double[][]{
                 new double[]{3, 5},
                 new double[]{8, 1}
         };
         ComplexMatrix matrix = ComplexMatrix.fromRealArray(array);
 
-        array = new double[][] {
+        array = new double[][]{
                 new double[]{4, 8, 16},
                 new double[]{8, 4, 2},
                 new double[]{6, 2, 9}
@@ -239,7 +237,7 @@ public class ComplexMatrixTest {
 
         ComplexMatrix tensor = matrix.tensorMultiplication(multiplier);
 
-        array = new double[][] {
+        array = new double[][]{
                 new double[]{12, 24, 48, 20, 40, 80},
                 new double[]{24, 12, 6, 40, 20, 10},
                 new double[]{18, 6, 27, 30, 10, 45},

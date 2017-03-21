@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/QuantumLibrary.iml" filepath="$PROJECT_DIR$/QuantumLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crypto/crypto.iml" filepath="$PROJECT_DIR$/crypto/crypto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kazan-integration/kazan-integration.iml" filepath="$PROJECT_DIR$/kazan-integration/kazan-integration.iml" />
     </modules>
   </component>
 </project>
