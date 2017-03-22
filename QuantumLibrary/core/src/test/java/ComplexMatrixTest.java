@@ -80,83 +80,37 @@ public class ComplexMatrixTest {
 
     @Test
     public void testPauliMatrixXUnitary() throws Exception {
-        ComplexMatrix matrix = new ComplexMatrix(2);
-        matrix.setValue(0, 0, new Complex(0, 0));
-        matrix.setValue(0, 1, new Complex(1, 0));
-        matrix.setValue(1, 0, new Complex(1, 0));
-        matrix.setValue(1, 1, new Complex(0, 0));
-
-        assertTrue(matrix.isUnitary());
+        assertTrue(Operators.pauliX().isUnitary());
     }
 
     @Test
     public void testPauliMatrixYUnitary() throws Exception {
-        ComplexMatrix matrix = new ComplexMatrix(2);
-        matrix.setValue(0, 0, new Complex(0, 0));
-        matrix.setValue(0, 1, new Complex(0, -1));
-        matrix.setValue(1, 0, new Complex(0, 1));
-        matrix.setValue(1, 1, new Complex(0, 0));
-
-        assertTrue(matrix.isUnitary());
+        assertTrue(Operators.pauliY().isUnitary());
     }
 
     @Test
     public void testPauliMatrixZUnitary() throws Exception {
-        ComplexMatrix matrix = new ComplexMatrix(2);
-        matrix.setValue(0, 0, new Complex(1, 0));
-        matrix.setValue(0, 1, new Complex(0, 0));
-        matrix.setValue(1, 0, new Complex(0, 0));
-        matrix.setValue(1, 1, new Complex(-1, 0));
-
-        assertTrue(matrix.isUnitary());
+        assertTrue(Operators.pauliZ().isUnitary());
     }
 
     @Test
     public void testToffoliUnitary() throws Exception {
-        ComplexMatrix matrix = ComplexMatrix.zeros(8);
-        matrix.setValue(0, 0, new Complex(1, 0));
-        matrix.setValue(1, 1, new Complex(1, 0));
-        matrix.setValue(2, 2, new Complex(1, 0));
-        matrix.setValue(3, 3, new Complex(1, 0));
-        matrix.setValue(4, 4, new Complex(1, 0));
-        matrix.setValue(5, 5, new Complex(1, 0));
-        matrix.setValue(6, 7, new Complex(1, 0));
-        matrix.setValue(7, 6, new Complex(1, 0));
-
-        assertTrue(matrix.isUnitary());
+        assertTrue(Operators.toffoli().isUnitary());
     }
 
     @Test
     public void testPauliMatrixXHermitian() throws Exception {
-        ComplexMatrix matrix = new ComplexMatrix(2);
-        matrix.setValue(0, 0, new Complex(0, 0));
-        matrix.setValue(0, 1, new Complex(1, 0));
-        matrix.setValue(1, 0, new Complex(1, 0));
-        matrix.setValue(1, 1, new Complex(0, 0));
-
-        assertTrue(matrix.isHermitian());
+        assertTrue(Operators.pauliX().isHermitian());
     }
 
     @Test
     public void testPauliMatrixYHermitian() throws Exception {
-        ComplexMatrix matrix = new ComplexMatrix(2);
-        matrix.setValue(0, 0, new Complex(0, 0));
-        matrix.setValue(0, 1, new Complex(0, -1));
-        matrix.setValue(1, 0, new Complex(0, 1));
-        matrix.setValue(1, 1, new Complex(0, 0));
-
-        assertTrue(matrix.isHermitian());
+        assertTrue(Operators.pauliY().isHermitian());
     }
 
     @Test
     public void testPauliMatrixZHermitian() throws Exception {
-        ComplexMatrix matrix = new ComplexMatrix(2);
-        matrix.setValue(0, 0, new Complex(1, 0));
-        matrix.setValue(0, 1, new Complex(0, 0));
-        matrix.setValue(1, 0, new Complex(0, 0));
-        matrix.setValue(1, 1, new Complex(-1, 0));
-
-        assertTrue(matrix.isHermitian());
+        assertTrue(Operators.pauliZ().isHermitian());
     }
 
     @Test
