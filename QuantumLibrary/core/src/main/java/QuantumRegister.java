@@ -50,6 +50,31 @@ public class QuantumRegister {
         System.arraycopy(result, 0, register, 0, register.length);
     }
 
+    public void applyAtPositions(ComplexMatrix operator, int startQubit) {
+        String errorMessage = "Cannot apply operator, check the positions";
+        if (startQubit < 0 || startQubit >= qubitsCount) {
+            throw new IllegalArgumentException(errorMessage);
+        }
+        if ((int) Math.pow(2, startQubit) * operator.matrix.length > register.length) {
+            //operator has larger size than the rest of the register
+            throw new IllegalArgumentException(errorMessage);
+        }
+
+        ComplexMatrix resultOperator;
+        if (startQubit == 0) {
+            resultOperator = operator.copy();
+        } else {
+            resultOperator = ComplexMatrix.identity(2)
+                    .tensorPow(startQubit)
+                    .tensorMultiplication(operator);
+        }
+
+        while (resultOperator.matrix.length < register.length) {
+            resultOperator = resultOperator.tensorMultiplication(ComplexMatrix.identity(2));
+        }
+        apply(resultOperator);
+    }
+
     public boolean[] measure() {
         boolean[] result = new boolean[qubitsCount];
 

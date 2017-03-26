@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * @author Artur Vasilov
  */
@@ -53,4 +55,27 @@ public final class Operators {
         return matrix;
     }
 
+    public static ComplexMatrix oracle(BooleanFunction function) {
+        int resultSize = function.size() + 1;
+
+        int operatorSize = (int) Math.pow(2, resultSize);
+        ComplexMatrix matrix = new ComplexMatrix(operatorSize);
+
+        boolean[] arguments = new boolean[resultSize];
+        Arrays.fill(arguments, false);
+
+        do {
+            boolean[] functionArgs = new boolean[resultSize - 1];
+            System.arraycopy(arguments, 0, functionArgs, 0, resultSize - 1);
+            boolean result = function.call(functionArgs) ^ arguments[arguments.length - 1];
+
+            int inState = BooleanFunction.arrayToInt(arguments);
+            arguments[resultSize - 1] = result;
+            int outState = BooleanFunction.arrayToInt(arguments);
+            arguments[resultSize - 1] = result;
+            matrix.setValue(inState, outState, new Complex(1, 0));
+        } while (BooleanFunction.next(arguments));
+
+        return matrix;
+    }
 }

@@ -46,7 +46,7 @@ public class Main {
     }
 
     private static boolean isBalanced(BooleanFunction function) {
-        int size = function.getSize();
+        int size = function.size();
         boolean[] arguments = new boolean[size];
         Arrays.fill(arguments, false);
         boolean first = function.call(arguments);
@@ -63,7 +63,7 @@ public class Main {
     }
 
     private static boolean isProbablyConstant(BooleanFunction function, int iterations) {
-        int size = function.getSize();
+        int size = function.size();
         boolean[] arguments = new boolean[size];
         Arrays.fill(arguments, false);
         boolean first = function.call(arguments);

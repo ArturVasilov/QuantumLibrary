@@ -9,7 +9,7 @@ public abstract class BooleanFunction {
         this.size = size;
     }
 
-    public int getSize() {
+    public int size() {
         return size;
     }
 
@@ -63,5 +63,17 @@ public abstract class BooleanFunction {
             builder.append(value ? '1' : '0');
         }
         return builder.toString();
+    }
+
+    public static int arrayToInt(boolean[] array) {
+        int value = 0;
+        int currentPow = 1;
+        for (int i = array.length - 1; i >= 0; i--) {
+            if (array[i]) {
+                value += currentPow;
+            }
+            currentPow *= 2;
+        }
+        return value;
     }
 }

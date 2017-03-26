@@ -76,6 +76,20 @@ public class ComplexMatrix {
     }
 
     /**
+     * Creates a deep copy of the ComplexMatrix (all values in the matrix are the same)
+     *
+     * @return new copy of current matrix
+     */
+    public ComplexMatrix copy() {
+        int n = matrix.length;
+        ComplexMatrix copiedMatrix = new ComplexMatrix(n);
+        for (int i = 0; i < n; i++) {
+            System.arraycopy(matrix[i], 0, copiedMatrix.matrix[i], 0, n);
+        }
+        return copiedMatrix;
+    }
+
+    /**
      * Compares all elements of the matrix with the parameter
      */
     @Override
@@ -266,6 +280,29 @@ public class ComplexMatrix {
             }
         }
         return result;
+    }
+
+    /**
+     * Let (x) be a tensor multiplication, so A(x)B is the same as
+     * A {@link ComplexMatrix#tensorMultiplication(ComplexMatrix)} B
+     * This method returns A(x)A(x)A...(x)A - pow times tensor product
+     *
+     * @param pow - power of tensor multiplication (should be non-negative)
+     * @return A^(n(x))
+     */
+    public ComplexMatrix tensorPow(int pow) {
+        if (pow < 0) {
+            throw new IllegalArgumentException("Power should be non-negative");
+        }
+        if (pow == 0) {
+            return identity(matrix.length);
+        }
+
+        ComplexMatrix resultMatrix = copy();
+        for (int i = 1; i < pow; i++) {
+            resultMatrix = resultMatrix.tensorMultiplication(this);
+        }
+        return resultMatrix;
     }
 
 }
