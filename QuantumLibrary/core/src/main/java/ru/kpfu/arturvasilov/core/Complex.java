@@ -1,3 +1,5 @@
+package ru.kpfu.arturvasilov.core;
+
 import java.math.BigDecimal;
 
 /**

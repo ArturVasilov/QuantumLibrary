@@ -1,3 +1,5 @@
+import ru.kpfu.arturvasilov.core.BooleanFunction;
+
 import java.util.Arrays;
 
 /**

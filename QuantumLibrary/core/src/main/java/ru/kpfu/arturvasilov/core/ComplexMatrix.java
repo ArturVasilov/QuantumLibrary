@@ -1,3 +1,5 @@
+package ru.kpfu.arturvasilov.core;
+
 import java.math.BigDecimal;
 import java.util.Arrays;
 
@@ -25,7 +27,7 @@ public class ComplexMatrix {
     }
 
     /**
-     * Creates new matrix with size of n and fills all data with Complex(0, 0)
+     * Creates new matrix with size of n and fills all data with ru.kpfu.arturvasilov.core.Complex(0, 0)
      * It's useful since many quantum operators have only a small number of non-zero elements.
      *
      * @param n - size of the Matrix
@@ -76,7 +78,7 @@ public class ComplexMatrix {
     }
 
     /**
-     * Creates a deep copy of the ComplexMatrix (all values in the matrix are the same)
+     * Creates a deep copy of the ru.kpfu.arturvasilov.core.ComplexMatrix (all values in the matrix are the same)
      *
      * @return new copy of current matrix
      */

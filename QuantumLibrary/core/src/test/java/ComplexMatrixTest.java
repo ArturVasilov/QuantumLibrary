@@ -1,6 +1,9 @@
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import ru.kpfu.arturvasilov.core.Complex;
+import ru.kpfu.arturvasilov.core.ComplexMatrix;
+import ru.kpfu.arturvasilov.core.Operators;
 
 import static org.junit.Assert.*;
 

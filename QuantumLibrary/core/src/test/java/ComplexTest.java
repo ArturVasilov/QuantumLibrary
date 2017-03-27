@@ -1,6 +1,7 @@
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import ru.kpfu.arturvasilov.core.Complex;
 
 import static org.junit.Assert.assertEquals;
 

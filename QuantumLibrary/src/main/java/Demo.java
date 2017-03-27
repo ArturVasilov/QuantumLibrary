@@ -1,18 +1,22 @@
+import ru.kpfu.arturvasilov.core.BooleanFunction;
+import ru.kpfu.arturvasilov.core.Operators;
+import ru.kpfu.arturvasilov.core.QuantumRegister;
+
 /**
  * @author Artur Vasilov
  */
 public class Demo {
 
     public static void main(String[] args) {
-        //QuantumRegister register = new QuantumRegister(1, "0");
-        //System.out.println(BooleanFunction.arrayToString(register.measure()));
+        //ru.kpfu.arturvasilov.core.QuantumRegister register = new ru.kpfu.arturvasilov.core.QuantumRegister(1, "0");
+        //System.out.println(ru.kpfu.arturvasilov.core.BooleanFunction.arrayToString(register.measure()));
 
-        //register.apply(Operators.hadamar());
-        //System.out.println(BooleanFunction.arrayToString(register.measure()));
+        //register.apply(ru.kpfu.arturvasilov.core.Operators.hadamar());
+        //System.out.println(ru.kpfu.arturvasilov.core.BooleanFunction.arrayToString(register.measure()));
 
-      //  QuantumRegister register = new QuantumRegister(5, "00000");
-       // register.applyAtPositions(Operators.hadamar().tensorPow(2), 2);
-        //System.out.println(BooleanFunction.arrayToString(register.measure()));
+      //  ru.kpfu.arturvasilov.core.QuantumRegister register = new ru.kpfu.arturvasilov.core.QuantumRegister(5, "00000");
+       // register.applyAtPositions(ru.kpfu.arturvasilov.core.Operators.hadamar().tensorPow(2), 2);
+        //System.out.println(ru.kpfu.arturvasilov.core.BooleanFunction.arrayToString(register.measure()));
 
         BooleanFunction xorFunction = new BooleanFunction(4) {
             @Override

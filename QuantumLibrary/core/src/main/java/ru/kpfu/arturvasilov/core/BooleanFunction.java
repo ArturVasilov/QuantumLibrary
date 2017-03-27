@@ -1,3 +1,5 @@
+package ru.kpfu.arturvasilov.core;
+
 /**
  * @author Artur Vasilov
  */

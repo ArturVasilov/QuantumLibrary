@@ -13,9 +13,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="core" target="1.5" />
-      <module name="crypto" target="1.5" />
-      <module name="kazan-integration" target="1.5" />
+      <module name="core" target="1.8" />
+      <module name="crypto" target="1.8" />
+      <module name="kazan-integration" target="1.8" />
       <module name="QuantumLibrary" target="1.8" />
     </bytecodeTargetLevel>
   </component>

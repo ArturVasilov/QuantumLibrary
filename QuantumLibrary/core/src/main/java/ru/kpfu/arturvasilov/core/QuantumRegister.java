@@ -1,3 +1,5 @@
+package ru.kpfu.arturvasilov.core;
+
 import org.apache.commons.math3.complex.ComplexUtils;
 import org.apache.commons.math3.distribution.EnumeratedIntegerDistribution;
 
