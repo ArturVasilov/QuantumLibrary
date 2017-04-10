@@ -7,5 +7,5 @@ public interface InitializationCallback {
 
     void onInitializationSucceed();
 
-    void onInitializationFailed();
+    void onInitializationFailed(Throwable error);
 }

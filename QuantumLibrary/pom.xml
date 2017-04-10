@@ -20,6 +20,13 @@
             </plugin>
         </plugins>
     </build>
+    <dependencies>
+        <dependency>
+            <groupId>ru.arturvasilov.kpfu</groupId>
+            <artifactId>quantumlibrary-core</artifactId>
+            <version>0.5</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

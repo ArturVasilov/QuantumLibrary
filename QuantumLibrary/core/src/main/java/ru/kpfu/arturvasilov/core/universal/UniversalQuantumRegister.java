@@ -1,18 +1,21 @@
-package ru.kpfu.arturvasilov.core;
+package ru.kpfu.arturvasilov.core.universal;
 
 import org.apache.commons.math3.complex.ComplexUtils;
 import org.apache.commons.math3.distribution.EnumeratedIntegerDistribution;
+import ru.kpfu.arturvasilov.core.Complex;
+import ru.kpfu.arturvasilov.core.ComplexMatrix;
+import ru.kpfu.arturvasilov.core.computer.QuantumRegister;
 
 /**
  * @author Artur Vasilov
  */
-public class QuantumRegister {
+public class UniversalQuantumRegister implements QuantumRegister {
 
     private final int qubitsCount;
 
     private final Complex[] register;
 
-    public QuantumRegister(int qubitsCount, String initialState) {
+    public UniversalQuantumRegister(int qubitsCount, String initialState) {
         this.qubitsCount = qubitsCount;
         int n = (int) Math.pow(2, qubitsCount);
         register = new Complex[n];
@@ -36,6 +39,7 @@ public class QuantumRegister {
         register[currentNumber] = new Complex(1, 0);
     }
 
+    @Override
     public void apply(ComplexMatrix operator) {
         if (operator.matrix.length != register.length) {
             throw new IllegalArgumentException("Operator size is incorrect");
@@ -52,6 +56,7 @@ public class QuantumRegister {
         System.arraycopy(result, 0, register, 0, register.length);
     }
 
+    @Override
     public void applyAtPositions(ComplexMatrix operator, int startQubit) {
         String errorMessage = "Cannot apply operator, check the positions";
         if (startQubit < 0 || startQubit >= qubitsCount) {
@@ -77,6 +82,7 @@ public class QuantumRegister {
         apply(resultOperator);
     }
 
+    @Override
     public boolean[] measure() {
         boolean[] result = new boolean[qubitsCount];
 

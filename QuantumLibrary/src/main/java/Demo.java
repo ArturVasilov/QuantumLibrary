@@ -1,6 +1,9 @@
 import ru.kpfu.arturvasilov.core.BooleanFunction;
 import ru.kpfu.arturvasilov.core.Operators;
-import ru.kpfu.arturvasilov.core.QuantumRegister;
+import ru.kpfu.arturvasilov.core.computer.InitializationCallback;
+import ru.kpfu.arturvasilov.core.computer.QuantumComputer;
+import ru.kpfu.arturvasilov.core.computer.QuantumRegister;
+import ru.kpfu.arturvasilov.core.universal.UniversalMemoryManager;
 
 /**
  * @author Artur Vasilov
@@ -8,16 +11,21 @@ import ru.kpfu.arturvasilov.core.QuantumRegister;
 public class Demo {
 
     public static void main(String[] args) {
-        //ru.kpfu.arturvasilov.core.QuantumRegister register = new ru.kpfu.arturvasilov.core.QuantumRegister(1, "0");
-        //System.out.println(ru.kpfu.arturvasilov.core.BooleanFunction.arrayToString(register.measure()));
+        QuantumComputer.init(new UniversalMemoryManager(), new InitializationCallback() {
+            @Override
+            public void onInitializationSucceed() {
+                Demo.onInitializationSucceed();
+            }
 
-        //register.apply(ru.kpfu.arturvasilov.core.Operators.hadamar());
-        //System.out.println(ru.kpfu.arturvasilov.core.BooleanFunction.arrayToString(register.measure()));
+            @Override
+            public void onInitializationFailed(Throwable error) {
+                Demo.onInitializationFailed(error);
+            }
+        });
 
-      //  ru.kpfu.arturvasilov.core.QuantumRegister register = new ru.kpfu.arturvasilov.core.QuantumRegister(5, "00000");
-       // register.applyAtPositions(ru.kpfu.arturvasilov.core.Operators.hadamar().tensorPow(2), 2);
-        //System.out.println(ru.kpfu.arturvasilov.core.BooleanFunction.arrayToString(register.measure()));
+    }
 
+    private static void onInitializationSucceed() {
         BooleanFunction xorFunction = new BooleanFunction(4) {
             @Override
             protected boolean actualCall(boolean[] arguments) {
@@ -25,7 +33,7 @@ public class Demo {
             }
         };
 
-        QuantumRegister register = new QuantumRegister(5, "00001");
+        QuantumRegister register = QuantumComputer.createNewRegister(5, "00001");
         register.apply(Operators.hadamar().tensorPow(5));
         register.apply(Operators.oracle(xorFunction));
         register.applyAtPositions(Operators.hadamar().tensorPow(4), 0);
@@ -33,6 +41,10 @@ public class Demo {
         String measureResult = BooleanFunction.arrayToString(register.measure());
         boolean isConstant = measureResult.substring(0, measureResult.length() - 1).equals("0000");
         System.out.println("x + y is balanced? " + !isConstant);
+    }
+
+    private static void onInitializationFailed(Throwable error) {
+        System.out.println(String.format("Error during initialization: %s", error.getMessage()));
     }
 
 }
