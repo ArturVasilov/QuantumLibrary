@@ -29,7 +29,7 @@ public class Demo {
         BooleanFunction xorFunction = new BooleanFunction(4) {
             @Override
             protected boolean actualCall(boolean[] arguments) {
-                return arguments[0] ^ arguments[1];
+                return arguments[0] ^ arguments[1] & arguments[2];
             }
         };
 

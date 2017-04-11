@@ -26,6 +26,11 @@
             <artifactId>quantumlibrary-core</artifactId>
             <version>0.5</version>
         </dependency>
+        <dependency>
+            <groupId>ru.arturvasilov.kpfu</groupId>
+            <artifactId>quantumlibrary-kazan-integration</artifactId>
+            <version>0.5</version>
+        </dependency>
     </dependencies>
 
 

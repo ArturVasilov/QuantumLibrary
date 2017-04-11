@@ -44,6 +44,15 @@ public final class Operators {
         return ComplexMatrix.fromRealArray(array);
     }
 
+    public static ComplexMatrix swap() {
+        ComplexMatrix matrix = ComplexMatrix.zeros(4);
+        matrix.setValue(0, 0, new Complex(1, 0));
+        matrix.setValue(1, 2, new Complex(1, 0));
+        matrix.setValue(2, 1, new Complex(1, 0));
+        matrix.setValue(3, 3, new Complex(1, 0));;
+        return matrix;
+    }
+
     public static ComplexMatrix toffoli() {
         ComplexMatrix matrix = ComplexMatrix.zeros(8);
         matrix.setValue(0, 0, new Complex(1, 0));
@@ -54,6 +63,29 @@ public final class Operators {
         matrix.setValue(5, 5, new Complex(1, 0));
         matrix.setValue(6, 7, new Complex(1, 0));
         matrix.setValue(7, 6, new Complex(1, 0));
+        return matrix;
+    }
+
+    public static ComplexMatrix controlledNot() {
+        double[][] array = new double[][]{
+                new double[]{1, 0, 0, 0},
+                new double[]{0, 1, 0, 0},
+                new double[]{0, 0, 0, 1},
+                new double[]{0, 0, 1, 0}
+        };
+        return ComplexMatrix.fromRealArray(array);
+    }
+
+    public static ComplexMatrix fredkin() {
+        ComplexMatrix matrix = ComplexMatrix.zeros(8);
+        matrix.setValue(0, 0, new Complex(1, 0));
+        matrix.setValue(1, 1, new Complex(1, 0));
+        matrix.setValue(2, 2, new Complex(1, 0));
+        matrix.setValue(3, 3, new Complex(1, 0));
+        matrix.setValue(4, 4, new Complex(1, 0));
+        matrix.setValue(5, 6, new Complex(1, 0));
+        matrix.setValue(6, 5, new Complex(1, 0));
+        matrix.setValue(7, 7, new Complex(1, 0));
         return matrix;
     }
 
