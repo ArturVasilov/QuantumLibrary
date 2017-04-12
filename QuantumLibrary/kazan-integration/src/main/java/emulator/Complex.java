@@ -4,12 +4,48 @@ package emulator;
  * @author Artur Vasilov
  */
 public class Complex {
+
     private double real;
     private double imaginary;
 
     public Complex(double real, double imaginary) {
         this.real = real;
         this.imaginary = imaginary;
+    }
+
+    public static Complex add(Complex one, Complex two) {
+        return new Complex(one.getReal() + two.getReal(),
+                one.getImaginary() + two.getImaginary());
+    }
+
+    public static Complex sub(Complex one, Complex two) {
+        return new Complex(one.getReal() - two.getReal(),
+                one.getImaginary() - two.getImaginary());
+    }
+
+    public static Complex devide(Complex one, Complex two) {
+        return new Complex(
+                (one.real * two.real + one.imaginary + two.imaginary) /
+                        (two.real * two.real + two.imaginary * two.imaginary),
+
+                (two.real * one.imaginary - two.imaginary * one.real) /
+                        (two.real * two.real + two.imaginary * two.imaginary)
+        );
+    }
+
+    public static Complex mult(Complex one, Complex two) {
+        return new Complex(
+                one.getReal() * two.getReal() - one.getImaginary() * two.getImaginary(),
+
+                one.getReal() * two.getImaginary() + one.getImaginary() * two.getReal());
+    }
+
+    public static Complex zero() {
+        return new Complex(0.0, 0.0);
+    }
+
+    public static Complex unit() {
+        return new Complex(1.0, 0.0);
     }
 
     public Complex sqr() {
@@ -57,42 +93,7 @@ public class Complex {
         return result;
     }
 
-    public static Complex add(Complex one, Complex two) {
-        return new Complex(one.getReal() + two.getReal(),
-                one.getImaginary() + two.getImaginary());
-    }
-
-    public static Complex sub(Complex one, Complex two) {
-        return new Complex(one.getReal() - two.getReal(),
-                one.getImaginary() - two.getImaginary());
-    }
-
-    public static Complex devide(Complex one, Complex two) {
-        return new Complex(
-                (one.real * two.real + one.imaginary + two.imaginary) /
-                        (two.real * two.real + two.imaginary * two.imaginary),
-
-                (two.real * one.imaginary - two.imaginary * one.real) /
-                        (two.real * two.real + two.imaginary * two.imaginary)
-        );
-    }
-
-    public static Complex mult(Complex one, Complex two) {
-        return new Complex(
-                one.getReal() * two.getReal() - one.getImaginary() * two.getImaginary(),
-
-                one.getReal() * two.getImaginary() + one.getImaginary() * two.getReal());
-    }
-
     public Complex conjugate() {
         return new Complex(real, -imaginary);
-    }
-
-    public static Complex zero() {
-        return new Complex(0.0, 0.0);
-    }
-
-    public static Complex unit() {
-        return new Complex(1.0, 0.0);
     }
 }

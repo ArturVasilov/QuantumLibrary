@@ -7,9 +7,13 @@ import emulator.Complex;
  * @author Artur Vasilov
  */
 public class Emulator {
+
     private QuantumProccessorHelper helper = new QuantumProccessorHelper();
     private QuantumMemory memory0;
     private QuantumMemory memory1;
+
+    private int processingUnitsCount;
+    private ProcessingUnit[] processingUnits;
 
     public Emulator(double maxMemoryFrequency, double minMemoryFrequency, double memoryTimeCycle,
                     int processingUnitsCount) {
@@ -21,9 +25,6 @@ public class Emulator {
             processingUnits[i] = new ProcessingUnit(helper);
         }
     }
-
-    private int processingUnitsCount;
-    private ProcessingUnit[] processingUnits;
 
     public int getProcessingUnitsCount() {
         return processingUnitsCount;

@@ -5,9 +5,15 @@ package api.model;
  */
 public class QuantumMemoryAddress {
 
-    private final double frequency;
-    private final double timeDelay;
-    private final MemoryHalf memoryHalf;
+    private double frequency;
+    private double timeDelay;
+    private MemoryHalf memoryHalf;
+
+    public QuantumMemoryAddress(double frequency, double timeDelay, MemoryHalf memoryHalf) {
+        this.memoryHalf = memoryHalf;
+        this.frequency = frequency;
+        this.timeDelay = timeDelay;
+    }
 
     public double getFrequency() {
         return frequency;
@@ -19,11 +25,5 @@ public class QuantumMemoryAddress {
 
     public MemoryHalf getMemoryHalf() {
         return memoryHalf;
-    }
-
-    public QuantumMemoryAddress(double frequency, double timeDelay, MemoryHalf memoryHalf) {
-        this.memoryHalf = memoryHalf;
-        this.frequency = frequency;
-        this.timeDelay = timeDelay;
     }
 }

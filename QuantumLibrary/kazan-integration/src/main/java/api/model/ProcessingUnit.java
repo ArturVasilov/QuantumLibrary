@@ -5,18 +5,17 @@ package api.model;
  */
 public class ProcessingUnit {
 
+    QuantumProccessorHelper processorHelper;
     private ProcessingUnitCell cell0 = new ProcessingUnitCell();
     private ProcessingUnitCell controlPoint = new ProcessingUnitCell();
     private ProcessingUnitCell cell1 = new ProcessingUnitCell();
 
-    QuantumProccessorHelper processorHelper;
-
-    ProcessingUnit(QuantumProccessorHelper processorHelper){
+    ProcessingUnit(QuantumProccessorHelper processorHelper) {
         this.processorHelper = processorHelper;
     }
 
-    ProcessingUnitCell cellForUnitAddress(ProcessingUnitCellAddress address){
-        switch (address){
+    ProcessingUnitCell cellForUnitAddress(ProcessingUnitCellAddress address) {
+        switch (address) {
             case CELL_0:
                 return cell0;
             case CONTROL_POINT:
@@ -27,16 +26,16 @@ public class ProcessingUnit {
         return null;
     }
 
-    private boolean areCellsReadyToPerformTransformation (boolean checkControlledPoint){
+    private boolean areCellsReadyToPerformTransformation(boolean checkControlledPoint) {
         boolean result = cell0.getQubit() != null && cell1.getQubit() != null;
-        if (checkControlledPoint){
+        if (checkControlledPoint) {
             result = result && controlPoint.getQubit() != null;
         }
         return result;
     }
 
     private void checkCells(boolean checkControlledPoint) throws Exception {
-        if (!areCellsReadyToPerformTransformation(checkControlledPoint)){
+        if (!areCellsReadyToPerformTransformation(checkControlledPoint)) {
             throw new Exception("Cells are not ready! Qubits not loaded");
         }
     }
@@ -60,12 +59,12 @@ public class ProcessingUnit {
         processorHelper.physicalQET(cell0.getQubit(), cell1.getQubit(), phase);
     }
 
-    void cQET (double phase) throws Exception {
+    void cQET(double phase) throws Exception {
         checkCells(true);
         processorHelper.physicalCQET(cell0.getQubit(), controlPoint.getQubit(), cell1.getQubit(), phase);
     }
 
-    void PHASE (double phase) throws Exception {
+    void PHASE(double phase) throws Exception {
         checkCells(false);
         processorHelper.physicalPHASE(cell0.getQubit(), cell1.getQubit(), phase);
     }

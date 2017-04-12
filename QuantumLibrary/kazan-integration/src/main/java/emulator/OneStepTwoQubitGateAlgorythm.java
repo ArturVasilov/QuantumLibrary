@@ -15,16 +15,16 @@ public class OneStepTwoQubitGateAlgorythm extends QuantumAlgorithm {
         stepsNumber = 1;
         QuantumSchemeStepQubitAttributes[][] algSheme = new QuantumSchemeStepQubitAttributes[qubitsInRegister][1];
         String gateId = "ControlledGate";
-        for (int i = 0; i < qubitsInRegister; i++) {
-            if (i == secondQubitPosition) {
-                algSheme[i][0] = new QuantumSchemeStepQubitAttributes(gateId, false);
-            } else if (i == firstQubitPosition) {
-                algSheme[i][0] = new QuantumSchemeStepQubitAttributes(gateId, true);
+        for (int index = 0; index < qubitsInRegister; index++) {
+            if (index == secondQubitPosition) {
+                algSheme[index][0] = new QuantumSchemeStepQubitAttributes(gateId, false);
+            } else if (index == firstQubitPosition) {
+                algSheme[index][0] = new QuantumSchemeStepQubitAttributes(gateId, true);
             } else {
-                algSheme[i][0] = new QuantumSchemeStepQubitAttributes();
+                algSheme[index][0] = new QuantumSchemeStepQubitAttributes();
             }
         }
-        gates = new HashMap<String, QuantumGate>();
+        gates = new HashMap<>();
         mainGateIDs = new String[]{gateId};
         QuantumGate gate = new UGate(2, transformationMatrix);
         gates.put(gateId, gate);

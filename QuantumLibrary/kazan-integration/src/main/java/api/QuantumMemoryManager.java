@@ -13,35 +13,35 @@ import java.util.Set;
  */
 public class QuantumMemoryManager extends QuantumManager {
 
-    private int proccessorsUnitsCount = 4;
-
     Set proccessorsUnitsRegisters;
 
-    public QuantumMemoryManager(){
+    private int proccessorsUnitsCount = 4;
+
+    public QuantumMemoryManager() {
         proccessorsUnitsRegisters = new HashSet<Qubit>();
     }
 
 //    Base operations
 
-    public boolean qubitIsAlreadyInProccessor (Qubit q){
+    public boolean qubitIsAlreadyInProccessor(Qubit q) {
         return proccessorsUnitsRegisters.contains(q);
     }
 
-    public void load (Qubit q) throws Exception {
-        if (proccessorsUnitsRegisters.size() == proccessorsUnitsCount && !qubitIsAlreadyInProccessor(q)){
+    public void load(Qubit q) throws Exception {
+        if (proccessorsUnitsRegisters.size() == proccessorsUnitsCount && !qubitIsAlreadyInProccessor(q)) {
             throw (new Exception("Processor units overflow"));
         }
 
         proccessorsUnitsRegisters.add(q);
     }
 
-    public void save (Qubit q){
+    public void save(Qubit q) {
         proccessorsUnitsRegisters.remove(q);
     }
 
 
-    public void checkQubitsBeforePerformTransformation (Qubit ... qubits) throws Exception {
-        for (Qubit q: qubits) {
+    public void checkQubitsBeforePerformTransformation(Qubit... qubits) throws Exception {
+        for (Qubit q : qubits) {
             if (q.registerAddress.equals(qubitDestroyedRegisterAddress)) {
                 throw (new Exception("One ore more qubits already destroyed!"));
             } else if (!qubitIsAlreadyInProccessor(q)) {
@@ -52,26 +52,26 @@ public class QuantumMemoryManager extends QuantumManager {
 
     /**
      * This tranformation must be performed for qubit that loaded to proccessor unit
-     * */
-    public void phase (double thetaInRadians, Qubit qubit) throws Exception {
+     */
+    public void phase(double thetaInRadians, Qubit qubit) throws Exception {
         checkQubitsBeforePerformTransformation(qubit);
         RegisterInfo registerInfo = registers.get(qubit.registerAddress);
         OneStepOneQubitGateAlgorythm oneStepOneQubitGateAlgorythm = new OneStepOneQubitGateAlgorythm(registerInfo.register.getQubitsNumber(),
                 new PhaseGate(thetaInRadians),
                 qubit.addressInRegister
-                );
+        );
         registerInfo.register.performAlgorythm(oneStepOneQubitGateAlgorythm);
     }
 
     /**
      * This tranformation must be performed for qubit that loaded to proccessor unit
-     * */
-    public void QET (double thetaInRadians, Qubit qubit) throws Exception {
+     */
+    public void QET(double thetaInRadians, Qubit qubit) throws Exception {
         checkQubitsBeforePerformTransformation(qubit);
         RegisterInfo registerInfo = registers.get(qubit.registerAddress);
         Complex[][] matrix = {
-                {new Complex(Math.cos(thetaInRadians/2), 0), new Complex(0, Math.sin(thetaInRadians/2))},
-                {new Complex(0, Math.sin(thetaInRadians/2)), new Complex(Math.cos(thetaInRadians/2), 0)}
+                {new Complex(Math.cos(thetaInRadians / 2), 0), new Complex(0, Math.sin(thetaInRadians / 2))},
+                {new Complex(0, Math.sin(thetaInRadians / 2)), new Complex(Math.cos(thetaInRadians / 2), 0)}
         };
         OneStepOneQubitGateAlgorythm oneStepOneQubitGateAlgorythm = new OneStepOneQubitGateAlgorythm(registerInfo.register.getQubitsNumber(),
                 matrix,
@@ -82,13 +82,13 @@ public class QuantumMemoryManager extends QuantumManager {
 
     /**
      * This tranformation must be performed for qubits that loaded to proccessor units
-     * */
-    public void cQET (double thetaInRadians, Qubit controllingQubit, Qubit controlledQubit) throws Exception {
+     */
+    public void cQET(double thetaInRadians, Qubit controllingQubit, Qubit controlledQubit) throws Exception {
         checkQubitsBeforePerformTransformation(controlledQubit, controllingQubit);
         RegisterInfo registerInfo = checkAndMergeRegistersIfNeedForQubits(controllingQubit, controlledQubit);
         Complex[][] matrix = {
-                {new Complex(Math.cos(thetaInRadians/2), 0), new Complex(0, Math.sin(thetaInRadians/2)), Complex.zero(), Complex.zero()},
-                {new Complex(0, Math.sin(thetaInRadians/2)), new Complex(Math.cos(thetaInRadians/2), 0), Complex.zero(), Complex.zero()},
+                {new Complex(Math.cos(thetaInRadians / 2), 0), new Complex(0, Math.sin(thetaInRadians / 2)), Complex.zero(), Complex.zero()},
+                {new Complex(0, Math.sin(thetaInRadians / 2)), new Complex(Math.cos(thetaInRadians / 2), 0), Complex.zero(), Complex.zero()},
                 {Complex.zero(), Complex.zero(), Complex.unit(), Complex.zero()},
                 {Complex.zero(), Complex.zero(), Complex.zero(), Complex.unit()}
         };
@@ -97,7 +97,7 @@ public class QuantumMemoryManager extends QuantumManager {
                 controllingQubit.addressInRegister,
                 controlledQubit.addressInRegister,
                 matrix
-                );
+        );
         registerInfo.register.performAlgorythm(algorythm);
     }
 }

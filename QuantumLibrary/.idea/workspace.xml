@@ -2,44 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50c462a0-853d-4a15-b05d-f324be0c9eae" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumMemoryManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/Emulator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/MemoryHalf.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingAddress.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnit.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnitCell.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnitCellAddress.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryAddress.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryInfo.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumProccessorHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/Complex.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/ComplexMath.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepAlgorythm.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepOneQubitGateAlgorythm.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepTwoQubitGateAlgorythm.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumAlgorithm.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumGate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumRegister.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumSchemeStepQubitAttributes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/gates/IdentityGate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/gates/PhaseGate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/gates/UGate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/integration/KazanMemoryManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/integration/KazanQuantumRegister.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/TestClass.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/Artur.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/Artur.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dictionaries/Artur.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_math3_3_6_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_math3_3_6_1.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QuantumLibrary.iml" afterPath="$PROJECT_DIR$/QuantumLibrary.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/Operators.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/Operators.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crypto/crypto.iml" afterPath="$PROJECT_DIR$/crypto/crypto.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/crypto/pom.xml" afterPath="$PROJECT_DIR$/crypto/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/kazan-integration.iml" afterPath="$PROJECT_DIR$/kazan-integration/kazan-integration.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Demo.java" afterPath="$PROJECT_DIR$/src/main/java/Demo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumManager.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumMemoryManager.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumMemoryManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/Emulator.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/Emulator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/MemoryHalf.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/MemoryHalf.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingAddress.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingAddress.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnit.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnit.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnitCell.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnitCell.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnitCellAddress.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnitCellAddress.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemory.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryAddress.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryAddress.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryInfo.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumProccessorHelper.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumProccessorHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/Complex.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/Complex.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/ComplexMath.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/ComplexMath.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepAlgorythm.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepAlgorythm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepOneQubitGateAlgorythm.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepOneQubitGateAlgorythm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepTwoQubitGateAlgorythm.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepTwoQubitGateAlgorythm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumAlgorithm.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumAlgorithm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumGate.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumGate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumRegister.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumRegister.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumSchemeStepQubitAttributes.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumSchemeStepQubitAttributes.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/TestClass.java" afterPath="$PROJECT_DIR$/src/main/java/TestClass.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -59,17 +46,82 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="OneStepAlgorythm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepAlgorythm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="38" column="26" lean-forward="false" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OneStepOneQubitGateAlgorythm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepOneQubitGateAlgorythm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OneStepTwoQubitGateAlgorythm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepTwoQubitGateAlgorythm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="8" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KazanMemoryManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/KazanMemoryManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestClass.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/TestClass.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="76" column="37" lean-forward="false" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QuantumManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="193">
+              <caret line="26" column="17" lean-forward="false" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="QuantumAlgorithm.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="47" column="27" lean-forward="false" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
+            <state relative-caret-position="1241">
+              <caret line="201" column="21" lean-forward="false" selection-start-line="201" selection-start-column="21" selection-end-line="201" selection-end-column="21" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#532#533#0" expanded="false" />
-                <element signature="e#563#564#0" expanded="false" />
-                <element signature="e#1255#1263#0" expanded="false" />
-                <element signature="e#3658#3671#0" expanded="false" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#532#533#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,8 +130,8 @@
       <file leaf-file-name="QuantumGate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumGate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="68">
+              <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -88,15 +140,10 @@
       <file leaf-file-name="QuantumRegister.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumRegister.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+            <state relative-caret-position="-927">
+              <caret line="53" column="89" lean-forward="false" selection-start-line="53" selection-start-column="89" selection-end-line="53" selection-end-column="89" />
               <folding>
-                <element signature="e#237#238#0" expanded="false" />
-                <element signature="e#287#288#0" expanded="false" />
-                <element signature="e#956#957#0" expanded="false" />
-                <element signature="e#985#986#0" expanded="false" />
-                <element signature="e#1021#1022#0" expanded="false" />
-                <element signature="e#1056#1057#0" expanded="false" />
+                <element signature="e#1033#1034#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -105,81 +152,9 @@
       <file leaf-file-name="QuantumSchemeStepQubitAttributes.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumSchemeStepQubitAttributes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+            <state relative-caret-position="153">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KazanMemoryManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/KazanMemoryManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#867#868#0" expanded="true" />
-                <element signature="e#918#919#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KazanQuantumRegister.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/KazanQuantumRegister.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="10" lean-forward="false" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#308#309#0" expanded="true" />
-                <element signature="e#336#337#0" expanded="true" />
-                <element signature="e#551#552#0" expanded="true" />
-                <element signature="e#588#589#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Complex.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/Complex.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuantumMemoryManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumMemoryManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="59" column="26" lean-forward="false" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestClass.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/TestClass.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Emulator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/Emulator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="100" column="5" lean-forward="true" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
-              <folding>
-                <element signature="e#1151#1152#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -204,23 +179,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/core/src/main/java/ComplexMatrix.java" />
-        <option value="$PROJECT_DIR$/core/src/test/java/ComplexMatrixTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/BooleanFunction.java" />
-        <option value="$PROJECT_DIR$/kazan-integration/pom.xml" />
-        <option value="$PROJECT_DIR$/core/src/main/java/Demo.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/Complex.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/core/pom.xml" />
-        <option value="$PROJECT_DIR$/core/src/main/java/QuantumRegister.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/QuantumComputer.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/computer/QuantumComputer.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/QuantumRegister.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/computer/InitializationCallback.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/computer/QuantumComputer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Demo.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/Operators.java" />
         <option value="$PROJECT_DIR$/crypto/src/main/java/api/QuantumProccessorHelper.java" />
         <option value="$PROJECT_DIR$/crypto/src/main/java/api/QuantumManager.java" />
         <option value="$PROJECT_DIR$/crypto/src/main/java/api/model/QuantumProccessorHelper.java" />
@@ -250,8 +208,28 @@
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/KazanMemoryManager.java" />
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/integration/KazanQuantumRegister.java" />
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/integration/KazanMemoryManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/TestClass.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/MemoryHalf.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnitCell.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnit.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingAddress.java" />
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/Emulator.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnitCellAddress.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemory.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryAddress.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryInfo.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumProccessorHelper.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumManager.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumMemoryManager.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/Complex.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/ComplexMath.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepAlgorythm.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepOneQubitGateAlgorythm.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepTwoQubitGateAlgorythm.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumAlgorithm.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumGate.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumRegister.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumSchemeStepQubitAttributes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/TestClass.java" />
       </list>
     </option>
   </component>
@@ -293,36 +271,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="QuantumLibrary">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="core">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="core">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -460,6 +409,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="emulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="QuantumLibrary" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="QuantumLibrary" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kazan-integration" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="emulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -725,6 +708,35 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="QuantumLibrary">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="core">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="core">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -741,29 +753,29 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="js.eslint.eslintPackage" value="" />
-    <property name="last_opened_file_path" value="D:/Univer/Квантовые вычисления/Диплом/QuantumMemoryManager-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Quantum" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Java\Projects\QuantumLibrary\QuantumLibrary\crypto\src" />
-      <recent name="D:\Git\Github\QuantumLibrary\QuantumLibrary\core\src" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Java\Projects\QuantumLibrary\QuantumLibrary\src\main\java" />
+      <recent name="D:\Java\Projects\QuantumLibrary\QuantumLibrary\kazan-integration\src\main\java\emulator" />
+      <recent name="D:\Java\Projects\QuantumLibrary\QuantumLibrary\kazan-integration\src\main\java\api" />
+      <recent name="D:\Java\Projects\QuantumLibrary\QuantumLibrary\kazan-integration\src\main\java\api\model" />
+      <recent name="D:\Java\Projects\QuantumLibrary\QuantumLibrary\crypto\src\main\java\api" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
       <recent name="emulator.gates" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Java\Projects\QuantumLibrary\QuantumLibrary\crypto\src\main\java\api" />
-      <recent name="D:\Java\Projects\QuantumLibrary\QuantumLibrary\crypto\src\main\java\emulator" />
-      <recent name="D:\Univer\Квантовые вычисления\Диплом\QuantumLibrary\core\libs" />
-      <recent name="D:\Univer\Квантовые вычисления\Диплом\QuantumLibrary\core\src\test\java" />
-      <recent name="D:\Univer\Квантовые вычисления\Диплом\QuantumLibrary\core\src\main\java" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Java\Projects\QuantumLibrary\QuantumLibrary\crypto\src" />
+      <recent name="D:\Git\Github\QuantumLibrary\QuantumLibrary\core\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1250,12 +1262,21 @@
       <workItem from="1491730864682" duration="1871000" />
       <workItem from="1491842671058" duration="2897000" />
       <workItem from="1491929453843" duration="714000" />
-      <workItem from="1491932423769" duration="2611000" />
+      <workItem from="1491932423769" duration="2679000" />
+      <workItem from="1492013119700" duration="2214000" />
     </task>
+    <task id="LOCAL-00001" summary="Added initial integration for kazan quantum model">
+      <created>1491937594175</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1491937594175</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27606000" />
+    <option name="totallyTimeSpent" value="29888000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1278,7 +1299,6 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2671875" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1290,6 +1310,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1297,6 +1318,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added initial integration for kazan quantum model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added initial integration for kazan quantum model" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1347,7 +1372,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1355,28 +1379,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="e#328#329#0" expanded="false" />
-            <element signature="e#394#395#0" expanded="false" />
-            <element signature="e#436#437#0" expanded="false" />
-            <element signature="e#502#503#0" expanded="false" />
-            <element signature="e#1848#1849#0" expanded="false" />
-            <element signature="e#1914#1915#0" expanded="false" />
-            <element signature="e#2696#2697#0" expanded="false" />
-            <element signature="e#2769#2770#0" expanded="false" />
-            <element signature="e#2801#2802#0" expanded="false" />
-            <element signature="e#2825#2826#0" expanded="false" />
-            <element signature="e#2863#2864#0" expanded="false" />
-            <element signature="e#2889#2890#0" expanded="false" />
-            <element signature="e#2921#2922#0" expanded="false" />
-            <element signature="e#2945#2946#0" expanded="false" />
-            <element signature="e#2983#2984#0" expanded="false" />
-            <element signature="e#3009#3010#0" expanded="false" />
-            <element signature="e#3040#3041#0" expanded="false" />
-            <element signature="e#3078#3079#0" expanded="false" />
-            <element signature="e#3109#3110#0" expanded="false" />
-            <element signature="e#3147#3148#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1384,15 +1386,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3500#3501#0" expanded="false" />
-            <element signature="e#3550#3551#0" expanded="false" />
-            <element signature="e#3997#3998#0" expanded="false" />
-            <element signature="e#4032#4033#0" expanded="false" />
-            <element signature="e#4091#4092#0" expanded="false" />
-            <element signature="e#4129#4130#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1401,7 +1394,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="49" lean-forward="false" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1409,7 +1401,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1417,7 +1408,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="19" lean-forward="false" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1425,7 +1415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1433,7 +1422,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1452,7 +1440,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="365">
           <caret line="50" column="28" lean-forward="false" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1464,52 +1451,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="24" column="35" lean-forward="false" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3621#3622#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumProccessorHelper.java">
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/KazanQuantumRegister.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+          <caret line="10" column="10" lean-forward="false" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryAddress.java">
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/gates/PhaseGate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        <state relative-caret-position="68">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/gates/UGate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnitCell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="20" column="20" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
           <folding>
-            <element signature="e#378#379#0" expanded="false" />
+            <element signature="e#203#204#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemory.java">
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/MemoryHalf.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="74" column="22" lean-forward="false" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingAddress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="22" column="1" lean-forward="false" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="28" column="53" lean-forward="false" selection-start-line="28" selection-start-column="53" selection-end-line="28" selection-end-column="53" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#616#660#0" expanded="false" />
+            <element signature="e#392#393#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/Emulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="4" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1152#1153#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1522,73 +1530,153 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnitCell.java">
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="204">
+          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#685#686#0" expanded="true" />
+            <element signature="e#2115#2116#0" expanded="true" />
+            <element signature="e#2157#2158#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingAddress.java">
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryAddress.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="29" lean-forward="true" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/MemoryHalf.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/gates/UGate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <element signature="e#570#571#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+          <folding>
+            <element signature="e#567#568#0" expanded="true" />
+            <element signature="e#615#616#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumProccessorHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1496">
+          <caret line="88" column="32" lean-forward="true" selection-start-line="88" selection-start-column="32" selection-end-line="88" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumMemoryManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1496">
+          <caret line="94" column="23" lean-forward="false" selection-start-line="94" selection-start-column="23" selection-end-line="94" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#421#422#0" expanded="true" />
+            <element signature="e#566#567#0" expanded="true" />
+            <element signature="e#938#939#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/gates/IdentityGate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/Complex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
+          <folding>
+            <element signature="e#1331#1332#0" expanded="true" />
+            <element signature="e#1411#1412#0" expanded="true" />
+            <element signature="e#1483#1484#0" expanded="true" />
+            <element signature="e#1604#1605#0" expanded="true" />
+            <element signature="e#1645#1646#0" expanded="true" />
+            <element signature="e#1674#1675#0" expanded="true" />
+            <element signature="e#2516#2517#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/ComplexMath.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="4" selection-end-column="3" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepAlgorythm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-          <folding />
+        <state relative-caret-position="646">
+          <caret line="38" column="26" lean-forward="false" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/gates/PhaseGate.java">
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepOneQubitGateAlgorythm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="7" selection-end-column="3" />
+        <state relative-caret-position="187">
+          <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/gates/IdentityGate.java">
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepTwoQubitGateAlgorythm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="8" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumAlgorithm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="201" column="21" lean-forward="false" selection-start-line="201" selection-start-column="21" selection-end-line="201" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#532#533#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumGate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumRegister.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-927">
+          <caret line="53" column="89" lean-forward="false" selection-start-line="53" selection-start-column="89" selection-end-line="53" selection-end-column="89" />
+          <folding>
+            <element signature="e#1033#1034#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumSchemeStepQubitAttributes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
@@ -1596,124 +1684,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepOneQubitGateAlgorythm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="6" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepTwoQubitGateAlgorythm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="34" lean-forward="false" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="47" column="27" lean-forward="false" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#532#533#0" expanded="false" />
-            <element signature="e#563#564#0" expanded="false" />
-            <element signature="e#1255#1263#0" expanded="false" />
-            <element signature="e#3658#3671#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumGate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumRegister.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="3" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-          <folding>
-            <element signature="e#237#238#0" expanded="false" />
-            <element signature="e#287#288#0" expanded="false" />
-            <element signature="e#956#957#0" expanded="false" />
-            <element signature="e#985#986#0" expanded="false" />
-            <element signature="e#1021#1022#0" expanded="false" />
-            <element signature="e#1056#1057#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumSchemeStepQubitAttributes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/KazanMemoryManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
+        <state relative-caret-position="289">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#867#868#0" expanded="true" />
-            <element signature="e#918#919#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/KazanQuantumRegister.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="10" lean-forward="false" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#308#309#0" expanded="true" />
-            <element signature="e#336#337#0" expanded="true" />
-            <element signature="e#551#552#0" expanded="true" />
-            <element signature="e#588#589#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumMemoryManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="59" column="26" lean-forward="false" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="26" column="17" lean-forward="false" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/TestClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/Emulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="100" column="5" lean-forward="true" selection-start-line="100" selection-start-column="5" selection-end-line="100" selection-end-column="5" />
+        <state relative-caret-position="323">
+          <caret line="76" column="37" lean-forward="false" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
           <folding>
-            <element signature="e#1151#1152#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/Complex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

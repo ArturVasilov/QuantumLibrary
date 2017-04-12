@@ -5,41 +5,19 @@ import emulator.ComplexMath;
 import emulator.OneStepAlgorythm;
 import emulator.QuantumRegister;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Random;
+import java.util.*;
+
+import static emulator.OneStepAlgorythm.NotAnIndex;
 
 /**
  * @author Artur Vasilov
  */
 public class QuantumManager {
 
-    public static class Qubit {
-        // Можно было сделать его частным случаем регистра, но пока удобнее хранить идентификаторы регистров и их номер в регистре
-        String registerAddress;
-        int addressInRegister;
-
-        Qubit(String registerAddress, int addressInRegister) {
-            this.registerAddress = registerAddress;
-            this.addressInRegister = addressInRegister;
-        }
-    }
-
-    protected static class RegisterInfo {
-        public QuantumRegister register;
-        public ArrayList<Qubit> qubits;
-
-        RegisterInfo(ArrayList<Qubit> qubits, QuantumRegister register) {
-            this.qubits = qubits;
-            this.register = register;
-        }
-    }
-
-    // This class must contain quantum registeres
-    protected HashMap<String, RegisterInfo> registers = new HashMap<String, RegisterInfo>();
-
     protected static final String qubitDestroyedRegisterAddress = "Qubit destroyed";
+
+    // This class must contain quantum registers
+    protected Map<String, RegisterInfo> registers = new HashMap<>();
 
     //    Qubit creation
     public Qubit initNewQubit() throws Exception {
@@ -56,7 +34,6 @@ public class QuantumManager {
         return newQubit;
     }
 
-
     //Service functions
     protected RegisterInfo checkAndMergeRegistersIfNeedForQubits(Qubit... qubits) throws Exception {
         ArrayList<String> usedRegisterAddresses = new ArrayList<String>();
@@ -71,13 +48,15 @@ public class QuantumManager {
         }
 
         //       Create new register merged registers
-        Complex[] newRegisterConfiguration = {Complex.unit()};
+        Complex[][] newRegisterConfiguration = {{Complex.unit()}};
         ArrayList<Qubit> newRegisterQubits = new ArrayList<Qubit>();
         String newRegisterAddress = Double.toString(new Date().getTime());
 
         for (String registerAddress : usedRegisterAddresses) {
             RegisterInfo currentRegisterInfo = registers.get(registerAddress);
-            newRegisterConfiguration = ComplexMath.tensorMultiplication(newRegisterConfiguration, currentRegisterInfo.register.getVector());
+            int tempSize = newRegisterConfiguration.length;
+            int currentSize = currentRegisterInfo.register.getDensityMatrix().length;
+            newRegisterConfiguration = ComplexMath.tensorMultiplication(newRegisterConfiguration, tempSize, tempSize, currentRegisterInfo.register.getDensityMatrix(), currentSize, currentSize);
             for (Qubit qubit : currentRegisterInfo.qubits) {
                 newRegisterQubits.add(qubit);
                 qubit.registerAddress = newRegisterAddress;
@@ -98,25 +77,70 @@ public class QuantumManager {
         return q.addressInRegister;
     }
 
-    protected void performTransitionForQubits(Complex[][] transitionMatrix, int firstQubitAddressInRegister,
+    protected void performTransitionForQubits(Qubit controlQubit, Complex[][] transitionMatrix,
                                               RegisterInfo mergedRegisterInfo, Qubit... qubits) throws Exception {
-        OneStepAlgorythm alg = new OneStepAlgorythm(mergedRegisterInfo.qubits.size(),
-                firstQubitAddressInRegister, qubits.length, transitionMatrix);
+        ArrayList<Integer> qubitIndexes = new ArrayList<Integer>();
+        for (Qubit q : qubits
+                ) {
+            qubitIndexes.add(q.addressInRegister);
+        }
+
+        int controlQubitIndex = NotAnIndex;
+        if (controlQubit != null) {
+            controlQubitIndex = controlQubit.addressInRegister;
+        }
+
+        OneStepAlgorythm alg = new OneStepAlgorythm(mergedRegisterInfo.qubits.size(), controlQubitIndex,
+                qubitIndexes, transitionMatrix);
         mergedRegisterInfo.register.performAlgorythm(alg);
     }
 
+    public void performTransitionForQubits(Qubit controlQubit, Complex[][] transitionMatrix, Qubit... qubits) throws Exception {
+        ArrayList<Qubit> allQubits = new ArrayList<Qubit>();
+        Collections.addAll(allQubits, qubits);
+
+        if (controlQubit != null) {
+            allQubits.add(controlQubit);
+        }
+
+        Qubit[] qubitsArray = new Qubit[allQubits.size()];
+        qubitsArray = allQubits.toArray(qubitsArray);
+        RegisterInfo info = checkAndMergeRegistersIfNeedForQubits(qubitsArray);
+        performTransitionForQubits(controlQubit, transitionMatrix, info, qubits);
+    }
 
     // Operations
     public int measure(Qubit qubit) throws Exception {
         RegisterInfo regInfo = registers.get(qubit.registerAddress);
-        int result = regInfo.register.measureQubit(qubit.addressInRegister, true);
-        int qubitPosition = regInfo.qubits.indexOf(qubit);
-        regInfo.qubits.remove(qubitPosition);
-        for (int i = qubitPosition; i < regInfo.qubits.size(); i++) {
-            regInfo.qubits.get(i).addressInRegister--;
-        }
-        qubit.registerAddress = qubitDestroyedRegisterAddress;
+        int result = regInfo.register.measureQubit(qubit.addressInRegister);
+//        int qubitPosition = regInfo.qubits.indexOf(qubit);
+//        regInfo.qubits.remove(qubitPosition);
+//        for (int i=qubitPosition; i< regInfo.qubits.size(); i++){
+//            regInfo.qubits.get(i).addressInRegister --;
+//        }
+//        qubit.registerAddress = qubitDestroyedRegisterAddress;
 //        TODO: remove register if qubits count is 0
         return result;
+    }
+
+    public static class Qubit {
+        // Можно было сделать его частным случаем регистра, но пока удобнее хранить идентификаторы регистров и их номер в регистре
+        String registerAddress;
+        int addressInRegister;
+
+        Qubit(String registerAddress, int addressInRegister) {
+            this.registerAddress = registerAddress;
+            this.addressInRegister = addressInRegister;
+        }
+    }
+
+    protected static class RegisterInfo {
+        public QuantumRegister register;
+        public ArrayList<Qubit> qubits;
+
+        RegisterInfo(ArrayList<Qubit> qubits, QuantumRegister register) {
+            this.qubits = qubits;
+            this.register = register;
+        }
     }
 }
