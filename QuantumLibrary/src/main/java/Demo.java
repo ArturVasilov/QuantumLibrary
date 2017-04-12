@@ -26,7 +26,7 @@ public class Demo {
     }
 
     private static void onInitializationSucceed() {
-        BooleanFunction xorFunction = new BooleanFunction(4) {
+        /*BooleanFunction xorFunction = new BooleanFunction(4) {
             @Override
             protected boolean actualCall(boolean[] arguments) {
                 return arguments[0] ^ arguments[1] & arguments[2];
@@ -40,7 +40,9 @@ public class Demo {
 
         String measureResult = BooleanFunction.arrayToString(register.measure());
         boolean isConstant = measureResult.substring(0, measureResult.length() - 1).equals("0000");
-        System.out.println("x + y is balanced? " + !isConstant);
+        System.out.println("x + y is balanced? " + !isConstant);*/
+
+        System.out.println(QuantumCryptography.singleQubitHash(4).measure()[0]);
     }
 
     private static void onInitializationFailed(Throwable error) {
