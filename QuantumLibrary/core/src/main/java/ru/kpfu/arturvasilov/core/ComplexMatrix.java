@@ -250,6 +250,17 @@ public class ComplexMatrix {
         return result;
     }
 
+    public ComplexMatrix multiply(Complex complex) {
+        int n = matrix.length;
+        ComplexMatrix result = new ComplexMatrix(n);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                result.setValue(i, j, matrix[i][j].multiply(complex));
+            }
+        }
+        return result;
+    }
+
     /**
      * Creates new {@link ComplexMatrix} instance which is result
      * of tensor multiplication of current matrix with argument matrix

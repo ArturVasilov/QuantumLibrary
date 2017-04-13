@@ -18,12 +18,16 @@ public class KazanQuantumRegister implements QuantumRegister {
 
     @Override
     public void apply(ComplexMatrix operator) {
-
+        if (!operator.isUnitary()) {
+            throw new IllegalArgumentException("Only unitary operators could be applied");
+        }
     }
 
     @Override
     public void applyAtPositions(ComplexMatrix operator, int startQubit) {
-
+        if (!operator.isUnitary()) {
+            throw new IllegalArgumentException("Only unitary operators could be applied");
+        }
     }
 
     @Override

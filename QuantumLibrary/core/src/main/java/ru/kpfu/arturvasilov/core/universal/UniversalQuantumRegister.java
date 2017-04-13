@@ -44,6 +44,9 @@ public class UniversalQuantumRegister implements QuantumRegister {
         if (operator.matrix.length != register.length) {
             throw new IllegalArgumentException("Operator size is incorrect");
         }
+        if (!operator.isUnitary()) {
+            throw new IllegalArgumentException("Only unitary operators could be applied");
+        }
 
         Complex[] result = new Complex[register.length];
         for (int i = 0; i < register.length; i++) {
@@ -62,6 +65,10 @@ public class UniversalQuantumRegister implements QuantumRegister {
         if (startQubit < 0 || startQubit >= qubitsCount) {
             throw new IllegalArgumentException(errorMessage);
         }
+        if (!operator.isUnitary()) {
+            throw new IllegalArgumentException("Only unitary operators could be applied");
+        }
+
         if ((int) Math.pow(2, startQubit) * operator.matrix.length > register.length) {
             //operator has larger size than the rest of the register
             throw new IllegalArgumentException(errorMessage);
