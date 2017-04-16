@@ -14,7 +14,7 @@ public class KazanMemoryManager implements QuantumMemoryManager {
     private final Map<Long, QuantumRegister> createdRegisters = new HashMap<>();
 
     @Override
-    public QuantumRegister createNewRegister(int qubitsCount, String initialState) {
+    public QuantumRegister createNewRegister(String initialState) {
         long registerId = System.currentTimeMillis();
         while (createdRegisters.containsKey(registerId)) {
             registerId++;

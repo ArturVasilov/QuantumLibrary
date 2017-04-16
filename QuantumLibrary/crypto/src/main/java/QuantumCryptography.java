@@ -8,7 +8,7 @@ import ru.kpfu.arturvasilov.core.computer.QuantumRegister;
 public class QuantumCryptography {
 
     public static QuantumRegister singleQubitHash(int number) {
-        QuantumRegister register = QuantumComputer.createNewRegister(1, "0");
+        QuantumRegister register = QuantumComputer.createNewRegister("0");
 
         int bitsCount = 32 - Integer.numberOfLeadingZeros(number);
         int power = (int) Math.pow(2, bitsCount);

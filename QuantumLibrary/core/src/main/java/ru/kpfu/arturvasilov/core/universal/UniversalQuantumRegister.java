@@ -15,17 +15,17 @@ public class UniversalQuantumRegister implements QuantumRegister {
 
     private final Complex[] register;
 
-    public UniversalQuantumRegister(int qubitsCount, String initialState) {
-        this.qubitsCount = qubitsCount;
+    public UniversalQuantumRegister(String initialState) {
+        if (initialState == null || initialState.isEmpty()) {
+            String message = "Initial state of qubit register is incorrect";
+            throw new IllegalArgumentException(message);
+        }
+
+        this.qubitsCount = initialState.length();
         int n = (int) Math.pow(2, qubitsCount);
         register = new Complex[n];
         for (int i = 0; i < n; i++) {
             register[i] = new Complex();
-        }
-
-        if (initialState == null || initialState.length() != qubitsCount) {
-            String message = "Initial state of qubit register must have the same length as the register itself";
-            throw new IllegalArgumentException(message);
         }
 
         int multiplier = 1;

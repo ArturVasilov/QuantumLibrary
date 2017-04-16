@@ -1,7 +1,10 @@
+import ru.kpfu.arturvasilov.core.BooleanFunction;
 import ru.kpfu.arturvasilov.core.Complex;
 import ru.kpfu.arturvasilov.core.ComplexMatrix;
+import ru.kpfu.arturvasilov.core.Operators;
 import ru.kpfu.arturvasilov.core.computer.InitializationCallback;
 import ru.kpfu.arturvasilov.core.computer.QuantumComputer;
+import ru.kpfu.arturvasilov.core.computer.QuantumRegister;
 import ru.kpfu.arturvasilov.core.universal.UniversalMemoryManager;
 
 /**
@@ -25,21 +28,27 @@ public class Demo {
     }
 
     private static void onInitializationSucceed() {
-        /*BooleanFunction xorFunction = new BooleanFunction(4) {
+        /*QuantumRegister register = QuantumComputer.createNewRegister("00000");
+        register.apply(Operators.hadamar().tensorPow(5));
+        boolean[] result = register.measure();
+        int number = BooleanFunction.arrayToInt(result);
+        System.out.println("Random number = " + number);*/
+
+        BooleanFunction xorFunction = new BooleanFunction(2) {
             @Override
             protected boolean actualCall(boolean[] arguments) {
-                return arguments[0] ^ arguments[1] & arguments[2];
+                return arguments[0] ^ arguments[1];
             }
         };
 
-        QuantumRegister register = QuantumComputer.createNewRegister(5, "00001");
-        register.apply(Operators.hadamar().tensorPow(5));
+        QuantumRegister register = QuantumComputer.createNewRegister("001");
+        register.apply(Operators.hadamar().tensorPow(3));
         register.apply(Operators.oracle(xorFunction));
-        register.applyAtPositions(Operators.hadamar().tensorPow(4), 0);
+        register.applyAtPositions(Operators.hadamar().tensorPow(2), 0);
 
         String measureResult = BooleanFunction.arrayToString(register.measure());
-        boolean isConstant = measureResult.substring(0, measureResult.length() - 1).equals("0000");
-        System.out.println("x + y is balanced? " + !isConstant);*/
+        boolean isConstant = measureResult.substring(0, measureResult.length() - 1).equals("00");
+        System.out.println("x + y is balanced? " + !isConstant);
 
         //System.out.println(QuantumCryptography.singleQubitHash(4).measure()[0]);
 
@@ -75,7 +84,7 @@ public class Demo {
         u1.setValue(2, 2, new Complex(1, 0));
         u1.setValue(3, 3, new Complex(1, 0));*/
 
-        double[][] u = new double[][]{
+       /* double[][] u = new double[][]{
                 new double[]{0, 0, 0, 1},
                 new double[]{0, 1, 0, 0},
                 new double[]{1, 0, 0, 0},
@@ -91,7 +100,7 @@ public class Demo {
 
         ComplexMatrix u2 = ComplexMatrix.fromRealArray(u1).multiply(ComplexMatrix.fromRealArray(u)).conjugateTranspose();
 
-        System.out.println(u2.multiply(ComplexMatrix.fromRealArray(u1)).multiply(ComplexMatrix.fromRealArray(u)));
+        System.out.println(u2.multiply(ComplexMatrix.fromRealArray(u1)).multiply(ComplexMatrix.fromRealArray(u)));*/
     }
 
     private static void onInitializationFailed(Throwable error) {

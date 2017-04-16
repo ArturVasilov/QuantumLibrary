@@ -1,6 +1,7 @@
 package ru.kpfu.arturvasilov.core;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  * Class for representing complex number
@@ -10,6 +11,8 @@ import java.math.BigDecimal;
  * @author Artur Vasilov
  */
 public class Complex {
+
+    private static final int DECIMAL_NUMBER_COMPARE_SCALE = 8;
 
     private BigDecimal a;
     private BigDecimal b;
@@ -42,7 +45,11 @@ public class Complex {
         }
 
         Complex complex = (Complex) o;
-        return a.compareTo(complex.a) == 0 && b.compareTo(complex.b) == 0;
+        boolean sameReal = a.setScale(DECIMAL_NUMBER_COMPARE_SCALE, BigDecimal.ROUND_HALF_UP)
+                .compareTo(complex.a.setScale(DECIMAL_NUMBER_COMPARE_SCALE, RoundingMode.HALF_UP)) == 0;
+        boolean sameImaginary = b.setScale(DECIMAL_NUMBER_COMPARE_SCALE, BigDecimal.ROUND_HALF_UP)
+                .compareTo(complex.b.setScale(DECIMAL_NUMBER_COMPARE_SCALE, BigDecimal.ROUND_UP)) == 0;
+        return sameReal && sameImaginary;
     }
 
     @Override

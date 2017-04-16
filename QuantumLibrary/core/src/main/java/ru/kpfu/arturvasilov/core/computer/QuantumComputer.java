@@ -15,9 +15,9 @@ public final class QuantumComputer {
         callback.onInitializationSucceed();
     }
 
-    public static QuantumRegister createNewRegister(int qubitsCount, String initialState) {
+    public static QuantumRegister createNewRegister(String initialState) {
         checkInitialized();
-        return quantumMemoryManager.createNewRegister(qubitsCount, initialState);
+        return quantumMemoryManager.createNewRegister(initialState);
     }
 
     public static void destroyRegister(long registerId) {

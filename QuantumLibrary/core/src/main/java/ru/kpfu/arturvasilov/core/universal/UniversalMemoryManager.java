@@ -9,8 +9,8 @@ import ru.kpfu.arturvasilov.core.computer.QuantumRegister;
 public class UniversalMemoryManager implements QuantumMemoryManager {
 
     @Override
-    public QuantumRegister createNewRegister(int qubitsCount, String initialState) {
-        return new UniversalQuantumRegister(qubitsCount, initialState);
+    public QuantumRegister createNewRegister(String initialState) {
+        return new UniversalQuantumRegister(initialState);
     }
 
     @Override
