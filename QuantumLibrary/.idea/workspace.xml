@@ -2,37 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50c462a0-853d-4a15-b05d-f324be0c9eae" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ru_arturvasilov_kpfu_quantumlibrary_kazan_integration_0_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/com_google_code_gson_gson_2_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/integration/Quantum.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/QuantumMemoryOperator.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/addresses/GlobalQubitAddress.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/addresses/MemoryStateKeeper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/execution/commands/CommandTypes.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/execution/commands/GeneralCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/execution/commands/InitCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/execution/commands/LogicalAddressingCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/execution/commands/MeasureCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/execution/commands/PhysicalAddressingCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/execution/commands/TopLevelCommandsTransformer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/execution/results/FinalResults.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/execution/results/LowLevelResult.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/memory/EmulatedQuantumMemory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/memory/QuantumMemory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/OwnerData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/ServiceManager.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/addresses/LogicalQubitAddressForController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/addresses/LogicalQubitAddressFromClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/commands/CommandsFromClientDTO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/commands/LogicalAddressingCommandFromClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/results/TopLevelResult.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_math3_3_6_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_commons_commons_math3_3_6_1.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/QuantumLibrary.iml" afterPath="$PROJECT_DIR$/QuantumLibrary.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/core.iml" afterPath="$PROJECT_DIR$/core/core.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/kazan-integration.iml" afterPath="$PROJECT_DIR$/kazan-integration/kazan-integration.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/TestClass.java" afterPath="$PROJECT_DIR$/src/main/java/TestClass.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/integration/Quantum.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/integration/Quantum.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -82,8 +53,8 @@
       <file leaf-file-name="Quantum.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/Quantum.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="23" column="37" lean-forward="true" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+            <state relative-caret-position="510">
+              <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -983,7 +954,7 @@
       <workItem from="1492633354232" duration="685000" />
       <workItem from="1492758853780" duration="599000" />
       <workItem from="1493828621822" duration="16000" />
-      <workItem from="1493828677795" duration="2871000" />
+      <workItem from="1493828677795" duration="3635000" />
     </task>
     <task id="LOCAL-00001" summary="Added initial integration for kazan quantum model">
       <created>1491937594175</created>
@@ -1027,11 +998,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493834852612</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added all required classes">
+      <created>1493838887629</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1493838887629</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55123000" />
+    <option name="totallyTimeSpent" value="55887000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1047,7 +1025,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.50214595" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32502708" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1082,7 +1060,8 @@
     <MESSAGE value="Added sample code for converting unitary operators" />
     <MESSAGE value="Small refactoring and fixed comparing complex numbers" />
     <MESSAGE value="Small fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small fixes" />
+    <MESSAGE value="Added all required classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added all required classes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1344,7 +1323,7 @@
         <state relative-caret-position="408">
           <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1362,8 +1341,8 @@
         <state relative-caret-position="578">
           <caret line="45" column="16" lean-forward="false" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
           <folding>
-            <element signature="e#968#969#0" expanded="true" />
-            <element signature="e#1026#1027#0" expanded="true" />
+            <element signature="e#968#969#0" expanded="false" />
+            <element signature="e#1026#1027#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1373,7 +1352,7 @@
         <state relative-caret-position="85">
           <caret line="5" column="50" lean-forward="true" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1383,7 +1362,7 @@
         <state relative-caret-position="68">
           <caret line="5" column="90" lean-forward="false" selection-start-line="5" selection-start-column="90" selection-end-line="5" selection-end-column="90" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1393,7 +1372,7 @@
         <state relative-caret-position="170">
           <caret line="10" column="47" lean-forward="false" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1411,7 +1390,7 @@
         <state relative-caret-position="-94">
           <caret line="59" column="31" lean-forward="false" selection-start-line="59" selection-start-column="31" selection-end-line="59" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1421,8 +1400,8 @@
         <state relative-caret-position="119">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1888#1931#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1888#1931#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1440,8 +1419,8 @@
         <state relative-caret-position="204">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2217#2233#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2217#2233#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1451,7 +1430,7 @@
         <state relative-caret-position="459">
           <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1561,8 +1540,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/Quantum.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="23" column="37" lean-forward="true" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+        <state relative-caret-position="510">
+          <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

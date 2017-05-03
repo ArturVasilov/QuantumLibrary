@@ -18,7 +18,7 @@ public class Quantum {
 
     public static void BeginQuantum() {
         commandsFromClientDTO = new CommandsFromClientDTO();
-        commandFromClientList = new LinkedList<LogicalAddressingCommandFromClient>();
+        commandFromClientList = new LinkedList<>();
     }
 
     public static void EndQuantum() {
@@ -43,23 +43,6 @@ public class Quantum {
         return newMatr;
     }
 
-    //проверка равенств матриц
-    public static boolean isEqual(Complex[][] matr1, Complex[][] matr2) {
-        boolean bool = true;
-        if (matr1.length != matr2.length)
-            return false;
-        else {
-            for (int i = 0; i < matr1.length; i++)
-                for (int j = 0; j < matr1.length; j++) {
-                    Complex a = new Complex(matr1[i][j].getReal(), matr1[i][j].getImaginary());
-                    Complex b = new Complex(matr2[i][j].getReal(), matr2[i][j].getImaginary());
-                    if (!(a.getReal() == b.getReal() && a.getImaginary() == b.getImaginary()))
-                        bool = false;
-                }
-            return bool;
-        }
-    }
-
     //транспонирование матрицы
     public static Complex[][] Transpose(Complex[][] matr) {// матрица обязательно квадратная
         int size = matr.length;
@@ -68,17 +51,6 @@ public class Quantum {
             for (int j = 0; j < size; j++)
                 newMatr[i][j] = matr[j][i];
         return newMatr;
-    }
-
-    //эрмитово сопряжение матрицы
-    public static Complex[][] HermitSopr(Complex[][] matr) {
-        int size = matr.length;
-        Complex[][] result;
-        result = Transpose(matr);
-        for (int i = 0; i < size; i++)
-            for (int j = 0; j < size; j++)
-                result[i][j] = result[i][j].conjugate();
-        return result;
     }
 
     //перемножение комплексных матриц
@@ -103,18 +75,6 @@ public class Quantum {
                 }
             }
         return newMatr;
-    }
-
-    //проверка матрицы на унитарность. H - эрмитово сопряжение матрицы
-    public static boolean isUnitary(Complex[][] U) {
-        boolean HU;
-        boolean UH;
-        Complex[][] H = HermitSopr(U);
-        Complex[][] I = createI(U.length);
-        HU = isEqual(MultiplyMatr(H, U), I);
-        UH = isEqual(MultiplyMatr(U, H), I);
-
-        return HU && UH;
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////
