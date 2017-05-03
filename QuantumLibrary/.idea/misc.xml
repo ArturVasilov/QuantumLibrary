@@ -5,7 +5,6 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/core/pom.xml" />
-        <option value="$PROJECT_DIR$/kazan-integration/pom.xml" />
         <option value="$PROJECT_DIR$/crypto/pom.xml" />
       </list>
     </option>

@@ -1,7 +1,6 @@
 import api.QuantumManager;
 import api.model.*;
 import emulator.Complex;
-import ru.kpfu.arturvasilov.core.ComplexMatrix;
 
 /**
  * @author Artur Vasilov
