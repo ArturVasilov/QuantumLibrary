@@ -50,6 +50,17 @@ public class ComplexVector {
         return result;
     }
 
+    public ComplexMatrix ketBraTensor() {
+        int n = vector.length;
+        ComplexMatrix matrix = new ComplexMatrix(n);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix.setValue(i, j, vector[i].multiply(vector[j]));
+            }
+        }
+        return matrix;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

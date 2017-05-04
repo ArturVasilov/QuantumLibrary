@@ -2,6 +2,7 @@ package emulator;
 
 import ru.kpfu.arturvasilov.core.Complex;
 import ru.kpfu.arturvasilov.core.ComplexMatrix;
+import ru.kpfu.arturvasilov.core.ComplexVector;
 
 import java.util.Random;
 
@@ -25,6 +26,10 @@ public class QuantumRegister {
         if (size != stateMatrix.matrix[0].length) {
             throw new Exception();
         }
+    }
+
+    public QuantumRegister(int qubitsNumber, ComplexVector configuration) throws Exception {
+        this(qubitsNumber, configuration.ketBraTensor());
     }
 
     public ComplexMatrix getStateMatrix() {

@@ -4,6 +4,7 @@ import emulator.OneStepAlgorithm;
 import emulator.QuantumRegister;
 import ru.kpfu.arturvasilov.core.Complex;
 import ru.kpfu.arturvasilov.core.ComplexMatrix;
+import ru.kpfu.arturvasilov.core.ComplexVector;
 
 import java.util.*;
 
@@ -25,10 +26,7 @@ public class QuantumManager {
     }
 
     public Qubit initNewQubit(Complex alpha, Complex beta) throws Exception {
-        ComplexMatrix matrix = new ComplexMatrix(1, 2);
-        matrix.setValue(0, 0, alpha);
-        matrix.setValue(0, 1, beta);
-        QuantumRegister newRegister = new QuantumRegister(1, matrix);
+        QuantumRegister newRegister = new QuantumRegister(1, new ComplexVector(alpha, beta));
         String registerID = Double.toString(new Date().getTime() + new Random().nextDouble());
         Qubit newQubit = new Qubit(registerID, 0);
         List<Qubit> qubits = new ArrayList<>();

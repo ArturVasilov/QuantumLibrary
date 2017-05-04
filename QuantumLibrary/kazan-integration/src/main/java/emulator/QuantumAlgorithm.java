@@ -228,7 +228,7 @@ public class QuantumAlgorithm {
                             i++;
                         }
                     }
-                    swapMatrix = currentSwap.multiply(swapGateMatrix);
+                    swapMatrix = currentSwap.multiply(swapMatrix);
                 }
             }
             //form central matrix after swaps

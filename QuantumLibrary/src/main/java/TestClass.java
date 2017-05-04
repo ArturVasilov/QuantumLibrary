@@ -77,8 +77,6 @@ public class TestClass {
             System.out.print("Q4: |1>\n");
             System.out.print("Q5: |1>\n");
             System.out.print("Q6: |1>\n");
-            System.out.print("Q7: |1>\n");
-            System.out.print("Q8: |1>\n");
 
             System.out.print("\n\n-----OPERATIONS-----\n\n");
 
@@ -99,12 +97,6 @@ public class TestClass {
             manager.performTransitionForQubits(qubit6, U, qubit2);
             System.out.print("CNOT(Q6, Q2)\n");
 
-            manager.performTransitionForQubits(qubit7, U, qubit2);
-            System.out.print("CNOT(Q7, Q2)\n");
-
-            manager.performTransitionForQubits(qubit8, U, qubit3);
-            System.out.print("CNOT(Q8, Q3)\n");
-
             System.out.print("\n\n-----MEASURMENT-----\n\n");
 
             System.out.print("Q1:" + manager.measure(qubit1) + "\n");
@@ -113,8 +105,6 @@ public class TestClass {
             System.out.print("Q4:" + manager.measure(qubit4) + "\n");
             System.out.print("Q5:" + manager.measure(qubit5) + "\n");
             System.out.print("Q6:" + manager.measure(qubit6) + "\n");
-            System.out.print("Q7:" + manager.measure(qubit7) + "\n");
-            System.out.print("Q8:" + manager.measure(qubit8) + "\n");
 
         } catch (Exception e) {
             System.out.print("Exception:" + e.getMessage() + "\n");
