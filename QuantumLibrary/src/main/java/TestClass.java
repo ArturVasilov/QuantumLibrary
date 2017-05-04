@@ -1,6 +1,8 @@
 import api.QuantumManager;
 import api.model.*;
-import emulator.Complex;
+import ru.kpfu.arturvasilov.core.Complex;
+import ru.kpfu.arturvasilov.core.ComplexMatrix;
+import ru.kpfu.arturvasilov.core.Operators;
 
 /**
  * @author Artur Vasilov
@@ -78,18 +80,9 @@ public class TestClass {
             System.out.print("Q7: |1>\n");
             System.out.print("Q8: |1>\n");
 
-
             System.out.print("\n\n-----OPERATIONS-----\n\n");
 
-            Complex u = Complex.unit();
-            Complex z = Complex.zero();
-
-            Complex[][] U = {
-                    {u, z, z, z},
-                    {z, u, z, z},
-                    {z, z, z, u},
-                    {z, z, u, z},
-            };
+            ComplexMatrix U = Operators.controlledNot();
 
             manager.performTransitionForQubits(qubit1, U, qubit2);
             System.out.print("CNOT(Q1, Q2)\n");
@@ -124,10 +117,10 @@ public class TestClass {
             System.out.print("Q8:" + manager.measure(qubit8) + "\n");
 
         } catch (Exception e) {
-            System.out.print("Exception:" + e.getLocalizedMessage() + "\n");
+            System.out.print("Exception:" + e.getMessage() + "\n");
+            e.printStackTrace();
         }
     }
-
 
     public static void main(String[] args) {
         testQuantumManager();

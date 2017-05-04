@@ -17,10 +17,14 @@ public class ComplexMatrix {
     public final Complex[][] matrix;
 
     public ComplexMatrix(int n) {
-        matrix = new Complex[n][];
-        for (int i = 0; i < n; i++) {
-            matrix[i] = new Complex[n];
-            for (int j = 0; j < n; j++) {
+        this(n, n);
+    }
+
+    public ComplexMatrix(int rows, int columns) {
+        matrix = new Complex[rows][];
+        for (int i = 0; i < rows; i++) {
+            matrix[i] = new Complex[columns];
+            for (int j = 0; j < columns; j++) {
                 matrix[i][j] = new Complex();
             }
         }
@@ -316,6 +320,14 @@ public class ComplexMatrix {
             resultMatrix = resultMatrix.tensorMultiplication(this);
         }
         return resultMatrix;
+    }
+
+    public Complex trace() {
+        Complex result = Complex.zero();
+        for (int i = 0; i < matrix.length; i++) {
+            result = result.add(matrix[i][i]);
+        }
+        return result;
     }
 
 }

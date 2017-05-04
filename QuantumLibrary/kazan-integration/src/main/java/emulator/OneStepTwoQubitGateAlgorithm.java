@@ -1,17 +1,18 @@
 package emulator;
 
-import emulator.gates.UGate;
+import ru.kpfu.arturvasilov.core.ComplexMatrix;
 
 import java.util.HashMap;
 
 /**
  * @author Artur Vasilov
  */
-public class OneStepTwoQubitGateAlgorythm extends QuantumAlgorithm {
-    public OneStepTwoQubitGateAlgorythm(int qubitsInRegister,
+public class OneStepTwoQubitGateAlgorithm extends QuantumAlgorithm {
+
+    public OneStepTwoQubitGateAlgorithm(int qubitsInRegister,
                                         int firstQubitPosition,
                                         int secondQubitPosition,
-                                        Complex[][] transformationMatrix) throws Exception {
+                                        ComplexMatrix transformationMatrix) throws Exception {
         stepsNumber = 1;
         QuantumSchemeStepQubitAttributes[][] algSheme = new QuantumSchemeStepQubitAttributes[qubitsInRegister][1];
         String gateId = "ControlledGate";
@@ -26,8 +27,7 @@ public class OneStepTwoQubitGateAlgorythm extends QuantumAlgorithm {
         }
         gates = new HashMap<>();
         mainGateIDs = new String[]{gateId};
-        QuantumGate gate = new UGate(2, transformationMatrix);
-        gates.put(gateId, gate);
+        gates.put(gateId, transformationMatrix);
         algorithmSchemeMatrix = algSheme;
     }
 }

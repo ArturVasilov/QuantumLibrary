@@ -1,11 +1,11 @@
 package integration;
 
 import com.google.gson.GsonBuilder;
-import emulator.Complex;
 import memorymanager.controller.execution.commands.CommandTypes;
 import memorymanager.service_for_controller.addresses.LogicalQubitAddressFromClient;
 import memorymanager.service_for_controller.commands.CommandsFromClientDTO;
 import memorymanager.service_for_controller.commands.LogicalAddressingCommandFromClient;
+import ru.kpfu.arturvasilov.core.Complex;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -67,10 +67,10 @@ public class Quantum {
             for (int j = 0; j < m; j++) {
                 int k = 0;
                 while (k < m) {
-                    Complex c1 = new Complex(matr1[i][k].getReal(), matr1[i][k].getImaginary());
-                    Complex c2 = new Complex(matr2[k][j].getReal(), matr2[k][j].getImaginary());
-                    Complex c3 = Complex.mult(c1, c2);
-                    newMatr[i][j] = Complex.add(newMatr[i][j], c3);
+                    Complex c1 = new Complex(matr1[i][k].doubleA(), matr1[i][k].doubleB());
+                    Complex c2 = new Complex(matr2[k][j].doubleA(), matr2[k][j].doubleB());
+                    Complex c3 = c1.multiply(c2);
+                    newMatr[i][j] = newMatr[i][j].multiply(c3);
                     k++;
                 }
             }
@@ -98,7 +98,7 @@ public class Quantum {
             Complex[][] result = new Complex[size][size];
             for (int z1 = 0; z1 < size; z1++)
                 for (int z2 = 0; z2 < size; z2++)
-                    result[z1][z2] = new Complex(U[z1][z2].getReal(), U[z1][z2].getImaginary());
+                    result[z1][z2] = new Complex(U[z1][z2].doubleA(), U[z1][z2].doubleB());
             // скопировали U в result
 
             while (step < size - 1) {
@@ -109,10 +109,10 @@ public class Quantum {
                     //result - матрица на предыдущем шаге. То есть это - результат перемножения
                     double denomination = Math.sqrt(result[0][0].norma() + result[k][0].norma());//знаменатель
 
-                    res[step - 1][step - 1] = Complex.mult(result[step - 1][step - 1].conjugate(), new Complex(1 / denomination, 0));
-                    res[step - 1][step - 1 + k] = Complex.mult(result[step - 1 + k][step - 1].conjugate(), new Complex(1 / denomination, 0));
-                    res[step - 1 + k][step - 1] = Complex.mult(result[step - 1 + k][step - 1], new Complex(1 / denomination, 0));
-                    res[step - 1 + k][step - 1 + k] = Complex.mult(result[step - 1][step - 1], new Complex(1 / denomination, 0));
+                    res[step - 1][step - 1] = result[step - 1][step - 1].conjugate().multiply(new Complex(1 / denomination, 0));
+                    res[step - 1][step - 1 + k] = result[step - 1 + k][step - 1].conjugate().multiply(new Complex(1 / denomination, 0));
+                    res[step - 1 + k][step - 1] = result[step - 1 + k][step - 1].multiply(new Complex(1 / denomination, 0));
+                    res[step - 1 + k][step - 1 + k] = result[step - 1][step - 1].multiply(new Complex(1 / denomination, 0));
 
                     //System.out.println("step = "+step+", k="+k);//проверка правильности
                 /*printMatr(res);*/
@@ -467,21 +467,21 @@ public class Quantum {
     // разложение тильда матрицы на повороты
     //после разложения получим матрицы A,B,C и контролируемый оператор переделаем в неконтролируемый
     public static void decompositionTildaOperator(int controlQubitNumber, int toQubitNumber, Complex[][] resTilda) {
-        Complex det1 = Complex.mult(resTilda[0][0], resTilda[1][1]);
-        Complex det2 = Complex.mult(resTilda[0][1], resTilda[1][0]);
-        Complex det = Complex.sub(det1, det2); // определитель матрицы
+        Complex det1 = resTilda[0][0].multiply(resTilda[1][1]);
+        Complex det2 = resTilda[0][1].multiply(resTilda[1][0]);
+        Complex det = det1.sub(det2); // определитель матрицы
 
-        double gamma = Math.acos(det.getReal()) / 2;
+        double gamma = Math.acos(det.doubleA()) / 2;
 
-        Complex A = Complex.mult(resTilda[0][0], new Complex(Math.cos(gamma), Math.sin(gamma)));
-        Complex B = Complex.mult(resTilda[0][1], new Complex(Math.cos(gamma), Math.sin(gamma)));
+        Complex A = resTilda[0][0].multiply(new Complex(Math.cos(gamma), Math.sin(gamma)));
+        Complex B = resTilda[0][1].multiply(new Complex(Math.cos(gamma), Math.sin(gamma)));
 
-        double Teta = 2 * Math.acos(A.getReal());
+        double Teta = 2 * Math.acos(A.doubleA());
 
         if (Teta != 0.0) {
-            double nx = (-1) * B.getImaginary() / Math.sin(Teta / 2);//координата вектора n по x
-            double ny = (-1) * B.getReal() / Math.sin(Teta / 2);
-            double nz = (-1) * A.getImaginary() / Math.sin(Teta / 2);
+            double nx = (-1) * B.doubleB() / Math.sin(Teta / 2);//координата вектора n по x
+            double ny = (-1) * B.doubleA() / Math.sin(Teta / 2);
+            double nz = (-1) * A.doubleB() / Math.sin(Teta / 2);
 
             double alpha = 0, beta = 0, lambda = 0;
             //альфа, бета и лямбда нужны, чтобы разложить resTilda на A,B,C

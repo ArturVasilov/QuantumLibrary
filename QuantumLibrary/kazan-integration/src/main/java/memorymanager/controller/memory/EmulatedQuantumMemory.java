@@ -3,10 +3,10 @@ package memorymanager.controller.memory;
 import api.model.Emulator;
 import api.model.ProcessingAddress;
 import api.model.ProcessingUnitCellAddress;
-import emulator.Complex;
 import memorymanager.controller.addresses.GlobalQubitAddress;
 import memorymanager.controller.execution.commands.PhysicalAddressingCommand;
 import memorymanager.controller.execution.results.LowLevelResult;
+import ru.kpfu.arturvasilov.core.Complex;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,13 +74,13 @@ public class EmulatedQuantumMemory implements QuantumMemory {
 
     @Override
     public List<LowLevelResult> perform(List<PhysicalAddressingCommand> physicalAddressingCommands) {
-        List<LowLevelResult> lowLevelResults = new ArrayList<LowLevelResult>();
+        List<LowLevelResult> lowLevelResults = new ArrayList<>();
         for (PhysicalAddressingCommand physicalAddressingCommand : physicalAddressingCommands) {
             switch (physicalAddressingCommand.getCommandType()) {
                 case INIT:
                     mEmulator.initLogicalQubit(
-                            physicalAddressingCommand.getFirstQubit_Part1().getQuantumMemoryAddress(), new Complex(1, 0), new Complex(0, 0),
-                            physicalAddressingCommand.getFirstQubit_Part2().getQuantumMemoryAddress(), new Complex(0, 0), new Complex(1, 0)
+                            physicalAddressingCommand.getFirstQubit_Part1().getQuantumMemoryAddress(), Complex.unit(), Complex.zero(),
+                            physicalAddressingCommand.getFirstQubit_Part2().getQuantumMemoryAddress(), Complex.zero(), Complex.unit()
                     );
                     System.out.println("INIT command, globalId_1 = " + physicalAddressingCommand.getFirstQubit_Part1().getGlobalId() +
                             ", frequency_1 = " + physicalAddressingCommand.getFirstQubit_Part1().getQuantumMemoryAddress().getFrequency() +

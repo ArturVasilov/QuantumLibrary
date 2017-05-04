@@ -1,9 +1,10 @@
 package api;
 
-import emulator.Complex;
-import emulator.OneStepOneQubitGateAlgorythm;
-import emulator.OneStepTwoQubitGateAlgorythm;
-import emulator.gates.PhaseGate;
+import emulator.OneStepOneQubitGateAlgorithm;
+import emulator.OneStepTwoQubitGateAlgorithm;
+import ru.kpfu.arturvasilov.core.Complex;
+import ru.kpfu.arturvasilov.core.ComplexMatrix;
+import ru.kpfu.arturvasilov.core.Operators;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -56,11 +57,12 @@ public class QuantumMemoryManager extends QuantumManager {
     public void phase(double thetaInRadians, Qubit qubit) throws Exception {
         checkQubitsBeforePerformTransformation(qubit);
         RegisterInfo registerInfo = registers.get(qubit.registerAddress);
-        OneStepOneQubitGateAlgorythm oneStepOneQubitGateAlgorythm = new OneStepOneQubitGateAlgorythm(registerInfo.register.getQubitsNumber(),
-                new PhaseGate(thetaInRadians),
+        OneStepOneQubitGateAlgorithm oneStepOneQubitGateAlgorithm = new OneStepOneQubitGateAlgorithm(
+                registerInfo.register.getQubitsNumber(),
+                Operators.phase(thetaInRadians),
                 qubit.addressInRegister
         );
-        registerInfo.register.performAlgorythm(oneStepOneQubitGateAlgorythm);
+        registerInfo.register.performAlgorythm(oneStepOneQubitGateAlgorithm);
     }
 
     /**
@@ -69,15 +71,17 @@ public class QuantumMemoryManager extends QuantumManager {
     public void QET(double thetaInRadians, Qubit qubit) throws Exception {
         checkQubitsBeforePerformTransformation(qubit);
         RegisterInfo registerInfo = registers.get(qubit.registerAddress);
-        Complex[][] matrix = {
-                {new Complex(Math.cos(thetaInRadians / 2), 0), new Complex(0, Math.sin(thetaInRadians / 2))},
-                {new Complex(0, Math.sin(thetaInRadians / 2)), new Complex(Math.cos(thetaInRadians / 2), 0)}
-        };
-        OneStepOneQubitGateAlgorythm oneStepOneQubitGateAlgorythm = new OneStepOneQubitGateAlgorythm(registerInfo.register.getQubitsNumber(),
+        ComplexMatrix matrix = new ComplexMatrix(2);
+        matrix.setValue(0, 0, new Complex(Math.cos(thetaInRadians / 2), 0));
+        matrix.setValue(0, 1, new Complex(0, Math.sin(thetaInRadians / 2)));
+        matrix.setValue(1, 0, new Complex(0, Math.sin(thetaInRadians / 2)));
+        matrix.setValue(1, 1, new Complex(Math.cos(thetaInRadians / 2), 0));
+        OneStepOneQubitGateAlgorithm oneStepOneQubitGateAlgorithm = new OneStepOneQubitGateAlgorithm(
+                registerInfo.register.getQubitsNumber(),
                 matrix,
                 qubit.addressInRegister
         );
-        registerInfo.register.performAlgorythm(oneStepOneQubitGateAlgorythm);
+        registerInfo.register.performAlgorythm(oneStepOneQubitGateAlgorithm);
     }
 
     /**
@@ -86,13 +90,12 @@ public class QuantumMemoryManager extends QuantumManager {
     public void cQET(double thetaInRadians, Qubit controllingQubit, Qubit controlledQubit) throws Exception {
         checkQubitsBeforePerformTransformation(controlledQubit, controllingQubit);
         RegisterInfo registerInfo = checkAndMergeRegistersIfNeedForQubits(controllingQubit, controlledQubit);
-        Complex[][] matrix = {
-                {new Complex(Math.cos(thetaInRadians / 2), 0), new Complex(0, Math.sin(thetaInRadians / 2)), Complex.zero(), Complex.zero()},
-                {new Complex(0, Math.sin(thetaInRadians / 2)), new Complex(Math.cos(thetaInRadians / 2), 0), Complex.zero(), Complex.zero()},
-                {Complex.zero(), Complex.zero(), Complex.unit(), Complex.zero()},
-                {Complex.zero(), Complex.zero(), Complex.zero(), Complex.unit()}
-        };
-        OneStepTwoQubitGateAlgorythm algorythm = new OneStepTwoQubitGateAlgorythm(
+        ComplexMatrix matrix = ComplexMatrix.identity(4);
+        matrix.setValue(0, 0, new Complex(Math.cos(thetaInRadians / 2), 0));
+        matrix.setValue(0, 1, new Complex(0, Math.sin(thetaInRadians / 2)));
+        matrix.setValue(1, 0, new Complex(0, Math.sin(thetaInRadians / 2)));
+        matrix.setValue(1, 1, new Complex(Math.cos(thetaInRadians / 2), 0));
+        OneStepTwoQubitGateAlgorithm algorythm = new OneStepTwoQubitGateAlgorithm(
                 registerInfo.register.getQubitsNumber(),
                 controllingQubit.addressInRegister,
                 controlledQubit.addressInRegister,

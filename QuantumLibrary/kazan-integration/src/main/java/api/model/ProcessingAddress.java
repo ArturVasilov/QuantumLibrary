@@ -5,19 +5,19 @@ package api.model;
  */
 public class ProcessingAddress {
 
-    private int proccessingUnitNumber;
-    private ProcessingUnitCellAddress proccessingUnitCellAddress;
+    private final int processingUnitNumber;
+    private final ProcessingUnitCellAddress processingUnitCellAddress;
 
-    public ProcessingAddress(int proccessingUnitNumber, ProcessingUnitCellAddress proccessingUnitCellAddress) {
-        this.proccessingUnitNumber = proccessingUnitNumber;
-        this.proccessingUnitCellAddress = proccessingUnitCellAddress;
+    public ProcessingAddress(int processingUnitNumber, ProcessingUnitCellAddress processingUnitCellAddress) {
+        this.processingUnitNumber = processingUnitNumber;
+        this.processingUnitCellAddress = processingUnitCellAddress;
     }
 
-    public ProcessingUnitCellAddress getProccessingUnitCellAddress() {
-        return proccessingUnitCellAddress;
+    public ProcessingUnitCellAddress getProcessingUnitCellAddress() {
+        return processingUnitCellAddress;
     }
 
-    public int getProccessingUnitNumber() {
-        return proccessingUnitNumber;
+    public int getProcessingUnitNumber() {
+        return processingUnitNumber;
     }
 }

@@ -30,6 +30,15 @@ public class Complex {
         this.b = b;
     }
 
+    public static Complex zero() {
+        return new Complex();
+    }
+
+    //TODO : rename to one
+    public static Complex unit() {
+        return new Complex(1, 0);
+    }
+
     /**
      * Compares values using {@link BigDecimal#compareTo(Object)} method
      *
@@ -79,6 +88,10 @@ public class Complex {
         return new Complex(a.add(value.a), b.add(value.b));
     }
 
+    public Complex sub(Complex value) {
+        return new Complex(a.subtract(value.a), b.subtract(value.b));
+    }
+
     /**
      * Creates new {@link Complex} instance which is result of multiplication of current number and argument
      * <p>
@@ -91,6 +104,10 @@ public class Complex {
         BigDecimal resultA = a.multiply(value.a).subtract(b.multiply(value.b));
         BigDecimal resultB = a.multiply(value.b).add(b.multiply(value.a));
         return new Complex(resultA, resultB);
+    }
+
+    public double norma() {
+        return doubleA() * doubleA() + doubleB() * doubleB();
     }
 
     /**

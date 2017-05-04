@@ -1,7 +1,7 @@
 package api.model;
 
 import api.QuantumManager;
-import emulator.Complex;
+import ru.kpfu.arturvasilov.core.Complex;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,21 +11,17 @@ import java.util.Map;
  */
 public class QuantumMemory {
 
-    QuantumProccessorHelper helper;
-    private QuantumMemoryInfo info;
-    private Map<QuantumMemoryAddress, QuantumManager.Qubit> qubits = new HashMap<>();
+    private final QuantumProcessorHelper helper;
+    private final QuantumMemoryInfo info;
+    private final Map<QuantumMemoryAddress, QuantumManager.Qubit> qubits = new HashMap<>();
 
-    QuantumMemory(QuantumMemoryInfo info, QuantumProccessorHelper helper) {
+    QuantumMemory(QuantumMemoryInfo info, QuantumProcessorHelper helper) {
         this.info = info;
         this.helper = helper;
     }
 
     QuantumMemoryInfo getInfo() {
         return info;
-    }
-
-    void setInfo(QuantumMemoryInfo info) {
-        this.info = info;
     }
 
     private boolean addressIsUsed(QuantumMemoryAddress address) {
@@ -65,7 +61,6 @@ public class QuantumMemory {
         }
         return initQubitForAddress(address, alpha, beta);
     }
-
 
     void saveQubit(QuantumMemoryAddress address, QuantumManager.Qubit qubit) {
         qubits.put(address, qubit);

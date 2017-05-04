@@ -6,6 +6,7 @@ import api.QuantumManager;
  * @author Artur Vasilov
  */
 public class ProcessingUnitCell {
+
     private QuantumManager.Qubit qubit;
 
     void loadQubit(QuantumManager.Qubit qubit) {

@@ -1,9 +1,9 @@
 package ru.kpfu.arturvasilov.core.universal;
 
-import org.apache.commons.math3.complex.ComplexUtils;
 import org.apache.commons.math3.distribution.EnumeratedIntegerDistribution;
 import ru.kpfu.arturvasilov.core.Complex;
 import ru.kpfu.arturvasilov.core.ComplexMatrix;
+import ru.kpfu.arturvasilov.core.ComplexVector;
 import ru.kpfu.arturvasilov.core.computer.QuantumRegister;
 
 /**
@@ -13,7 +13,7 @@ public class UniversalQuantumRegister implements QuantumRegister {
 
     private final int qubitsCount;
 
-    private final Complex[] register;
+    private ComplexVector register;
 
     public UniversalQuantumRegister(String initialState) {
         if (initialState == null || initialState.isEmpty()) {
@@ -23,10 +23,7 @@ public class UniversalQuantumRegister implements QuantumRegister {
 
         this.qubitsCount = initialState.length();
         int n = (int) Math.pow(2, qubitsCount);
-        register = new Complex[n];
-        for (int i = 0; i < n; i++) {
-            register[i] = new Complex();
-        }
+        register = new ComplexVector(n);
 
         int multiplier = 1;
         int currentNumber = 0;
@@ -36,27 +33,19 @@ public class UniversalQuantumRegister implements QuantumRegister {
             }
             multiplier *= 2;
         }
-        register[currentNumber] = new Complex(1, 0);
+        register.set(currentNumber, Complex.unit());
     }
 
     @Override
     public void apply(ComplexMatrix operator) {
-        if (operator.matrix.length != register.length) {
+        if (operator.matrix.length != register.size()) {
             throw new IllegalArgumentException("Operator size is incorrect");
         }
         if (!operator.isUnitary()) {
             throw new IllegalArgumentException("Only unitary operators could be applied");
         }
 
-        Complex[] result = new Complex[register.length];
-        for (int i = 0; i < register.length; i++) {
-            result[i] = new Complex();
-            for (int j = 0; j < register.length; j++) {
-                result[i] = result[i].add(operator.getValue(i, j).multiply(register[j]));
-            }
-        }
-
-        System.arraycopy(result, 0, register, 0, register.length);
+        register = register.multiplyOnMatrix(operator);
     }
 
     @Override
@@ -69,7 +58,7 @@ public class UniversalQuantumRegister implements QuantumRegister {
             throw new IllegalArgumentException("Only unitary operators could be applied");
         }
 
-        if ((int) Math.pow(2, startQubit) * operator.matrix.length > register.length) {
+        if ((int) Math.pow(2, startQubit) * operator.matrix.length > register.size()) {
             //operator has larger size than the rest of the register
             throw new IllegalArgumentException(errorMessage);
         }
@@ -83,7 +72,7 @@ public class UniversalQuantumRegister implements QuantumRegister {
                     .tensorMultiplication(operator);
         }
 
-        while (resultOperator.matrix.length < register.length) {
+        while (resultOperator.matrix.length < register.size()) {
             resultOperator = resultOperator.tensorMultiplication(ComplexMatrix.identity(2));
         }
         apply(resultOperator);
@@ -93,16 +82,14 @@ public class UniversalQuantumRegister implements QuantumRegister {
     public boolean[] measure() {
         boolean[] result = new boolean[qubitsCount];
 
-        int[] generateNumbers = new int[register.length];
-        double[] probabilities = new double[register.length];
-        for (int i = 0; i < register.length; i++) {
+        int[] generateNumbers = new int[register.size()];
+        double[] probabilities = new double[register.size()];
+        for (int i = 0; i < register.size(); i++) {
             generateNumbers[i] = i;
-            Complex complex = register[i];
+            Complex complex = register.get(i);
             probabilities[i] = complex.doubleA() * complex.doubleA()
                     + complex.doubleB() * complex.doubleB();
         }
-
-        ComplexUtils.convertToComplex(new double[]{0, 0});
 
         EnumeratedIntegerDistribution distribution =
                 new EnumeratedIntegerDistribution(generateNumbers, probabilities);

@@ -49,7 +49,8 @@ public final class Operators {
         matrix.setValue(0, 0, new Complex(1, 0));
         matrix.setValue(1, 2, new Complex(1, 0));
         matrix.setValue(2, 1, new Complex(1, 0));
-        matrix.setValue(3, 3, new Complex(1, 0));;
+        matrix.setValue(3, 3, new Complex(1, 0));
+        ;
         return matrix;
     }
 
@@ -74,6 +75,13 @@ public final class Operators {
                 new double[]{0, 0, 1, 0}
         };
         return ComplexMatrix.fromRealArray(array);
+    }
+
+    public static ComplexMatrix phase(double thetaPhaseInRadians) {
+        ComplexMatrix matrix = ComplexMatrix.zeros(2);
+        matrix.setValue(0, 0, new Complex(Math.cos(-thetaPhaseInRadians / 2.0), Math.sin(-thetaPhaseInRadians / 2.0)));
+        matrix.setValue(1, 1, new Complex(Math.cos(thetaPhaseInRadians / 2.0), Math.sin(thetaPhaseInRadians / 2.0)));
+        return matrix;
     }
 
     public static ComplexMatrix fredkin() {
