@@ -2,38 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50c462a0-853d-4a15-b05d-f324be0c9eae" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/artur.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/ComplexVector.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/Complex.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/ComplexMath.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumGate.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/gates/IdentityGate.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/gates/PhaseGate.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/gates/UGate.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/com_google_code_gson_gson_2_8_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/com_google_code_gson_gson_2_8_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/artur.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/artur.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/Complex.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/Complex.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/ComplexMatrix.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/ComplexMatrix.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/Operators.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/Operators.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/universal/UniversalQuantumRegister.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/universal/UniversalQuantumRegister.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/test/java/ComplexMatrixTest.java" afterPath="$PROJECT_DIR$/core/src/test/java/ComplexMatrixTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumManager.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumMemoryManager.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumMemoryManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/Emulator.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/Emulator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingAddress.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingAddress.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnit.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnitCell.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnitCell.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemory.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryAddress.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryAddress.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryInfo.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumAlgorithm.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumAlgorithm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumRegister.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumRegister.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/integration/Quantum.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/integration/Quantum.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/memory/EmulatedQuantumMemory.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/memory/EmulatedQuantumMemory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/TestClass.java" afterPath="$PROJECT_DIR$/src/main/java/TestClass.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumProccessorHelper.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumProcessorHelper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepAlgorythm.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepAlgorithm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepOneQubitGateAlgorythm.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepOneQubitGateAlgorithm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepTwoQubitGateAlgorythm.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/OneStepTwoQubitGateAlgorithm.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -53,29 +26,6 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="ComplexMatrix.java" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/ComplexMatrix.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="222">
-                    <caret line="287" column="0" lean-forward="false" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
-                    <folding>
-                      <element signature="e#512#513#0" expanded="true" />
-                      <element signature="e#538#539#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
@@ -94,8 +44,8 @@
       <file leaf-file-name="TestClass.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/TestClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="119" column="0" lean-forward="false" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+            <state relative-caret-position="188">
+              <caret line="86" column="27" lean-forward="true" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -122,36 +72,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopLevelResult.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/results/TopLevelResult.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OwnerData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/OwnerData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServiceManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/ServiceManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-187">
-              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="QuantumMemoryManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumMemoryManager.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -164,14 +84,51 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="QuantumAlgorithm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumAlgorithm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="430">
+              <caret line="264" column="0" lean-forward="false" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="QuantumManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="50" column="9" lean-forward="true" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+            <state relative-caret-position="35">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ComplexMatrix.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/ComplexMatrix.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="272" column="0" lean-forward="false" selection-start-line="272" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
+              <folding>
+                <element signature="e#512#513#0" expanded="true" />
+                <element signature="e#538#539#0" expanded="true" />
+                <element signature="e#4676#4677#0" expanded="true" />
+                <element signature="e#4711#4712#0" expanded="true" />
+                <element signature="e#12444#12445#0" expanded="true" />
+                <element signature="e#12500#12501#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ComplexMatrixTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/test/java/ComplexMatrixTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="209" column="57" lean-forward="false" selection-start-line="209" selection-start-column="57" selection-end-line="209" selection-end-column="57" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -189,12 +146,13 @@
       <file leaf-file-name="QuantumRegister.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumRegister.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="188">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#338#339#0" expanded="true" />
                 <element signature="e#388#389#0" expanded="true" />
+                <element signature="e#757#758#0" expanded="true" />
                 <element signature="e#791#792#0" expanded="true" />
               </folding>
             </state>
@@ -232,7 +190,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/Complex.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/addresses/MemoryStateKeeper.java" />
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/addresses/GlobalQubitAddress.java" />
@@ -277,12 +234,13 @@
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/controller/memory/EmulatedQuantumMemory.java" />
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumRegister.java" />
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/emulator/ComplexMath.java" />
-        <option value="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/ComplexMatrix.java" />
-        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumManager.java" />
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumMemoryManager.java" />
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/integration/Quantum.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/Complex.java" />
         <option value="$PROJECT_DIR$/src/main/java/TestClass.java" />
+        <option value="$PROJECT_DIR$/core/src/test/java/ComplexMatrixTest.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/ComplexMatrix.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumManager.java" />
       </list>
     </option>
   </component>
@@ -909,6 +867,14 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1075,6 +1041,27 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="QuantumLibrary" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="ComplexMatrixTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="core" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ComplexMatrixTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -1464,16 +1451,18 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Application.Main" />
       <item index="1" class="java.lang.String" itemvalue="Application.Demo" />
       <item index="2" class="java.lang.String" itemvalue="Application.TestClass" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ComplexMatrixTest" />
     </list>
     <recent_temporary>
-      <list size="3">
+      <list size="4">
         <item index="0" class="java.lang.String" itemvalue="Application.TestClass" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Demo" />
-        <item index="2" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ComplexMatrixTest" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Demo" />
+        <item index="3" class="java.lang.String" itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -1515,7 +1504,7 @@
       <workItem from="1492758853780" duration="599000" />
       <workItem from="1493828621822" duration="16000" />
       <workItem from="1493828677795" duration="3635000" />
-      <workItem from="1493872157254" duration="6824000" />
+      <workItem from="1493872157254" duration="10098000" />
     </task>
     <task id="LOCAL-00001" summary="Added initial integration for kazan quantum model">
       <created>1491937594175</created>
@@ -1566,11 +1555,35 @@
       <option name="project" value="LOCAL" />
       <updated>1493838887629</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Refactored usage of complex numbers">
+      <created>1493880884884</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1493880884884</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="ComplexMatrixTest - 2017.05.04 at 16h 25m 57s.xml">
+      <configuration name="ComplexMatrixTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ComplexMatrixTest - 2017.05.04 at 16h 29m 53s.xml">
+      <configuration name="ComplexMatrixTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ComplexMatrixTest - 2017.05.04 at 16h 31m 55s.xml">
+      <configuration name="ComplexMatrixTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ComplexMatrixTest - 2017.05.04 at 16h 41m 00s.xml">
+      <configuration name="ComplexMatrixTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ComplexMatrixTest - 2017.05.04 at 16h 45m 25s.xml">
+      <configuration name="ComplexMatrixTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62711000" />
+    <option name="totallyTimeSpent" value="65985000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1586,7 +1599,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.50214595" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32502708" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295583" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1599,7 +1612,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39869988" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3954496" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1622,19 +1635,26 @@
     <MESSAGE value="Small refactoring and fixed comparing complex numbers" />
     <MESSAGE value="Small fixes" />
     <MESSAGE value="Added all required classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added all required classes" />
+    <MESSAGE value="Refactored usage of complex numbers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored usage of complex numbers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumManager.java</url>
-          <line>42</line>
+          <url>file://$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/ComplexMatrix.java</url>
+          <line>272</line>
           <properties />
-          <option name="timeStamp" value="12" />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumRegister.java</url>
+          <line>69</line>
+          <properties />
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="13" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1647,14 +1667,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/ProcessingUnitCellAddress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="12" lean-forward="false" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/model/QuantumMemoryAddress.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1668,7 +1680,7 @@
         <state relative-caret-position="546">
           <caret line="59" column="22" lean-forward="false" selection-start-line="59" selection-start-column="22" selection-end-line="59" selection-end-column="22" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1686,7 +1698,7 @@
         <state relative-caret-position="1207">
           <caret line="71" column="107" lean-forward="false" selection-start-line="71" selection-start-column="107" selection-end-line="71" selection-end-column="107" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1712,8 +1724,8 @@
         <state relative-caret-position="396">
           <caret line="31" column="36" lean-forward="false" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
           <folding>
-            <element signature="e#1002#1003#0" expanded="true" />
-            <element signature="e#1031#1032#0" expanded="true" />
+            <element signature="e#1002#1003#0" expanded="false" />
+            <element signature="e#1031#1032#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1723,7 +1735,7 @@
         <state relative-caret-position="52">
           <caret line="14" column="29" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1741,16 +1753,6 @@
         <state relative-caret-position="85">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumAlgorithm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="259" column="38" lean-forward="false" selection-start-line="259" selection-start-column="38" selection-end-line="259" selection-end-column="54" />
-          <folding>
-            <element signature="e#417#448#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1951,8 +1953,8 @@
         <state relative-caret-position="323">
           <caret line="22" column="39" lean-forward="false" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
           <folding>
-            <element signature="e#737#738#0" expanded="true" />
-            <element signature="e#780#781#0" expanded="true" />
+            <element signature="e#737#738#0" expanded="false" />
+            <element signature="e#780#781#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2058,44 +2060,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/TestClass.java">
+    <entry file="file://$PROJECT_DIR$/core/src/test/java/ComplexMatrixTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="119" column="0" lean-forward="false" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="323">
+          <caret line="209" column="57" lean-forward="false" selection-start-line="209" selection-start-column="57" selection-end-line="209" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumRegister.java">
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="430">
+          <caret line="264" column="0" lean-forward="false" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/TestClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="86" column="27" lean-forward="true" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#338#339#0" expanded="true" />
-            <element signature="e#388#389#0" expanded="true" />
-            <element signature="e#791#792#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/ComplexMatrix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="287" column="0" lean-forward="false" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
+        <state relative-caret-position="185">
+          <caret line="272" column="0" lean-forward="false" selection-start-line="272" selection-start-column="0" selection-end-line="272" selection-end-column="0" />
           <folding>
             <element signature="e#512#513#0" expanded="true" />
             <element signature="e#538#539#0" expanded="true" />
+            <element signature="e#4676#4677#0" expanded="true" />
+            <element signature="e#4711#4712#0" expanded="true" />
+            <element signature="e#12444#12445#0" expanded="true" />
+            <element signature="e#12500#12501#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/emulator/QuantumRegister.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#338#339#0" expanded="true" />
+            <element signature="e#388#389#0" expanded="true" />
+            <element signature="e#757#758#0" expanded="true" />
+            <element signature="e#791#792#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/api/QuantumManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="50" column="9" lean-forward="true" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
+        <state relative-caret-position="35">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

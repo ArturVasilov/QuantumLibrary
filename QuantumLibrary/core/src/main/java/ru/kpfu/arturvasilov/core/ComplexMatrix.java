@@ -21,6 +21,10 @@ public class ComplexMatrix {
     }
 
     public ComplexMatrix(int rows, int columns) {
+        if (rows <= 0 || columns <= 0) {
+            throw new IllegalArgumentException("Rows and columns for matrix should be >= 1");
+        }
+
         matrix = new Complex[rows][];
         for (int i = 0; i < rows; i++) {
             matrix[i] = new Complex[columns];
@@ -56,10 +60,20 @@ public class ComplexMatrix {
      * @return matrix nxn (where n is size of array) of complex numbers filled with double values from array argument
      */
     public static ComplexMatrix fromRealArray(double[][] array) {
-        int n = array.length;
-        ComplexMatrix matrix = new ComplexMatrix(n);
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        int columns = 0;
+        if (array.length == 0 || array[0].length == 0) {
+            throw new IllegalArgumentException("Empty array for matrix");
+        }
+        columns = array[0].length;
+        for (int i = 1; i < array.length; i++) {
+            if (array[i].length != columns) {
+                throw new IllegalArgumentException("Matrix array should have rectangle shape");
+            }
+        }
+
+        ComplexMatrix matrix = new ComplexMatrix(array.length);
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
                 matrix.setValue(i, j, new Complex(array[i][j], 0));
             }
         }
@@ -90,7 +104,7 @@ public class ComplexMatrix {
         int n = matrix.length;
         ComplexMatrix copiedMatrix = new ComplexMatrix(n);
         for (int i = 0; i < n; i++) {
-            System.arraycopy(matrix[i], 0, copiedMatrix.matrix[i], 0, n);
+            System.arraycopy(matrix[i], 0, copiedMatrix.matrix[i], 0, matrix[i].length);
         }
         return copiedMatrix;
     }
@@ -159,6 +173,10 @@ public class ComplexMatrix {
      * @return true iff current matrix is identity
      */
     public boolean isIdentityMatrix() {
+        if (isNotSquareMatrix()) {
+            return false;
+        }
+
         final Complex zero = new Complex(0, 0);
         final Complex one = new Complex(1, 0);
 
@@ -188,6 +206,10 @@ public class ComplexMatrix {
      * @return true iff current matrix is unitary
      */
     public boolean isUnitary() {
+        if (isNotSquareMatrix()) {
+            return false;
+        }
+
         ComplexMatrix transposed = conjugateTranspose();
         ComplexMatrix result = transposed.multiply(this);
         return result.isIdentityMatrix();
@@ -202,6 +224,10 @@ public class ComplexMatrix {
       * @return true iff current matrix is hermitian
       */
     public boolean isHermitian() {
+        if (isNotSquareMatrix()) {
+            return false;
+        }
+
         ComplexMatrix hermitian = conjugateTranspose();
         return hermitian.equals(this);
     }
@@ -216,6 +242,10 @@ public class ComplexMatrix {
      * @return new conjugate transposed matrix from current matrix
      */
     public ComplexMatrix conjugateTranspose() {
+        if (isNotSquareMatrix()) {
+            throw new IllegalArgumentException("Only squared matrix could be transposed");
+        }
+
         int n = matrix.length;
         ComplexMatrix result = new ComplexMatrix(n);
         for (int i = 0; i < n; i++) {
@@ -240,12 +270,15 @@ public class ComplexMatrix {
      * @return multiplication of current matrix and multiplier parameter
      */
     public ComplexMatrix multiply(ComplexMatrix multiplier) {
-        int n = matrix.length;
-        ComplexMatrix result = new ComplexMatrix(n);
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        if (matrix[0].length != multiplier.matrix.length) {
+            throw new IllegalArgumentException("Multiplication is impossible due to the size of the matrices");
+        }
+
+        ComplexMatrix result = new ComplexMatrix(matrix.length, multiplier.matrix[0].length);
+        for (int i = 0; i < result.matrix.length; i++) {
+            for (int j = 0; j < result.matrix[i].length; j++) {
                 Complex sum = new Complex();
-                for (int k = 0; k < n; k++) {
+                for (int k = 0; k < matrix[i].length; k++) {
                     sum = sum.add(matrix[i][k].multiply(multiplier.getValue(k, j)));
                 }
                 result.setValue(i, j, sum);
@@ -258,7 +291,7 @@ public class ComplexMatrix {
         int n = matrix.length;
         ComplexMatrix result = new ComplexMatrix(n);
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+            for (int j = 0; j < matrix[i].length; j++) {
                 result.setValue(i, j, matrix[i][j].multiply(complex));
             }
         }
@@ -283,15 +316,16 @@ public class ComplexMatrix {
      * @return tensor multiplication of current matrix and multiplier parameter
      */
     public ComplexMatrix tensorMultiplication(ComplexMatrix multiplier) {
-        int n = matrix.length;
-        int m = multiplier.matrix.length;
-        ComplexMatrix result = new ComplexMatrix(n * m);
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        int rows = matrix.length * multiplier.matrix.length;
+        int columns = matrix[0].length * multiplier.matrix[0].length;
+        ComplexMatrix result = new ComplexMatrix(rows, columns);
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
                 Complex element = matrix[i][j];
-                for (int k = i * m; k < (i + 1) * m; k++) {
-                    for (int l = j * m; l < (j + 1) * m; l++) {
-                        result.setValue(k, l, element.multiply(multiplier.getValue(k % m, l % m)));
+                for (int k = i * multiplier.matrix.length; k < (i + 1) * multiplier.matrix.length; k++) {
+                    for (int l = j *  multiplier.matrix[0].length; l < (j + 1) *  multiplier.matrix[0].length; l++) {
+                        result.setValue(k, l, element.multiply(multiplier.getValue(k %  multiplier.matrix.length, l %  multiplier.matrix[0].length)));
                     }
                 }
             }
@@ -323,11 +357,19 @@ public class ComplexMatrix {
     }
 
     public Complex trace() {
+        if (isNotSquareMatrix()) {
+            throw new IllegalArgumentException("Trace could be calculated only for squared matrix");
+        }
+
         Complex result = Complex.zero();
         for (int i = 0; i < matrix.length; i++) {
             result = result.add(matrix[i][i]);
         }
         return result;
+    }
+
+    private boolean isNotSquareMatrix() {
+        return matrix.length != matrix[0].length;
     }
 
 }

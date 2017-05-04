@@ -25,7 +25,7 @@ public class QuantumManager {
     }
 
     public Qubit initNewQubit(Complex alpha, Complex beta) throws Exception {
-        ComplexMatrix matrix = new ComplexMatrix(2, 1);
+        ComplexMatrix matrix = new ComplexMatrix(1, 2);
         matrix.setValue(0, 0, alpha);
         matrix.setValue(1, 0, beta);
         QuantumRegister newRegister = new QuantumRegister(1, matrix);
@@ -80,7 +80,7 @@ public class QuantumManager {
 
     protected void performTransitionForQubits(Qubit controlQubit, ComplexMatrix transitionMatrix,
                                               RegisterInfo mergedRegisterInfo, Qubit... qubits) throws Exception {
-        ArrayList<Integer> qubitIndexes = new ArrayList<Integer>();
+        List<Integer> qubitIndexes = new ArrayList<>();
         for (Qubit q : qubits) {
             qubitIndexes.add(q.addressInRegister);
         }
