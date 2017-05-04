@@ -1,14 +1,14 @@
 package api.model;
 
 import api.QuantumManager;
-import emulator.Complex;
+import ru.kpfu.arturvasilov.core.Complex;
 
 /**
  * @author Artur Vasilov
  */
 public class Emulator {
 
-    private QuantumProccessorHelper helper = new QuantumProccessorHelper();
+    private QuantumProcessorHelper helper = new QuantumProcessorHelper();
     private QuantumMemory memory0;
     private QuantumMemory memory1;
 
@@ -115,8 +115,8 @@ public class Emulator {
 
     //    Service methods
     private ProcessingUnitCell cellForProcessingAddress(ProcessingAddress processingAddress) {
-        return processingUnits[processingAddress.getProccessingUnitNumber()]
-                .cellForUnitAddress(processingAddress.getProccessingUnitCellAddress());
+        return processingUnits[processingAddress.getProcessingUnitNumber()]
+                .cellForUnitAddress(processingAddress.getProcessingUnitCellAddress());
     }
 
     private QuantumMemory memoryForAddress(QuantumMemoryAddress address) {

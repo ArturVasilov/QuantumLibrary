@@ -1,5 +1,9 @@
 package emulator;
 
+import ru.kpfu.arturvasilov.core.Complex;
+import ru.kpfu.arturvasilov.core.ComplexMatrix;
+import ru.kpfu.arturvasilov.core.ComplexVector;
+
 import java.util.Random;
 
 /**
@@ -9,32 +13,27 @@ public class QuantumRegister {
 
     private int qubitsNumber;
     private int size;
-    private Complex[][] densityMatrix;
+    private ComplexMatrix stateMatrix;
 
     public QuantumRegister(int qubitsNumber) {
         this.setQubitsNumber(qubitsNumber);
     }
 
-    public QuantumRegister(int qubitsNumber, Complex[][] densityMatrix) throws Exception {
+    public QuantumRegister(int qubitsNumber, ComplexMatrix stateMatrix) throws Exception {
         this.qubitsNumber = qubitsNumber;
         size = ((int) Math.pow(2, qubitsNumber));
-        this.densityMatrix = densityMatrix;
-        if (size != densityMatrix.length) {
+        this.stateMatrix = stateMatrix;
+        if (size != stateMatrix.matrix[0].length) {
             throw new Exception();
         }
     }
 
-    public QuantumRegister(int qubitsNumber, Complex[] configuration) throws Exception {
-        this.qubitsNumber = qubitsNumber;
-        size = ((int) Math.pow(2, qubitsNumber));
-        this.densityMatrix = densityMatrixForClearStageConfigurationVector(configuration);
-        if (size != densityMatrix.length) {
-            throw new Exception();
-        }
+    public QuantumRegister(int qubitsNumber, ComplexVector configuration) throws Exception {
+        this(qubitsNumber, configuration.ketBraTensor());
     }
 
-    public Complex[][] getDensityMatrix() {
-        return densityMatrix;
+    public ComplexMatrix getStateMatrix() {
+        return stateMatrix;
     }
 
     public int getQubitsNumber() {
@@ -45,110 +44,84 @@ public class QuantumRegister {
         this.qubitsNumber = qubitsNumber;
         this.size = ((int) Math.pow(2, qubitsNumber));
         Complex[] vector = new Complex[size];
-        vector[0] = Complex.unit();
+        vector[0] = Complex.one();
         for (int i = 1; i < vector.length; i++) {
             vector[i] = Complex.zero();
         }
     }
 
-    private Complex[][] densityMatrixForClearStageConfigurationVector(Complex[] vector) {
-        return ComplexMath.ketBraTensorMultiplication(vector, vector);
-    }
-
-    public void multiplyOnMatrix(Complex[][] matrix) throws Exception {
-        if (matrix.length != size) {
+    public void multiplyOnMatrix(ComplexMatrix matrix) throws Exception {
+        if (matrix.matrix.length != size) {
             throw new Exception();
         }
-        this.densityMatrix = ComplexMath.multiplication(matrix, size, size, densityMatrix, size, size);
+        stateMatrix = matrix.multiply(stateMatrix);
     }
 
     @Override
     public String toString() {
-        String result = "";
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                result = result + densityMatrix[i][j] + " ";
-            }
-            result = result + "\n";
-        }
-        return result;
+        return stateMatrix.toString();
     }
 
     public void performAlgorythm(QuantumAlgorithm algorythm) throws Exception {
         performTransformationWithMatrix(algorythm.getMatrix());
     }
 
-    public void performAlgorythm(OneStepOneQubitGateAlgorythm algorythm) throws Exception {
+    public void performAlgorythm(OneStepOneQubitGateAlgorithm algorythm) throws Exception {
         performTransformationWithMatrix(algorythm.getMatrix());
     }
 
-    private void performTransformationWithMatrix(Complex[][] U) {
-        densityMatrix = ComplexMath.squareMatricesMultiplication(U, densityMatrix, size);
-        Complex[][] U_transpose = ComplexMath.hermitianTransposeForMatrix(U, size, size);
-        densityMatrix = ComplexMath.squareMatricesMultiplication(densityMatrix, U_transpose, size);
+    private void performTransformationWithMatrix(ComplexMatrix U) {
+        stateMatrix = U.multiply(stateMatrix);
+        stateMatrix = stateMatrix.multiply(U.conjugateTranspose());
     }
-
 
     /// Измерение
     public int measureQubit(int qubit) throws Exception {
         if (qubit >= qubitsNumber) {
             throw new Exception();
         }
-        Complex[][] P0 = ComplexMath.zeroMatrix(size, size);
+        ComplexMatrix P0 = ComplexMatrix.zeros(size);
         int pow2n_q = (int) Math.pow(2, qubitsNumber - qubit);
         int pow2n_q_1 = (int) Math.pow(2, qubitsNumber - qubit - 1);
         // нужно пройти по всем состояниям, где текущий кубит 0
         for (int i = 0; i < size; i += pow2n_q) {
             for (int j = i; j < i + pow2n_q_1; j++) {
-                P0[j][j] = Complex.unit();
+                P0.setValue(j, j, Complex.one());
             }
         }
 
         int result = 0;
 
-        Complex[][] P0Transpose = ComplexMath.hermitianTransposeForMatrix(P0, size, size);
+        ComplexMatrix P0Transpose = P0.conjugateTranspose();
+        ComplexMatrix P0Transpose_P0 = P0Transpose.multiply(P0);
+        ComplexMatrix P0Transpose_P0_ro = P0Transpose_P0.multiply(stateMatrix);
 
-        Complex[][] P0Transpose_P0 = ComplexMath.multiplication(P0Transpose, size, size, P0, size, size);
-        Complex[][] P0Transpose_P0_ro = ComplexMath.multiplication(P0Transpose_P0, size, size, densityMatrix, size, size);
-
-        double p0Norma = ComplexMath.trace(P0Transpose_P0_ro, size).getReal();
+        double p0Norma = P0Transpose_P0_ro.trace().doubleA();
 
         //measure and normalize
-        Complex[][] Pm;
+        ComplexMatrix Pm;
         if (new Random().nextDouble() > p0Norma) {
             result = 1;
-//            Configure P1 projector
-            Pm = ComplexMath.zeroMatrix(size, size);
+            //Configure P1 projector
+            Pm = ComplexMatrix.zeros(size);
             for (int i = pow2n_q_1; i < size; i += pow2n_q) {
                 for (int j = i; j < i + pow2n_q_1; j++) {
-                    Pm[j][j] = Complex.unit();
+                    Pm.setValue(j, j, Complex.one());
                 }
             }
         } else {
             Pm = P0;
         }
 
-        Complex[][] PmTranspose = ComplexMath.hermitianTransposeForMatrix(Pm, size, size);
+        ComplexMatrix PmTranspose = Pm.conjugateTranspose();
+        ComplexMatrix Pm_ro = Pm.multiply(stateMatrix);
+        ComplexMatrix Pm_ro_PmTranspose = Pm_ro.multiply(PmTranspose);
+        ComplexMatrix PmTranspose_Pm_ro = PmTranspose.multiply(Pm).multiply(stateMatrix);
 
-        Complex[][] Pm_ro = ComplexMath.squareMatricesMultiplication(Pm, densityMatrix, size);
+        Complex trace = PmTranspose_Pm_ro.trace();
+        Complex divider = new Complex(1 / trace.doubleA(), 0);
 
-        Complex[][] Pm_ro_PmTranspose = ComplexMath.squareMatricesMultiplication(
-                Pm_ro, PmTranspose, size
-        );
-
-        Complex[][] PmTranspose_Pm_ro = ComplexMath.squareMatricesMultiplication(
-                ComplexMath.squareMatricesMultiplication(PmTranspose, Pm, size),
-                densityMatrix, size
-        );
-
-        Complex trace = ComplexMath.trace(PmTranspose_Pm_ro, size);
-        Complex devider = new Complex(1 / trace.getReal(), 0);
-
-        densityMatrix = ComplexMath.multiplication(devider,
-                Pm_ro_PmTranspose, size
-        );
-
-
+        stateMatrix = Pm_ro_PmTranspose.multiply(divider);
         return result;
     }
 }

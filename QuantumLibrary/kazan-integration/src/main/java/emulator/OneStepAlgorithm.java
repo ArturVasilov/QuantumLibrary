@@ -1,6 +1,6 @@
 package emulator;
 
-import emulator.gates.UGate;
+import ru.kpfu.arturvasilov.core.ComplexMatrix;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,19 +8,18 @@ import java.util.List;
 /**
  * Algorythm matrix must math to qubits order in algorythm scheme.
  * <p>
- * To not use controlQubit pass value NotAnIndex
+ * To not use controlQubit pass value EMPTY_ADDRESS
  *
  * @author Artur Vasilov
  */
+public class OneStepAlgorithm extends QuantumAlgorithm {
 
-public class OneStepAlgorythm extends QuantumAlgorithm {
+    public static final int EMPTY_ADDRESS = -1;
 
-    public static final int NotAnIndex = -1;
-
-    public OneStepAlgorythm(int qubitsInRegister,
+    public OneStepAlgorithm(int qubitsInRegister,
                             int controlQubitIndex,
                             List<Integer> gateQubitIndexes,
-                            Complex[][] transformationMatrix) throws Exception {
+                            ComplexMatrix transformationMatrix) throws Exception {
         stepsNumber = 1;
         QuantumSchemeStepQubitAttributes[][] algSheme = new QuantumSchemeStepQubitAttributes[qubitsInRegister][1];
         String gateId = "Gate";
@@ -35,8 +34,7 @@ public class OneStepAlgorythm extends QuantumAlgorithm {
         }
         gates = new HashMap<>();
         mainGateIDs = new String[]{gateId};
-        QuantumGate gate = new UGate(gateQubitIndexes.size(), transformationMatrix);
-        gates.put(gateId, gate);
+        gates.put(gateId, transformationMatrix);
         algorithmSchemeMatrix = algSheme;
         qubitsNumber = qubitsInRegister;
         size = (int) Math.pow(2, qubitsNumber);

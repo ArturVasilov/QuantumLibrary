@@ -14,6 +14,23 @@ import static org.junit.Assert.*;
 public class ComplexMatrixTest {
 
     @Test
+    public void testVectorMultiplication() throws Exception {
+        ComplexMatrix first = new ComplexMatrix(1, 2);
+        first.setValue(0, 0, new Complex(5, 0));
+        first.setValue(0, 1, new Complex(2, 0));
+
+        ComplexMatrix second = new ComplexMatrix(2, 1);
+        second.setValue(0, 0, new Complex(3, 0));
+        second.setValue(1, 0, new Complex(1, 0));
+
+        ComplexMatrix result = first.multiply(second);
+        ComplexMatrix expectedResult = new ComplexMatrix(1, 1);
+        expectedResult.setValue(0, 0, new Complex(17, 0));
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
     public void testIdentityMatrix() throws Exception {
         ComplexMatrix matrix = ComplexMatrix.identity(2);
         assertTrue(matrix.isIdentityMatrix());
@@ -175,6 +192,26 @@ public class ComplexMatrixTest {
         ComplexMatrix expectedMatrix = ComplexMatrix.fromRealArray(array);
 
         assertEquals(expectedMatrix, tensor);
+    }
+
+    @Test
+    public void testVectorTensorMultiplication() throws Exception {
+        ComplexMatrix first = new ComplexMatrix(1, 2);
+        first.setValue(0, 0, new Complex(5, 0));
+        first.setValue(0, 1, new Complex(2, 0));
+
+        ComplexMatrix second = new ComplexMatrix(2, 1);
+        second.setValue(0, 0, new Complex(3, 0));
+        second.setValue(1, 0, new Complex(1, 0));
+
+        ComplexMatrix result = first.tensorMultiplication(second);
+        ComplexMatrix expectedResult = new ComplexMatrix(2, 2);
+        expectedResult.setValue(0, 0, new Complex(15, 0));
+        expectedResult.setValue(0, 1, new Complex(6, 0));
+        expectedResult.setValue(1, 0, new Complex(5, 0));
+        expectedResult.setValue(1, 1, new Complex(2, 0));
+
+        assertEquals(expectedResult, result);
     }
 
     @Test

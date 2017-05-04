@@ -5,9 +5,9 @@ package api.model;
  */
 public class QuantumMemoryInfo {
 
-    private double maximumAvailableFrequency;
-    private double minimumAvailableFrequency;
-    private double timeInterval;
+    private final double maximumAvailableFrequency;
+    private final double minimumAvailableFrequency;
+    private final double timeInterval;
 
     public QuantumMemoryInfo(double maximumAvailableFrequency, double minimumAvailableFrequency, double timeInterval) {
         this.maximumAvailableFrequency = maximumAvailableFrequency;
@@ -19,23 +19,11 @@ public class QuantumMemoryInfo {
         return maximumAvailableFrequency;
     }
 
-    public void setMaximumAvailableFrequency(double maximumAvailableFrequency) {
-        this.maximumAvailableFrequency = maximumAvailableFrequency;
-    }
-
     public double getMinimumAvailableFrequency() {
         return minimumAvailableFrequency;
     }
 
-    public void setMinimumAvailableFrequency(double minimumAvailableFrequency) {
-        this.minimumAvailableFrequency = minimumAvailableFrequency;
-    }
-
     public double getTimeInterval() {
         return timeInterval;
-    }
-
-    public void setTimeInterval(double timeInterval) {
-        this.timeInterval = timeInterval;
     }
 }

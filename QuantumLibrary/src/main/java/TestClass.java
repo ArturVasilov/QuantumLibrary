@@ -1,6 +1,8 @@
 import api.QuantumManager;
 import api.model.*;
-import emulator.Complex;
+import ru.kpfu.arturvasilov.core.Complex;
+import ru.kpfu.arturvasilov.core.ComplexMatrix;
+import ru.kpfu.arturvasilov.core.Operators;
 
 /**
  * @author Artur Vasilov
@@ -60,14 +62,14 @@ public class TestClass {
             System.out.print("\n\n-----INITIALIZATION-----\n\n");
 
             QuantumManager manager = new QuantumManager();
-            QuantumManager.Qubit qubit1 = manager.initNewQubit(Complex.zero(), Complex.unit());
-            QuantumManager.Qubit qubit2 = manager.initNewQubit(Complex.unit(), Complex.zero());
-            QuantumManager.Qubit qubit3 = manager.initNewQubit(Complex.zero(), Complex.unit());
-            QuantumManager.Qubit qubit4 = manager.initNewQubit(Complex.zero(), Complex.unit());
-            QuantumManager.Qubit qubit5 = manager.initNewQubit(Complex.zero(), Complex.unit());
-            QuantumManager.Qubit qubit6 = manager.initNewQubit(Complex.zero(), Complex.unit());
-            QuantumManager.Qubit qubit7 = manager.initNewQubit(Complex.zero(), Complex.unit());
-            QuantumManager.Qubit qubit8 = manager.initNewQubit(Complex.zero(), Complex.unit());
+            QuantumManager.Qubit qubit1 = manager.initNewQubit(Complex.zero(), Complex.one());
+            QuantumManager.Qubit qubit2 = manager.initNewQubit(Complex.one(), Complex.zero());
+            QuantumManager.Qubit qubit3 = manager.initNewQubit(Complex.zero(), Complex.one());
+            QuantumManager.Qubit qubit4 = manager.initNewQubit(Complex.zero(), Complex.one());
+            QuantumManager.Qubit qubit5 = manager.initNewQubit(Complex.zero(), Complex.one());
+            QuantumManager.Qubit qubit6 = manager.initNewQubit(Complex.zero(), Complex.one());
+            QuantumManager.Qubit qubit7 = manager.initNewQubit(Complex.zero(), Complex.one());
+            QuantumManager.Qubit qubit8 = manager.initNewQubit(Complex.zero(), Complex.one());
 
             System.out.print("Q1: |1>\n");
             System.out.print("Q2: |0>\n");
@@ -75,21 +77,10 @@ public class TestClass {
             System.out.print("Q4: |1>\n");
             System.out.print("Q5: |1>\n");
             System.out.print("Q6: |1>\n");
-            System.out.print("Q7: |1>\n");
-            System.out.print("Q8: |1>\n");
-
 
             System.out.print("\n\n-----OPERATIONS-----\n\n");
 
-            Complex u = Complex.unit();
-            Complex z = Complex.zero();
-
-            Complex[][] U = {
-                    {u, z, z, z},
-                    {z, u, z, z},
-                    {z, z, z, u},
-                    {z, z, u, z},
-            };
+            ComplexMatrix U = Operators.controlledNot();
 
             manager.performTransitionForQubits(qubit1, U, qubit2);
             System.out.print("CNOT(Q1, Q2)\n");
@@ -106,12 +97,6 @@ public class TestClass {
             manager.performTransitionForQubits(qubit6, U, qubit2);
             System.out.print("CNOT(Q6, Q2)\n");
 
-            manager.performTransitionForQubits(qubit7, U, qubit2);
-            System.out.print("CNOT(Q7, Q2)\n");
-
-            manager.performTransitionForQubits(qubit8, U, qubit3);
-            System.out.print("CNOT(Q8, Q3)\n");
-
             System.out.print("\n\n-----MEASURMENT-----\n\n");
 
             System.out.print("Q1:" + manager.measure(qubit1) + "\n");
@@ -120,14 +105,12 @@ public class TestClass {
             System.out.print("Q4:" + manager.measure(qubit4) + "\n");
             System.out.print("Q5:" + manager.measure(qubit5) + "\n");
             System.out.print("Q6:" + manager.measure(qubit6) + "\n");
-            System.out.print("Q7:" + manager.measure(qubit7) + "\n");
-            System.out.print("Q8:" + manager.measure(qubit8) + "\n");
 
         } catch (Exception e) {
-            System.out.print("Exception:" + e.getLocalizedMessage() + "\n");
+            System.out.print("Exception:" + e.getMessage() + "\n");
+            e.printStackTrace();
         }
     }
-
 
     public static void main(String[] args) {
         testQuantumManager();

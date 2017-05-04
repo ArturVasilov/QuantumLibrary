@@ -5,12 +5,13 @@ package api.model;
  */
 public class ProcessingUnit {
 
-    QuantumProccessorHelper processorHelper;
-    private ProcessingUnitCell cell0 = new ProcessingUnitCell();
-    private ProcessingUnitCell controlPoint = new ProcessingUnitCell();
-    private ProcessingUnitCell cell1 = new ProcessingUnitCell();
+    private final QuantumProcessorHelper processorHelper;
 
-    ProcessingUnit(QuantumProccessorHelper processorHelper) {
+    private final ProcessingUnitCell cell0 = new ProcessingUnitCell();
+    private final ProcessingUnitCell controlPoint = new ProcessingUnitCell();
+    private final ProcessingUnitCell cell1 = new ProcessingUnitCell();
+
+    ProcessingUnit(QuantumProcessorHelper processorHelper) {
         this.processorHelper = processorHelper;
     }
 
