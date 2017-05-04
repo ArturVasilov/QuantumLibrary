@@ -52,7 +52,7 @@ public class QuantumMemoryManager extends QuantumManager {
     }
 
     /**
-     * This tranformation must be performed for qubit that loaded to proccessor unit
+     * This tranformation must be performed for qubit that loaded to proccessor one
      */
     public void phase(double thetaInRadians, Qubit qubit) throws Exception {
         checkQubitsBeforePerformTransformation(qubit);
@@ -66,7 +66,7 @@ public class QuantumMemoryManager extends QuantumManager {
     }
 
     /**
-     * This tranformation must be performed for qubit that loaded to proccessor unit
+     * This tranformation must be performed for qubit that loaded to proccessor one
      */
     public void QET(double thetaInRadians, Qubit qubit) throws Exception {
         checkQubitsBeforePerformTransformation(qubit);

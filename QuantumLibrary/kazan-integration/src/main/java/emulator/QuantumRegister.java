@@ -22,7 +22,7 @@ public class QuantumRegister {
         this.qubitsNumber = qubitsNumber;
         size = ((int) Math.pow(2, qubitsNumber));
         this.stateMatrix = stateMatrix;
-        if (size != stateMatrix.matrix.length) {
+        if (size != stateMatrix.matrix[0].length) {
             throw new Exception();
         }
     }
@@ -39,7 +39,7 @@ public class QuantumRegister {
         this.qubitsNumber = qubitsNumber;
         this.size = ((int) Math.pow(2, qubitsNumber));
         Complex[] vector = new Complex[size];
-        vector[0] = Complex.unit();
+        vector[0] = Complex.one();
         for (int i = 1; i < vector.length; i++) {
             vector[i] = Complex.zero();
         }
@@ -49,7 +49,7 @@ public class QuantumRegister {
         if (matrix.matrix.length != size) {
             throw new Exception();
         }
-        stateMatrix = stateMatrix.multiply(matrix);
+        stateMatrix = matrix.multiply(stateMatrix);
     }
 
     @Override
@@ -81,7 +81,7 @@ public class QuantumRegister {
         // нужно пройти по всем состояниям, где текущий кубит 0
         for (int i = 0; i < size; i += pow2n_q) {
             for (int j = i; j < i + pow2n_q_1; j++) {
-                P0.setValue(j, j, Complex.unit());
+                P0.setValue(j, j, Complex.one());
             }
         }
 
@@ -101,7 +101,7 @@ public class QuantumRegister {
             Pm = ComplexMatrix.zeros(size);
             for (int i = pow2n_q_1; i < size; i += pow2n_q) {
                 for (int j = i; j < i + pow2n_q_1; j++) {
-                    Pm.setValue(j, j, Complex.unit());
+                    Pm.setValue(j, j, Complex.one());
                 }
             }
         } else {

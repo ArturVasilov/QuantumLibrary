@@ -33,7 +33,7 @@ public class UniversalQuantumRegister implements QuantumRegister {
             }
             multiplier *= 2;
         }
-        register.set(currentNumber, Complex.unit());
+        register.set(currentNumber, Complex.one());
     }
 
     @Override

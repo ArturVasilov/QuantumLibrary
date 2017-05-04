@@ -37,30 +37,30 @@ public class QuantumProcessorHelper extends QuantumManager {
                 qubitAddressInRegister(control) < maxAddressOfAB) {
             //control qubit is between a and b
             ComplexMatrix matrix = ComplexMatrix.zeros(8);
-            matrix.setValue(0, 2, Complex.unit());
+            matrix.setValue(0, 2, Complex.one());
             matrix.setValue(1, 3, new Complex(Math.cos(thetaInRadians / 2), 0));
             matrix.setValue(1, 4, new Complex(0, Math.sin(thetaInRadians / 2)));
-            matrix.setValue(2, 0, Complex.unit());
-            matrix.setValue(3, 1, Complex.unit());
+            matrix.setValue(2, 0, Complex.one());
+            matrix.setValue(3, 1, Complex.one());
             matrix.setValue(4, 3, new Complex(0, Math.sin(thetaInRadians / 2)));
             matrix.setValue(4, 4, new Complex(Math.cos(thetaInRadians / 2), 0));
-            matrix.setValue(5, 5, Complex.unit());
-            matrix.setValue(6, 6, Complex.unit());
-            matrix.setValue(7, 7, Complex.unit());
+            matrix.setValue(5, 5, Complex.one());
+            matrix.setValue(6, 6, Complex.one());
+            matrix.setValue(7, 7, Complex.one());
             performTransitionForQubits(null, matrix, regInfo, a, b, control);
         } else {
             //control qubit is last
             ComplexMatrix matrix = ComplexMatrix.zeros(8);
-            matrix.setValue(0, 4, Complex.unit());
-            matrix.setValue(1, 0, Complex.unit());
+            matrix.setValue(0, 4, Complex.one());
+            matrix.setValue(1, 0, Complex.one());
             matrix.setValue(2, 5, new Complex(Math.cos(thetaInRadians / 2), 0));
             matrix.setValue(2, 6, new Complex(0, Math.sin(thetaInRadians / 2)));
-            matrix.setValue(3, 1, Complex.unit());
+            matrix.setValue(3, 1, Complex.one());
             matrix.setValue(4, 5, new Complex(0, Math.sin(thetaInRadians / 2)));
             matrix.setValue(4, 6, new Complex(Math.cos(thetaInRadians / 2), 0));
-            matrix.setValue(5, 2, Complex.unit());
-            matrix.setValue(6, 7, Complex.unit());
-            matrix.setValue(7, 3, Complex.unit());
+            matrix.setValue(5, 2, Complex.one());
+            matrix.setValue(6, 7, Complex.one());
+            matrix.setValue(7, 3, Complex.one());
             performTransitionForQubits(null, matrix, regInfo, a, b, control);
         }
     }

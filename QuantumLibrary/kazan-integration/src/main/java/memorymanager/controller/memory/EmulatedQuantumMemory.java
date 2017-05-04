@@ -79,8 +79,8 @@ public class EmulatedQuantumMemory implements QuantumMemory {
             switch (physicalAddressingCommand.getCommandType()) {
                 case INIT:
                     mEmulator.initLogicalQubit(
-                            physicalAddressingCommand.getFirstQubit_Part1().getQuantumMemoryAddress(), Complex.unit(), Complex.zero(),
-                            physicalAddressingCommand.getFirstQubit_Part2().getQuantumMemoryAddress(), Complex.zero(), Complex.unit()
+                            physicalAddressingCommand.getFirstQubit_Part1().getQuantumMemoryAddress(), Complex.one(), Complex.zero(),
+                            physicalAddressingCommand.getFirstQubit_Part2().getQuantumMemoryAddress(), Complex.zero(), Complex.one()
                     );
                     System.out.println("INIT command, globalId_1 = " + physicalAddressingCommand.getFirstQubit_Part1().getGlobalId() +
                             ", frequency_1 = " + physicalAddressingCommand.getFirstQubit_Part1().getQuantumMemoryAddress().getFrequency() +

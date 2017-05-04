@@ -53,10 +53,10 @@ public class QuantumMemory {
         Complex alpha = Complex.zero(), beta = Complex.zero();
         switch (address.getMemoryHalf()) {
             case HALF_0:
-                alpha = Complex.unit();
+                alpha = Complex.one();
                 break;
             case HALF_1:
-                beta = Complex.unit();
+                beta = Complex.one();
                 break;
         }
         return initQubitForAddress(address, alpha, beta);

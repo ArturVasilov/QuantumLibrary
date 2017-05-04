@@ -34,8 +34,7 @@ public class Complex {
         return new Complex();
     }
 
-    //TODO : rename to one
-    public static Complex unit() {
+    public static Complex one() {
         return new Complex(1, 0);
     }
 

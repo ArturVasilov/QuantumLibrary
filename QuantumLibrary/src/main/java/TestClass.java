@@ -62,14 +62,14 @@ public class TestClass {
             System.out.print("\n\n-----INITIALIZATION-----\n\n");
 
             QuantumManager manager = new QuantumManager();
-            QuantumManager.Qubit qubit1 = manager.initNewQubit(Complex.zero(), Complex.unit());
-            QuantumManager.Qubit qubit2 = manager.initNewQubit(Complex.unit(), Complex.zero());
-            QuantumManager.Qubit qubit3 = manager.initNewQubit(Complex.zero(), Complex.unit());
-            QuantumManager.Qubit qubit4 = manager.initNewQubit(Complex.zero(), Complex.unit());
-            QuantumManager.Qubit qubit5 = manager.initNewQubit(Complex.zero(), Complex.unit());
-            QuantumManager.Qubit qubit6 = manager.initNewQubit(Complex.zero(), Complex.unit());
-            QuantumManager.Qubit qubit7 = manager.initNewQubit(Complex.zero(), Complex.unit());
-            QuantumManager.Qubit qubit8 = manager.initNewQubit(Complex.zero(), Complex.unit());
+            QuantumManager.Qubit qubit1 = manager.initNewQubit(Complex.zero(), Complex.one());
+            QuantumManager.Qubit qubit2 = manager.initNewQubit(Complex.one(), Complex.zero());
+            QuantumManager.Qubit qubit3 = manager.initNewQubit(Complex.zero(), Complex.one());
+            QuantumManager.Qubit qubit4 = manager.initNewQubit(Complex.zero(), Complex.one());
+            QuantumManager.Qubit qubit5 = manager.initNewQubit(Complex.zero(), Complex.one());
+            QuantumManager.Qubit qubit6 = manager.initNewQubit(Complex.zero(), Complex.one());
+            QuantumManager.Qubit qubit7 = manager.initNewQubit(Complex.zero(), Complex.one());
+            QuantumManager.Qubit qubit8 = manager.initNewQubit(Complex.zero(), Complex.one());
 
             System.out.print("Q1: |1>\n");
             System.out.print("Q2: |0>\n");

@@ -21,13 +21,13 @@ public class QuantumManager {
 
     //    Qubit creation
     public Qubit initNewQubit() throws Exception {
-        return initNewQubit(Complex.unit(), Complex.zero());
+        return initNewQubit(Complex.one(), Complex.zero());
     }
 
     public Qubit initNewQubit(Complex alpha, Complex beta) throws Exception {
         ComplexMatrix matrix = new ComplexMatrix(1, 2);
         matrix.setValue(0, 0, alpha);
-        matrix.setValue(1, 0, beta);
+        matrix.setValue(0, 1, beta);
         QuantumRegister newRegister = new QuantumRegister(1, matrix);
         String registerID = Double.toString(new Date().getTime() + new Random().nextDouble());
         Qubit newQubit = new Qubit(registerID, 0);

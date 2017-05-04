@@ -50,7 +50,6 @@ public final class Operators {
         matrix.setValue(1, 2, new Complex(1, 0));
         matrix.setValue(2, 1, new Complex(1, 0));
         matrix.setValue(3, 3, new Complex(1, 0));
-        ;
         return matrix;
     }
 
