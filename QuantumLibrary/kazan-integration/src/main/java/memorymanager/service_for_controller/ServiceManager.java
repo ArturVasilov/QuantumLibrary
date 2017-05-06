@@ -36,7 +36,7 @@ public class ServiceManager {
     private ServiceManager() {
         mCommandsForControllerMap = new HashMap<>();
         mAddressesCorrespondenceMap = new LinkedHashMap<>();
-        mOwnerDataList = new LinkedList<OwnerData>();
+        mOwnerDataList = new LinkedList<>();
         mQuantumMemoryOperator = QuantumMemoryOperator.getOperator();
     }
 
@@ -82,7 +82,7 @@ public class ServiceManager {
         if (commandsFromClientDTO.getQubitCount() > mQuantumMemoryOperator.getQubitsMaxCount() || commandsFromClientList.size() > mQuantumMemoryOperator.getCommandsMaxCount()) {
             throw new IllegalArgumentException(exceptionStringQubitCount);
         }
-        List<LogicalAddressingCommand> commandsListForController = new LinkedList<LogicalAddressingCommand>();
+        List<LogicalAddressingCommand> commandsListForController = new LinkedList<>();
         for (LogicalAddressingCommandFromClient commandFromClient : commandsFromClientList) {
             if (!commandComposedRight(commandFromClient)) {
                 throw new IllegalArgumentException(exceptionStringJsonIsNotValid);
@@ -136,7 +136,7 @@ public class ServiceManager {
     //look for in the list have already been initialized qubit
     //if not initialized returns empty list, else two physical qubit address for controller
     private List<LogicalQubitAddressForController> getGlobalLogicalQubitAddressFromLocalClient(LogicalQubitAddressFromClient qubitAddressFromClient) {
-        List<LogicalQubitAddressForController> logicalQubitAddressForControllers = new LinkedList<LogicalQubitAddressForController>();
+        List<LogicalQubitAddressForController> logicalQubitAddressForControllers = new LinkedList<>();
         for (LogicalQubitAddressForController key : mAddressesCorrespondenceMap.keySet()) {
             if (mAddressesCorrespondenceMap.get(key).equals(qubitAddressFromClient)) {
                 if (key.getMemoryPart() == 0) {
@@ -151,61 +151,58 @@ public class ServiceManager {
 
     public void executeNextCommand() {
         if (mThreadForCommandsExecuting == null) {
-            mThreadForCommandsExecuting = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    while (!mCommandsForControllerMap.isEmpty()) {
-                        int commandsMaxCount = mQuantumMemoryOperator.getCommandsMaxCount();
-                        Map<OwnerData, List<LogicalAddressingCommand>> dataForController = new HashMap<OwnerData, List<LogicalAddressingCommand>>();
-                        int commandsCount = 0;
-                        //fill map which contains the largest possible number of commands that quantum machine can run at one time
-                        for (OwnerData ownerData : mOwnerDataList) {
-                            List<LogicalAddressingCommand> commandsList = mCommandsForControllerMap.get(ownerData);
-                            if (commandsList != null) {
-                                commandsCount += commandsList.size();
-                                if (commandsCount <= commandsMaxCount) {
-                                    dataForController.put(ownerData, commandsList);
-                                } else {
-                                    break;
-                                }
+            mThreadForCommandsExecuting = new Thread(() -> {
+                while (!mCommandsForControllerMap.isEmpty()) {
+                    int commandsMaxCount = mQuantumMemoryOperator.getCommandsMaxCount();
+                    Map<OwnerData, List<LogicalAddressingCommand>> dataForController = new HashMap<>();
+                    int commandsCount = 0;
+                    //fill map which contains the largest possible number of commands that quantum machine can run at one time
+                    for (OwnerData ownerData : mOwnerDataList) {
+                        List<LogicalAddressingCommand> commandsList = mCommandsForControllerMap.get(ownerData);
+                        if (commandsList != null) {
+                            commandsCount += commandsList.size();
+                            if (commandsCount <= commandsMaxCount) {
+                                dataForController.put(ownerData, commandsList);
+                            } else {
+                                break;
                             }
-                        }
-                        Map<OwnerData, Map<LogicalQubitAddressForController, Boolean>> results = mQuantumMemoryOperator.executeCommands(dataForController);
-                        for (OwnerData ownerData : results.keySet()) {
-                            Map<LogicalQubitAddressForController, Boolean> measureResultsWithLogicalAddresses = results.get(ownerData);
-                            Map<LogicalQubitAddressFromClient, TopLevelResult> measureResultsWithClientAddresses = new HashMap<>();
-                            for (LogicalQubitAddressForController logicalQubitAddressForController : measureResultsWithLogicalAddresses.keySet()) {
-                                LogicalQubitAddressFromClient logicalQubitAddressFromClient = mAddressesCorrespondenceMap.get(logicalQubitAddressForController);
-                                if (logicalQubitAddressFromClient != null) {
-                                    //fill TopLevelResult with results of two measured qubits with the same globalId and different memory part
-                                    TopLevelResult oneLoqicalQubitResult = measureResultsWithClientAddresses.computeIfAbsent(logicalQubitAddressFromClient, k -> new TopLevelResult());
-                                    if (logicalQubitAddressForController.getMemoryPart() == 0) {
-                                        oneLoqicalQubitResult.setQubit_1MeasureResult(measureResultsWithLogicalAddresses.get(logicalQubitAddressForController));
-                                    } else {
-                                        oneLoqicalQubitResult.setQubit_2MeasureResult(measureResultsWithLogicalAddresses.get(logicalQubitAddressForController));
-                                    }
-                                }
-                            }
-                            LinkedHashMap<LogicalQubitAddressFromClient, Integer> resultsForSending = new LinkedHashMap<LogicalQubitAddressFromClient, Integer>();
-                            for (LogicalQubitAddressFromClient addressFromClient : measureResultsWithClientAddresses.keySet()) {
-                                //transform measure result of two physical qubit to one logical qubit measure result
-                                TopLevelResult result = measureResultsWithClientAddresses.get(addressFromClient);
-                                if (!result.getQubit_1MeasureResult() && result.getQubit_2MeasureResult()) {
-                                    resultsForSending.put(addressFromClient, 0);
-                                } else if (result.getQubit_1MeasureResult() && !result.getQubit_2MeasureResult()) {
-                                    resultsForSending.put(addressFromClient, 1);
-                                } else {
-                                    //both physical qubit are 0 or 1 - error
-                                }
-                            }
-                            printResults(ownerData, resultsForSending);
-                            //todo вернуть пользователю по socket с помощью OwnerData
-                            mCommandsForControllerMap.remove(ownerData);
-                            mOwnerDataList.remove(ownerData);
                         }
                     }
-                    mThreadForCommandsExecuting = null;
+                    Map<OwnerData, Map<LogicalQubitAddressForController, Boolean>> results = mQuantumMemoryOperator.executeCommands(dataForController);
+                    for (OwnerData ownerData : results.keySet()) {
+                        Map<LogicalQubitAddressForController, Boolean> measureResultsWithLogicalAddresses = results.get(ownerData);
+                        Map<LogicalQubitAddressFromClient, TopLevelResult> measureResultsWithClientAddresses = new HashMap<>();
+                        for (LogicalQubitAddressForController logicalQubitAddressForController : measureResultsWithLogicalAddresses.keySet()) {
+                            LogicalQubitAddressFromClient logicalQubitAddressFromClient = mAddressesCorrespondenceMap.get(logicalQubitAddressForController);
+                            if (logicalQubitAddressFromClient != null) {
+                                //fill TopLevelResult with results of two measured qubits with the same globalId and different memory part
+                                TopLevelResult oneLoqicalQubitResult = measureResultsWithClientAddresses.computeIfAbsent(logicalQubitAddressFromClient, k -> new TopLevelResult());
+                                if (logicalQubitAddressForController.getMemoryPart() == 0) {
+                                    oneLoqicalQubitResult.setQubit_1MeasureResult(measureResultsWithLogicalAddresses.get(logicalQubitAddressForController));
+                                } else {
+                                    oneLoqicalQubitResult.setQubit_2MeasureResult(measureResultsWithLogicalAddresses.get(logicalQubitAddressForController));
+                                }
+                            }
+                        }
+                        LinkedHashMap<LogicalQubitAddressFromClient, Integer> resultsForSending = new LinkedHashMap<>();
+                        for (LogicalQubitAddressFromClient addressFromClient : measureResultsWithClientAddresses.keySet()) {
+                            //transform measure result of two physical qubit to one logical qubit measure result
+                            TopLevelResult result = measureResultsWithClientAddresses.get(addressFromClient);
+                            if (!result.getQubit_1MeasureResult() && result.getQubit_2MeasureResult()) {
+                                resultsForSending.put(addressFromClient, 0);
+                            } else if (result.getQubit_1MeasureResult() && !result.getQubit_2MeasureResult()) {
+                                resultsForSending.put(addressFromClient, 1);
+                            } else {
+                                //both physical qubit are 0 or 1 - error
+                            }
+                        }
+                        printResults(ownerData, resultsForSending);
+                        //todo вернуть пользователю по socket с помощью OwnerData
+                        mCommandsForControllerMap.remove(ownerData);
+                        mOwnerDataList.remove(ownerData);
+                    }
                 }
+                mThreadForCommandsExecuting = null;
             });
             mThreadForCommandsExecuting.run();
         }
