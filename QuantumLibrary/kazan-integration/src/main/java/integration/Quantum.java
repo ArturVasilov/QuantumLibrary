@@ -1,11 +1,11 @@
 package integration;
 
-import com.google.gson.GsonBuilder;
 import memorymanager.controller.execution.commands.CommandTypes;
 import memorymanager.service_for_controller.addresses.LogicalQubitAddressFromClient;
 import memorymanager.service_for_controller.commands.CommandsFromClientDTO;
 import memorymanager.service_for_controller.commands.LogicalAddressingCommandFromClient;
 import ru.kpfu.arturvasilov.core.Complex;
+import ru.kpfu.arturvasilov.core.ComplexMatrix;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -24,192 +24,109 @@ public class Quantum {
     public static void EndQuantum() {
         commandsFromClientDTO.setLogicalAddressingCommandFromClientList(commandFromClientList);
         //serviceManager.putCommandsToExequtionQueue("1", new GsonBuilder().create().toJson(commandsFromClientDTO));
-        String ss = new GsonBuilder().create().toJson(commandsFromClientDTO);
+        //String ss = new GsonBuilder().create().toJson(commandsFromClientDTO);
         System.out.println("ЗАВЕРШЕНО!");
-        System.out.println("ss=" + ss);
+        //System.out.println("ss=" + ss);
     }
 
-    // единичная комплексная матрица
-    public static Complex[][] createI(int size) {
-        Complex[][] newMatr = new Complex[size][size];
-        for (int i = 0; i < size; i++)
-            for (int j = 0; j < size; j++) {
-                if (i == j) {
-                    newMatr[i][j] = new Complex(1, 0);
-                } else {
-                    newMatr[i][j] = new Complex(0, 0);
-                }
-            }
-        return newMatr;
-    }
-
-    //транспонирование матрицы
-    public static Complex[][] Transpose(Complex[][] matr) {// матрица обязательно квадратная
-        int size = matr.length;
-        Complex[][] newMatr = new Complex[size][size];
-        for (int i = 0; i < size; i++)
-            for (int j = 0; j < size; j++)
-                newMatr[i][j] = matr[j][i];
-        return newMatr;
-    }
-
-    //перемножение комплексных матриц
-    public static Complex[][] MultiplyMatr(Complex[][] matr1, Complex[][] matr2) {// n m m l => n l
-        int n = matr1.length;
-        int m = matr2.length;
-        int l = matr2[0].length;
-        Complex[][] newMatr = new Complex[n][l];
-        for (int z = 0; z < n; z++)
-            for (int q = 0; q < l; q++)
-                newMatr[z][q] = new Complex(0, 0);
-
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++) {
-                int k = 0;
-                while (k < m) {
-                    Complex c1 = new Complex(matr1[i][k].doubleA(), matr1[i][k].doubleB());
-                    Complex c2 = new Complex(matr2[k][j].doubleA(), matr2[k][j].doubleB());
-                    Complex c3 = c1.multiply(c2);
-                    newMatr[i][j] = newMatr[i][j].add(c3);
-                    k++;
-                }
-            }
-        return newMatr;
-    }
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public static void runUntitarCalculation(Complex[][] U, int[] qubits) {
+    public static void runUnitaryCalculation(ComplexMatrix operator, int[] qubits) {
         /*
          * commandsFromClientDTO.setQubitCount(qubits.length());
 		 * каждый раз придется менять значение. Пока как - под вопросом
 		 *
-		 * */
+		 */
         BeginQuantum();
 
-        if (U.length > 1) {
-            CountOfQubit = qubits.length;
-            System.out.println("Всего кубит=" + CountOfQubit);
-            int size = U.length;
-            int step = 1;
-            int k;
-            Complex[][] result = new Complex[size][size];
-            for (int z1 = 0; z1 < size; z1++)
-                for (int z2 = 0; z2 < size; z2++)
-                    result[z1][z2] = new Complex(U[z1][z2].doubleA(), U[z1][z2].doubleB());
-            // скопировали U в result
+        CountOfQubit = qubits.length;
+        System.out.println("Всего кубит=" + CountOfQubit);
+        int size = operator.matrix.length;
+        int step = 1;
+        int k;
 
-            while (step < size - 1) {
-                k = 1;
-                while (k < size - step + 1) {
+        ComplexMatrix result = operator.copy();
 
-                    Complex[][] res = createI(size);//U1 или U2 или U3 ...
-                    //result - матрица на предыдущем шаге. То есть это - результат перемножения
-                    double denomination = Math.sqrt(result[0][0].norma() + result[k][0].norma());//знаменатель
+        while (step < size - 1) {
+            k = 1;
+            while (k < size - step + 1) {
 
-                    res[step - 1][step - 1] = result[step - 1][step - 1].conjugate().multiply(new Complex(1 / denomination, 0));
-                    res[step - 1][step - 1 + k] = result[step - 1 + k][step - 1].conjugate().multiply(new Complex(1 / denomination, 0));
-                    res[step - 1 + k][step - 1] = result[step - 1 + k][step - 1].multiply(new Complex(1 / denomination, 0));
-                    res[step - 1 + k][step - 1 + k] = result[step - 1][step - 1].multiply(new Complex(1 / denomination, 0));
+                ComplexMatrix res = ComplexMatrix.identity(size);//U1 или U2 или U3 ...
+                //result - матрица на предыдущем шаге. То есть это - результат перемножения
+                double denomination = Math.sqrt(result.getValue(0, 0).norma() + result.getValue(k, 0).norma());//знаменатель
 
-                    //System.out.println("step = "+step+", k="+k);//проверка правильности
-                /*printMatr(res);*/
+                int firstIndex = step - 1; // порядковый номер первой строки матрицы res, где есть нетривиальные элементы
+                int secondIndex = step - 1 + k; // порядковый номер второй строки матрицы res, где есть нетривиальные элементы
 
-                    // матрица U(step) создана
-                    //перемножаем матрицы
-                    result = MultiplyMatr(res, result);
+                Complex multiplier = new Complex(1 / denomination, 0);
+                res.setValue(firstIndex, firstIndex, result.getValue(firstIndex, firstIndex).conjugate().multiply(multiplier));
+                res.setValue(firstIndex, secondIndex, result.getValue(secondIndex, firstIndex).conjugate().multiply(multiplier));
+                res.setValue(secondIndex, firstIndex, result.getValue(secondIndex, firstIndex).conjugate().multiply(multiplier));
+                res.setValue(secondIndex, secondIndex, result.getValue(firstIndex, firstIndex).conjugate().multiply(multiplier));
 
-                    /*System.out.println("result");
-                     printMatr(result);*/
+                result = res.multiply(result);
+                res = res.transpose();
 
-                    int firstIndex = step - 1; // порядковый номер первой строки матрицы res, где есть нетривиальные элементы
-                    int secondIndex = step - 1 + k; // порядковый номер второй строки матрицы res, где есть нетривиальные элементы
+                ComplexMatrix resTilda = new ComplexMatrix(2);
+                resTilda.setValue(0, 0, res.getValue(firstIndex, firstIndex));
+                resTilda.setValue(0, 1, res.getValue(firstIndex, secondIndex));
+                resTilda.setValue(1, 0, res.getValue(secondIndex, firstIndex));
+                resTilda.setValue(1, 1, res.getValue(secondIndex, secondIndex));
 
-                    //нам нужна транспонированная матрица res
-                    res = Transpose(res);
-                    Complex[][] resTilda = new Complex[2][2];//однокубитный оператор V с волной
-                    resTilda[0][0] = res[firstIndex][firstIndex];
-                    resTilda[0][1] = res[firstIndex][secondIndex];
-                    resTilda[1][0] = res[secondIndex][firstIndex];
-                    resTilda[1][1] = res[secondIndex][secondIndex];
+                String[] greyCode = new GreyCode(
+                        qubits.length,
+                        Integer.toString(firstIndex, 2),
+                        Integer.toString(secondIndex, 2)
+                ).createGreyCode();
 
-                    // послед-ть кода Грэя
-                    String[] GreyCode = GreyCodeGenerator.GenerateGreyCodeSequence(Integer.toString(firstIndex, 2), Integer.toString(secondIndex, 2),
-                            qubits.length);
+                int[] indexes = calculateIndexesOfQubits(greyCode);
 
-                    /*for(int i=0; i < GreyCode.length && !GreyCode[i].equals("0"); i++)
-                     System.out.print(GreyCode[i] + "  ");
-                     System.out.println();*/
+                //получили индексы кубитов. к которым нужно применить контролируемый нот оператор
+                unusualCNOTAndTilda(indexes, qubits, resTilda);
 
-                    int[] indexes = CalculateIndexesOfQubits(GreyCode);
-                    /*for(int i=0; i < indexes.length; i++)
-                     System.out.print(indexes[i] + "  ");
-                     System.out.println();*/
-
-                    //получили индексы кубитов. к которым нужно применить контролируемый нот оператор
-                    unusualCNOTAndTilda(indexes, qubits, resTilda);
-
-                    k++;
-                }
-                step++;
+                k++;
             }
-            //System.out.println("step = "+step+", k="+k);
-
-            Complex[][] res = createI(size);//U последняя
-            res[size - 2][size - 2] = result[size - 2][size - 2].conjugate();
-            res[size - 2][size - 1] = result[size - 1][size - 2].conjugate();
-            res[size - 1][size - 2] = result[size - 2][size - 1].conjugate();
-            res[size - 1][size - 1] = result[size - 1][size - 1].conjugate();
-
-            res = Transpose(res);
-
-            int firstIndex = size - 2; // номер первой строки
-            int secondIndex = size - 1; // номер второй строки
-
-            //Long.toString(firstIndex,2) - двоичное представление числа firstIndex
-            String[] GreyCode = GreyCodeGenerator.GenerateGreyCodeSequence(Long.toString(firstIndex, 2), Long.toString(secondIndex, 2),
-                    qubits.length);
-            /*for(int i=0; i < GreyCode.length && !GreyCode[i].equals("0"); i++)
-             System.out.print(GreyCode[i] + "  ");
-             System.out.println();*/
-
-            int[] indexes = CalculateIndexesOfQubits(GreyCode);
-            /*for(int i=0; i < indexes.length; i++)
-             System.out.print(indexes[i] + "  ");
-             System.out.println();*/
-
-            unusualCNOTAndTilda(indexes, qubits, res);
+            step++;
         }
+
+        ComplexMatrix res = ComplexMatrix.identity(size); //U последняя
+        int firstIndex = size - 2;
+        int secondIndex = size - 1;
+        res.setValue(firstIndex, firstIndex, result.getValue(firstIndex, firstIndex).conjugate());
+        res.setValue(firstIndex, secondIndex, result.getValue(secondIndex, firstIndex).conjugate());
+        res.setValue(secondIndex, firstIndex, result.getValue(firstIndex, secondIndex).conjugate());
+        res.setValue(secondIndex, secondIndex, result.getValue(secondIndex, secondIndex).conjugate());
+        res = res.transpose();
+
+        String[] greyCode = new GreyCode(
+                qubits.length,
+                Integer.toString(firstIndex, 2),
+                Integer.toString(secondIndex, 2)
+        ).createGreyCode();
+
+        int[] indexes = calculateIndexesOfQubits(greyCode);
+
+        unusualCNOTAndTilda(indexes, qubits, res);
 
         EndQuantum();
     }
 
     //получаем номера кубитов, к которым нужно применить ту или иную операцию
-    public static int[] CalculateIndexesOfQubits(String[] GreyCode) {
-        int i = 0;
-        int count = 0;
-        for (; i < GreyCode.length; i++) {
-            if (!GreyCode[i].equals("0"))
-                count++;
-        }
-        //автоматически зап-т нулями
-        int[] indexes = new int[count - 1]; // например, если 4 строки, то 3 преобразовния
-        i = 0;
-        for (; i <= GreyCode.length - 2 && !GreyCode[i + 1].equals("0"); i++) {
+    public static int[] calculateIndexesOfQubits(String[] greyCode) {
+        int[] indexes = new int[greyCode.length - 1]; // например, если 4 строки, то 3 преобразовния
+        for (int i = 0; i <= greyCode.length - 2; i++) {
             //for(; i < count; i++){ - нельзя. Глючит на indexes[i] = j+1; у GreyCode[] больше стр
             //находим номер кубита, к которому применяется многократный оператор C...CNot
-            for (int j = 0; j < GreyCode[i].length(); j++) {
-                if (GreyCode[i].charAt(j) != GreyCode[i + 1].charAt(j)) // различаются ровно в 1 элементе
+            for (int j = 0; j < greyCode[i].length(); j++) {
+                if (greyCode[i].charAt(j) != greyCode[i + 1].charAt(j)) {
+                    // различаются ровно в 1 элементе
                     indexes[i] = j + 1;
+                }
             }
         }
         return indexes;
     }
 
 
-    public static void unusualCNOTAndTilda(int[] indexes, int[] qubits, Complex[][] resTilda) {
+    public static void unusualCNOTAndTilda(int[] indexes, int[] qubits, ComplexMatrix resTilda) {
         //addressOfQubit - адрес кубита, к которому применяется контрол нот
         //countOfQubit нужен для того, чтобы знать, сколько букв C
         //кол-во C = countOfQubit-1
@@ -398,15 +315,15 @@ public class Quantum {
 
     // разложение тильда матрицы на повороты
     //после разложения получим матрицы A,B,C и контролируемый оператор переделаем в неконтролируемый
-    public static void decompositionTildaOperator(int controlQubitNumber, int toQubitNumber, Complex[][] resTilda) {
-        Complex det1 = resTilda[0][0].multiply(resTilda[1][1]);
-        Complex det2 = resTilda[0][1].multiply(resTilda[1][0]);
+    public static void decompositionTildaOperator(int controlQubitNumber, int toQubitNumber, ComplexMatrix resTilda) {
+        Complex det1 = resTilda.getValue(0, 0).multiply(resTilda.getValue(1, 1));
+        Complex det2 = resTilda.getValue(0, 1).multiply(resTilda.getValue(1, 0));
         Complex det = det1.sub(det2); // определитель матрицы
 
         double gamma = Math.acos(det.doubleA()) / 2;
 
-        Complex A = resTilda[0][0].multiply(new Complex(Math.cos(gamma), Math.sin(gamma)));
-        Complex B = resTilda[0][1].multiply(new Complex(Math.cos(gamma), Math.sin(gamma)));
+        Complex A = resTilda.getValue(0, 0).multiply(new Complex(Math.cos(gamma), Math.sin(gamma)));
+        Complex B = resTilda.getValue(0, 1).multiply(new Complex(Math.cos(gamma), Math.sin(gamma)));
 
         double Teta = 2 * Math.acos(A.doubleA());
 
@@ -435,7 +352,7 @@ public class Quantum {
             CNOT(controlQubitNumber, toQubitNumber);
 
 			/*commandFromClientList.add(new LogicalAddressingCommandFromClient(
-					new CommandTypes("PHASE"), new Double(-Math.PI/2), new LogicalQubitAddressFromClient(toQubitNumber)));
+                    new CommandTypes("PHASE"), new Double(-Math.PI/2), new LogicalQubitAddressFromClient(toQubitNumber)));
 			commandFromClientList.add(new LogicalAddressingCommandFromClient(
 					new CommandTypes("QET"), new Double(beta/2), new LogicalQubitAddressFromClient(toQubitNumber)));
 			commandFromClientList.add(new LogicalAddressingCommandFromClient(
@@ -496,7 +413,7 @@ public class Quantum {
     }
 
     public static void CNOT(int qubit1, int qubit2) {
-		/*commandFromClientList.add(new LogicalAddressingCommandFromClient(
+        /*commandFromClientList.add(new LogicalAddressingCommandFromClient(
 				new CommandTypes("CQET"), new Double(Math.PI), new LogicalQubitAddressFromClient(qubit1), new LogicalQubitAddressFromClient(qubit2)));
 		commandFromClientList.add(new LogicalAddressingCommandFromClient(
 				new CommandTypes("PHASE"), new Double(Math.PI/4), new LogicalQubitAddressFromClient(qubit1)));*/

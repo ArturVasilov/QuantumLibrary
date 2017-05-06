@@ -258,6 +258,23 @@ public class ComplexMatrix {
         return result;
     }
 
+    public ComplexMatrix transpose() {
+        if (isNotSquareMatrix()) {
+            throw new IllegalArgumentException("Only squared matrix could be transposed");
+        }
+
+        int n = matrix.length;
+        ComplexMatrix result = new ComplexMatrix(n);
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                result.setValue(i, j, matrix[j][i]);
+                result.setValue(j, i, matrix[i][j]);
+            }
+            result.setValue(i, i, matrix[i][i]);
+        }
+        return result;
+    }
+
     /**
      * Creates new {@link ComplexMatrix} instance which is result
      * of multiplication of current matrix with argument matrix
