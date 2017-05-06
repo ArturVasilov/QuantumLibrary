@@ -1,6 +1,5 @@
 package ru.kpfu.arturvasilov.core;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 
 /**
@@ -90,7 +89,7 @@ public class ComplexMatrix {
     public static ComplexMatrix identity(int n) {
         ComplexMatrix matrix = zeros(n);
         for (int i = 0; i < n; i++) {
-            matrix.getValue(i, i).setA(BigDecimal.ONE);
+            matrix.setValue(i, i, Complex.one());
         }
         return matrix;
     }
@@ -155,20 +154,20 @@ public class ComplexMatrix {
 
     /**
      * Identity matrix is square nxn matrix with ones on the main diagonal and zeros elsewhere.
-     *
+     * <p>
      * Identity matrices:
-     *
-     *           |1 0 0|
+     * <p>
+     * |1 0 0|
      * I(3, 3) = |0 1 0|
-     *           |0 0 1|
-     *
-     *           |1 0 0 . . . 0|
-     *           |0 1 0 . . . 0|
-     *           |0 0 1 . . . 0|
+     * |0 0 1|
+     * <p>
+     * |1 0 0 . . . 0|
+     * |0 1 0 . . . 0|
+     * |0 0 1 . . . 0|
      * I(n, n) = |. . . . . . .|
-     *           |. . . . . . .|
-     *           |. . . . . . .|
-     *           |0 0 0 . . . 1|
+     * |. . . . . . .|
+     * |. . . . . . .|
+     * |0 0 0 . . . 1|
      *
      * @return true iff current matrix is identity
      */
@@ -185,8 +184,7 @@ public class ComplexMatrix {
                 Complex value = matrix[i][j];
                 if (i == j && !value.equals(one)) {
                     return false;
-                }
-                else if (i != j && !value.equals(zero)) {
+                } else if (i != j && !value.equals(zero)) {
                     return false;
                 }
             }
@@ -196,10 +194,10 @@ public class ComplexMatrix {
 
     /**
      * Theory about unitary matrices https://en.wikipedia.org/wiki/Unitary_matrix
-     *
+     * <p>
      * Let A^H = (A^*)^T, which is conjugate transposed matrix.
      * Matrix A is called unitary iff A * A^H = I (identity matrix).
-     *
+     * <p>
      * Unitary matrices play a very important role in quantum mechanics
      * since every quantum operator is unitary matrix (that makes operator invertible)
      *
@@ -215,14 +213,14 @@ public class ComplexMatrix {
         return result.isIdentityMatrix();
     }
 
-     /**
-      * Theory about hermitian matrices https://en.wikipedia.org/wiki/Hermitian_matrix
-      *
-      * Let A^H = (A^*)^T, which is conjugate transposed matrix.
-      * Matrix A is called hermitian iff A^H = A
-      *
-      * @return true iff current matrix is hermitian
-      */
+    /**
+     * Theory about hermitian matrices https://en.wikipedia.org/wiki/Hermitian_matrix
+     * <p>
+     * Let A^H = (A^*)^T, which is conjugate transposed matrix.
+     * Matrix A is called hermitian iff A^H = A
+     *
+     * @return true iff current matrix is hermitian
+     */
     public boolean isHermitian() {
         if (isNotSquareMatrix()) {
             return false;
@@ -235,7 +233,7 @@ public class ComplexMatrix {
     /**
      * Creates new {@link ComplexMatrix} instance which is result of conjugate transpose matrix
      * Theory of conjugate transpose https://en.wikipedia.org/wiki/Conjugate_transpose
-     *
+     * <p>
      * In short - it is transposed matrix where all elements are conjugated:
      * A* = ~(A^T)
      *
@@ -278,12 +276,11 @@ public class ComplexMatrix {
     /**
      * Creates new {@link ComplexMatrix} instance which is result
      * of multiplication of current matrix with argument matrix
-     *
+     * <p>
      * Since for quantum algorithms operators' matrices usually have small size,
      * this method uses trivial matrix multiplication algorithm O(n^3).
      *
      * @param multiplier - matrix to multiply. It must have the same size as current matrix.
-     *
      * @return multiplication of current matrix and multiplier parameter
      */
     public ComplexMatrix multiply(ComplexMatrix multiplier) {
@@ -318,18 +315,17 @@ public class ComplexMatrix {
     /**
      * Creates new {@link ComplexMatrix} instance which is result
      * of tensor multiplication of current matrix with argument matrix
-     *
+     * <p>
      * Tensor multiplication theory https://en.wikipedia.org/wiki/Tensor_product
-     *
+     * <p>
      * Tensor multiplication of A(nxn) and B(mxm):
-     *
+     * <p>
      * |a_11 * B, a_12 * B, ..., a_1n * B|
      * |a_21 * B, a_22 * B, ..., a_1n * B|
      * |...      ...      ...  ...       |
      * |a_n1 * B, a_n2 * B, ..., a_nn * B|
      *
      * @param multiplier - matrix to multiply.
-     *
      * @return tensor multiplication of current matrix and multiplier parameter
      */
     public ComplexMatrix tensorMultiplication(ComplexMatrix multiplier) {
@@ -341,8 +337,8 @@ public class ComplexMatrix {
             for (int j = 0; j < matrix[i].length; j++) {
                 Complex element = matrix[i][j];
                 for (int k = i * multiplier.matrix.length; k < (i + 1) * multiplier.matrix.length; k++) {
-                    for (int l = j *  multiplier.matrix[0].length; l < (j + 1) *  multiplier.matrix[0].length; l++) {
-                        result.setValue(k, l, element.multiply(multiplier.getValue(k %  multiplier.matrix.length, l %  multiplier.matrix[0].length)));
+                    for (int l = j * multiplier.matrix[0].length; l < (j + 1) * multiplier.matrix[0].length; l++) {
+                        result.setValue(k, l, element.multiply(multiplier.getValue(k % multiplier.matrix.length, l % multiplier.matrix[0].length)));
                     }
                 }
             }

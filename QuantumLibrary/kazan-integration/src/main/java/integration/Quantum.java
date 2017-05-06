@@ -320,17 +320,17 @@ public class Quantum {
         Complex det2 = resTilda.getValue(0, 1).multiply(resTilda.getValue(1, 0));
         Complex det = det1.sub(det2); // определитель матрицы
 
-        double gamma = Math.acos(det.doubleA()) / 2;
+        double gamma = Math.acos(det.getReal()) / 2;
 
         Complex A = resTilda.getValue(0, 0).multiply(new Complex(Math.cos(gamma), Math.sin(gamma)));
         Complex B = resTilda.getValue(0, 1).multiply(new Complex(Math.cos(gamma), Math.sin(gamma)));
 
-        double Teta = 2 * Math.acos(A.doubleA());
+        double Teta = 2 * Math.acos(A.getReal());
 
         if (Teta != 0.0) {
-            double nx = (-1) * B.doubleB() / Math.sin(Teta / 2);//координата вектора n по x
-            double ny = (-1) * B.doubleA() / Math.sin(Teta / 2);
-            double nz = (-1) * A.doubleB() / Math.sin(Teta / 2);
+            double nx = (-1) * B.getImaginary() / Math.sin(Teta / 2);//координата вектора n по x
+            double ny = (-1) * B.getReal() / Math.sin(Teta / 2);
+            double nz = (-1) * A.getImaginary() / Math.sin(Teta / 2);
 
             double alpha = 0, beta = 0, lambda = 0;
             //альфа, бета и лямбда нужны, чтобы разложить resTilda на A,B,C

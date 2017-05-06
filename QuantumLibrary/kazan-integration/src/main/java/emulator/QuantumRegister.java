@@ -96,7 +96,7 @@ public class QuantumRegister {
         ComplexMatrix P0Transpose_P0 = P0Transpose.multiply(P0);
         ComplexMatrix P0Transpose_P0_ro = P0Transpose_P0.multiply(stateMatrix);
 
-        double p0Norma = P0Transpose_P0_ro.trace().doubleA();
+        double p0Norma = P0Transpose_P0_ro.trace().getReal();
 
         //measure and normalize
         ComplexMatrix Pm;
@@ -119,7 +119,7 @@ public class QuantumRegister {
         ComplexMatrix PmTranspose_Pm_ro = PmTranspose.multiply(Pm).multiply(stateMatrix);
 
         Complex trace = PmTranspose_Pm_ro.trace();
-        Complex divider = new Complex(1 / trace.doubleA(), 0);
+        Complex divider = new Complex(1 / trace.getReal(), 0);
 
         stateMatrix = Pm_ro_PmTranspose.multiply(divider);
         return result;

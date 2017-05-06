@@ -87,8 +87,8 @@ public class UniversalQuantumRegister implements QuantumRegister {
         for (int i = 0; i < register.size(); i++) {
             generateNumbers[i] = i;
             Complex complex = register.get(i);
-            probabilities[i] = complex.doubleA() * complex.doubleA()
-                    + complex.doubleB() * complex.doubleB();
+            probabilities[i] = complex.getReal() * complex.getReal()
+                    + complex.getImaginary() * complex.getImaginary();
         }
 
         EnumeratedIntegerDistribution distribution =

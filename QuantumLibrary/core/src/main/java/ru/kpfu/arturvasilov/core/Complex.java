@@ -1,8 +1,5 @@
 package ru.kpfu.arturvasilov.core;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 /**
  * Class for representing complex number
  * <p>
@@ -12,20 +9,16 @@ import java.math.RoundingMode;
  */
 public class Complex {
 
-    private static final int DECIMAL_NUMBER_COMPARE_SCALE = 8;
+    private static final double EPS = 0.0000001;
 
-    private BigDecimal a;
-    private BigDecimal b;
+    private final double a;
+    private final double b;
 
     public Complex() {
-        this(BigDecimal.valueOf(0), BigDecimal.valueOf(0));
+        this(0, 0);
     }
 
     public Complex(double a, double b) {
-        this(BigDecimal.valueOf(a), BigDecimal.valueOf(b));
-    }
-
-    public Complex(BigDecimal a, BigDecimal b) {
         this.a = a;
         this.b = b;
     }
@@ -39,7 +32,7 @@ public class Complex {
     }
 
     /**
-     * Compares values using {@link BigDecimal#compareTo(Object)} method
+     * Compares values with some accuracy
      *
      * @return true iff o is instance of {@link Complex} and (a, b) pair is equal
      */
@@ -53,26 +46,24 @@ public class Complex {
         }
 
         Complex complex = (Complex) o;
-        boolean sameReal = a.setScale(DECIMAL_NUMBER_COMPARE_SCALE, BigDecimal.ROUND_HALF_UP)
-                .compareTo(complex.a.setScale(DECIMAL_NUMBER_COMPARE_SCALE, RoundingMode.HALF_UP)) == 0;
-        boolean sameImaginary = b.setScale(DECIMAL_NUMBER_COMPARE_SCALE, BigDecimal.ROUND_HALF_UP)
-                .compareTo(complex.b.setScale(DECIMAL_NUMBER_COMPARE_SCALE, BigDecimal.ROUND_UP)) == 0;
+        boolean sameReal = Math.abs(a - complex.a) < EPS;
+        boolean sameImaginary = Math.abs(b - complex.b) < EPS;
         return sameReal && sameImaginary;
     }
 
     @Override
     public int hashCode() {
-        int result = a.hashCode();
-        result = 31 * result + b.hashCode();
+        int result = Double.hashCode(a);
+        result = 31 * result + Double.hashCode(b);
         return result;
     }
 
     @Override
     public String toString() {
-        if (b.compareTo(BigDecimal.ZERO) == 0) {
-            return a.toString();
+        if (Math.abs(b) < EPS) {
+            return Double.toString(a);
         }
-        return String.format("%s %s %si", a.toString(), b.signum() > 0 ? "+" : "-", b.abs().toString());
+        return String.format("%s %s %si", Double.toString(a), b > 0 ? "+" : "-", Double.toString(Math.abs(a)));
     }
 
     /**
@@ -84,11 +75,11 @@ public class Complex {
      * @return addition of current number and value argument
      */
     public Complex add(Complex value) {
-        return new Complex(a.add(value.a), b.add(value.b));
+        return new Complex(a + value.a, b + value.b);
     }
 
     public Complex sub(Complex value) {
-        return new Complex(a.subtract(value.a), b.subtract(value.b));
+        return new Complex(a - value.a, b - value.b);
     }
 
     /**
@@ -100,13 +91,13 @@ public class Complex {
      * @return multiplication of current number and value argument
      */
     public Complex multiply(Complex value) {
-        BigDecimal resultA = a.multiply(value.a).subtract(b.multiply(value.b));
-        BigDecimal resultB = a.multiply(value.b).add(b.multiply(value.a));
+        double resultA = a * value.a - b * value.b;
+        double resultB = a * value.b + b * value.a;
         return new Complex(resultA, resultB);
     }
 
     public double norma() {
-        return doubleA() * doubleA() + doubleB() * doubleB();
+        return getReal() * getReal() + getImaginary() * getImaginary();
     }
 
     /**
@@ -115,30 +106,14 @@ public class Complex {
      * ~first(a, b) = result(a, -b)
      */
     public Complex conjugate() {
-        return new Complex(a, b.multiply(BigDecimal.valueOf(-1)));
+        return new Complex(a, -b);
     }
 
-    public BigDecimal getA() {
+    public double getReal() {
         return a;
     }
 
-    public void setA(BigDecimal a) {
-        this.a = a;
-    }
-
-    public BigDecimal getB() {
+    public double getImaginary() {
         return b;
-    }
-
-    public void setB(BigDecimal b) {
-        this.b = b;
-    }
-
-    public double doubleA() {
-        return a.doubleValue();
-    }
-
-    public double doubleB() {
-        return b.doubleValue();
     }
 }
