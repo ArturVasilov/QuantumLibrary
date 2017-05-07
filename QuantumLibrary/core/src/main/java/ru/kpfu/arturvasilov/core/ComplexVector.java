@@ -43,8 +43,10 @@ public class ComplexVector {
         ComplexVector result = new ComplexVector(vector.length);
         for (int i = 0; i < vector.length; i++) {
             result.set(i, new Complex());
+        }
+        for (int i = 0; i < vector.length; i++) {
             for (int j = 0; j < vector.length; j++) {
-                result.set(i, result.get(i).add(matrix.getValue(i, j).multiply(vector[i])));
+                result.set(i, result.get(i).add(matrix.getValue(i, j).multiply(vector[j])));
             }
         }
         return result;

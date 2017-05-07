@@ -16,5 +16,6 @@
     <orderEntry type="library" name="Maven: ru.arturvasilov.kpfu:quantumlibrary-kazan-integration:0.5" level="project" />
     <orderEntry type="module" module-name="crypto" />
     <orderEntry type="module" module-name="kazan-integration" />
+    <orderEntry type="library" name="com.google.code.gson:gson:2.8.0" level="project" />
   </component>
 </module>

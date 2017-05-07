@@ -1,5 +1,6 @@
 package integration;
 
+import com.google.gson.GsonBuilder;
 import memorymanager.controller.execution.commands.CommandTypes;
 import memorymanager.service_for_controller.addresses.LogicalQubitAddressFromClient;
 import memorymanager.service_for_controller.commands.CommandsFromClientDTO;
@@ -24,17 +25,12 @@ public class Quantum {
     public static void EndQuantum() {
         commandsFromClientDTO.setLogicalAddressingCommandFromClientList(commandFromClientList);
         //serviceManager.putCommandsToExequtionQueue("1", new GsonBuilder().create().toJson(commandsFromClientDTO));
-        //String ss = new GsonBuilder().create().toJson(commandsFromClientDTO);
+        String ss = new GsonBuilder().create().toJson(commandsFromClientDTO);
         System.out.println("ЗАВЕРШЕНО!");
-        //System.out.println("ss=" + ss);
+        System.out.println("ss=" + ss);
     }
 
     public static void runUnitaryCalculation(ComplexMatrix operator, int[] qubits) {
-        /*
-         * commandsFromClientDTO.setQubitCount(qubits.length());
-		 * каждый раз придется менять значение. Пока как - под вопросом
-		 *
-		 */
         BeginQuantum();
 
         CountOfQubit = qubits.length;
@@ -51,7 +47,7 @@ public class Quantum {
 
                 ComplexMatrix res = ComplexMatrix.identity(size);//U1 или U2 или U3 ...
                 //result - матрица на предыдущем шаге. То есть это - результат перемножения
-                double denomination = Math.sqrt(result.getValue(0, 0).norma() + result.getValue(k, 0).norma());//знаменатель
+                double denomination = Math.sqrt(result.getValue(0, 0).norma() + result.getValue(k, 0).norma());
 
                 int firstIndex = step - 1; // порядковый номер первой строки матрицы res, где есть нетривиальные элементы
                 int secondIndex = step - 1 + k; // порядковый номер второй строки матрицы res, где есть нетривиальные элементы
@@ -291,15 +287,17 @@ public class Quantum {
 
         } else {
             for (int i = 0; i < indexes.length - 1; i++) {
-                if (indexes[i] == 1)
+                if (indexes[i] == 1) {
                     CNOT(2, 1);
-                else
+                } else {
                     CNOT(1, 2);
+                }
             }
-            if (indexes[indexes.length - 1] == 1)
+            if (indexes[indexes.length - 1] == 1) {
                 decompositionTildaOperator(2, 1, resTilda);
-            else
+            } else {
                 decompositionTildaOperator(1, 2, resTilda);
+            }
 
             for (int i = indexes.length - 1; i > -1; i--) {
                 if (indexes[i] == 1)
@@ -327,7 +325,7 @@ public class Quantum {
 
         double Teta = 2 * Math.acos(A.getReal());
 
-        if (Teta != 0.0) {
+        if (Math.abs(Teta) > 0.0001) {
             double nx = (-1) * B.getImaginary() / Math.sin(Teta / 2);//координата вектора n по x
             double ny = (-1) * B.getReal() / Math.sin(Teta / 2);
             double nz = (-1) * A.getImaginary() / Math.sin(Teta / 2);
@@ -345,34 +343,7 @@ public class Quantum {
 
 
             System.out.println(alpha + " " + beta + " " + lambda);
-
-			/*commandFromClientList.add(new LogicalAddressingCommandFromClient(
-                    new CommandTypes("PHASE"), new Double((lambda-alpha)/2), new LogicalQubitAddressFromClient(toQubitNumber)));
-			*/
             CNOT(controlQubitNumber, toQubitNumber);
-
-			/*commandFromClientList.add(new LogicalAddressingCommandFromClient(
-                    new CommandTypes("PHASE"), new Double(-Math.PI/2), new LogicalQubitAddressFromClient(toQubitNumber)));
-			commandFromClientList.add(new LogicalAddressingCommandFromClient(
-					new CommandTypes("QET"), new Double(beta/2), new LogicalQubitAddressFromClient(toQubitNumber)));
-			commandFromClientList.add(new LogicalAddressingCommandFromClient(
-					new CommandTypes("PHASE"), new Double(Math.PI/2), new LogicalQubitAddressFromClient(toQubitNumber)));
-			commandFromClientList.add(new LogicalAddressingCommandFromClient(
-					new CommandTypes("PHASE"), new Double(-(lambda+alpha)/2), new LogicalQubitAddressFromClient(toQubitNumber)));
-
-			CNOT(controlQubitNumber, toQubitNumber);
-
-			commandFromClientList.add(new LogicalAddressingCommandFromClient(
-					new CommandTypes("PHASE"), new Double(alpha), new LogicalQubitAddressFromClient(toQubitNumber)));
-			commandFromClientList.add(new LogicalAddressingCommandFromClient(
-					new CommandTypes("PHASE"), new Double(-Math.PI/2), new LogicalQubitAddressFromClient(toQubitNumber)));
-			commandFromClientList.add(new LogicalAddressingCommandFromClient(
-					new CommandTypes("QET"), new Double(beta/2), new LogicalQubitAddressFromClient(toQubitNumber)));
-			commandFromClientList.add(new LogicalAddressingCommandFromClient(
-					new CommandTypes("PHASE"), new Double(Math.PI/2), new LogicalQubitAddressFromClient(toQubitNumber)));
-		*/
-        } else {
-            //////System.out.println("Teta="+Teta+", остальное не вычисляем. Тождественное преобразование!!!");
         }
     }
 
@@ -413,10 +384,10 @@ public class Quantum {
     }
 
     public static void CNOT(int qubit1, int qubit2) {
-        /*commandFromClientList.add(new LogicalAddressingCommandFromClient(
-				new CommandTypes("CQET"), new Double(Math.PI), new LogicalQubitAddressFromClient(qubit1), new LogicalQubitAddressFromClient(qubit2)));
+        commandFromClientList.add(new LogicalAddressingCommandFromClient(
+				CommandTypes.CQET, Math.PI, new LogicalQubitAddressFromClient(qubit1), new LogicalQubitAddressFromClient(qubit2)));
 		commandFromClientList.add(new LogicalAddressingCommandFromClient(
-				new CommandTypes("PHASE"), new Double(Math.PI/4), new LogicalQubitAddressFromClient(qubit1)));*/
+				CommandTypes.PHASE, Math.PI / 4, new LogicalQubitAddressFromClient(qubit1)));
         System.out.println("CQET " + qubit1 + " " + qubit2);
         System.out.println("PHASE(PI/2) " + qubit1);
     }
@@ -424,21 +395,21 @@ public class Quantum {
     public static void T(int qubit) {
         commandFromClientList.add(new LogicalAddressingCommandFromClient(
                 CommandTypes.PHASE, Math.PI / 2, new LogicalQubitAddressFromClient(qubit)));
-        //System.out.println("PHASE(PI/4) " + qubit);
+        System.out.println("PHASE(PI/4) " + qubit);
     }
 
     public static void THerm(int qubit) {
         //T*
         commandFromClientList.add(new LogicalAddressingCommandFromClient(
                 CommandTypes.PHASE, -Math.PI / 2, new LogicalQubitAddressFromClient(qubit)));
-        //System.out.println("PHASE(-PI/4) " + qubit);
+        System.out.println("PHASE(-PI/2) " + qubit);
     }
 
     public static void S(int qubit) {
         //System.out.println("S");
         commandFromClientList.add(new LogicalAddressingCommandFromClient(
                 CommandTypes.PHASE, Math.PI / 2, new LogicalQubitAddressFromClient(qubit)));
-        //System.out.println("PHASE(PI/2) " + qubit);
+        System.out.println("PHASE(PI/2) " + qubit);
     }
 
 }

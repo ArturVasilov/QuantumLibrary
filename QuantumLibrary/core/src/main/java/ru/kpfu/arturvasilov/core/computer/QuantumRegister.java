@@ -7,6 +7,8 @@ import ru.kpfu.arturvasilov.core.ComplexMatrix;
  */
 public interface QuantumRegister {
 
+    long getId();
+
     void apply(ComplexMatrix operator);
 
     void applyAtPositions(ComplexMatrix operator, int startQubit);

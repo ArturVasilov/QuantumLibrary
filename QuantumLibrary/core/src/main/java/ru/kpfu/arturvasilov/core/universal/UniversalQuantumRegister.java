@@ -37,6 +37,12 @@ public class UniversalQuantumRegister implements QuantumRegister {
     }
 
     @Override
+    public long getId() {
+        //id for universal quantum register means nothing
+        return 0;
+    }
+
+    @Override
     public void apply(ComplexMatrix operator) {
         if (operator.matrix.length != register.size()) {
             throw new IllegalArgumentException("Operator size is incorrect");
