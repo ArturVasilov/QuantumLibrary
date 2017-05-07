@@ -1,7 +1,6 @@
-import integration.Quantum;
+import integration.CommandsBuilder;
 import ru.kpfu.arturvasilov.core.Complex;
 import ru.kpfu.arturvasilov.core.ComplexMatrix;
-import ru.kpfu.arturvasilov.core.Operators;
 
 /**
  * @author Artur Vasilov
@@ -34,7 +33,7 @@ public class QuantumDemo {
 
         matrix = matrix.multiply(new Complex(0.5, 0));
 
-        Quantum.runUnitaryCalculation(matrix, addresses);
+        System.out.println(new CommandsBuilder(addresses).commandsForOperator(matrix));
     }
 
 }

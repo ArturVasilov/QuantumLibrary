@@ -26,7 +26,7 @@ public class OperationIndices {
 
     public int[] calculateIndexesOfQubits() {
         String[] greyCode = createGreyCode();
-        int[] result = new int[greyCode.length - 1]; // например, если 4 строки, то 3 преобразовния
+        int[] result = new int[greyCode.length - 1];
         Arrays.fill(result, 0);
         for (int i = 0; i < greyCode.length - 1; i++) {
             for (int j = 0; j < greyCode[i].length(); j++) {
