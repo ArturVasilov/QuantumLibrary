@@ -23,8 +23,7 @@ public class CommandsBuilder {
     }
 
     public String commandsForOperator(ComplexMatrix operator) {
-
-
+        commandsFromClientDTO.setQubitCount(qubits.length);
         commandsFromClientDTO.setLogicalAddressingCommandFromClientList(commandsFromClient);
         return new Gson().toJson(commandsFromClientDTO);
     }

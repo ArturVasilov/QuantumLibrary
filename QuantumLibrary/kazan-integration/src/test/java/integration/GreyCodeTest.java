@@ -14,7 +14,7 @@ public class GreyCodeTest {
 
     @Test
     public void generateGreyCodeEqualLength() throws Exception {
-        String[] greyCode = new GreyCode(5, "01001", "10101").createGreyCode();
+        String[] greyCode = new OperationIndices(5, 9, 21).createGreyCode();
         String[] expected = new String[]{
                 "01001",
                 "01101",
@@ -26,7 +26,7 @@ public class GreyCodeTest {
 
     @Test
     public void generateGreyCodeDifferentLength() throws Exception {
-        String[] greyCode = new GreyCode(6, "111", "11010").createGreyCode();
+        String[] greyCode = new OperationIndices(6, 7, 26).createGreyCode();
         String[] expected = new String[]{
                 "000111",
                 "000110",

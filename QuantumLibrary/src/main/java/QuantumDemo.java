@@ -9,7 +9,7 @@ import ru.kpfu.arturvasilov.core.Operators;
 public class QuantumDemo {
 
     public static void main(String[] args) {
-        int[] addresses = new int[]{0};
+        int[] addresses = new int[]{0, 1, 2};
 
         ComplexMatrix matrix = new ComplexMatrix(4);
         matrix.setValue(0, 0, new Complex(1, 0));
@@ -34,7 +34,7 @@ public class QuantumDemo {
 
         matrix = matrix.multiply(new Complex(0.5, 0));
 
-        Quantum.runUnitaryCalculation(Operators.hadamar(), addresses);
+        Quantum.runUnitaryCalculation(matrix, addresses);
     }
 
 }
