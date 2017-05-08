@@ -1,9 +1,7 @@
 package integration;
 
-import com.google.gson.Gson;
 import memorymanager.controller.execution.commands.CommandTypes;
 import memorymanager.service_for_controller.addresses.LogicalQubitAddressFromClient;
-import memorymanager.service_for_controller.commands.CommandsFromClientDTO;
 import memorymanager.service_for_controller.commands.LogicalAddressingCommandFromClient;
 import ru.kpfu.arturvasilov.core.Complex;
 import ru.kpfu.arturvasilov.core.ComplexMatrix;
@@ -18,15 +16,12 @@ public class CommandsBuilder {
 
     private final int[] qubits;
 
-    private final CommandsFromClientDTO commandsFromClientDTO = new CommandsFromClientDTO();
-    private final List<LogicalAddressingCommandFromClient> commandsFromClient = new ArrayList<>();
-
     public CommandsBuilder(int[] qubits) {
         this.qubits = qubits;
     }
 
-    public String commandsForOperator(ComplexMatrix operator) {
-        commandsFromClientDTO.setQubitCount(qubits.length);
+    public List<LogicalAddressingCommandFromClient> commandsForOperator(ComplexMatrix operator) {
+        List<LogicalAddressingCommandFromClient> commands = new ArrayList<>();
 
         ComplexMatrix result = operator.copy();
         int size = operator.matrix.length;
@@ -57,7 +52,7 @@ public class CommandsBuilder {
                 tildaMatrix.setValue(0, 1, currentMatrix.getValue(firstIndex, secondIndex));
                 tildaMatrix.setValue(1, 0, currentMatrix.getValue(secondIndex, firstIndex));
                 tildaMatrix.setValue(1, 1, currentMatrix.getValue(secondIndex, secondIndex));
-                unusualCNOTAndTilda(indexes, tildaMatrix);
+                transformCNOT(indexes, tildaMatrix, commands);
             }
         }
 
@@ -73,20 +68,19 @@ public class CommandsBuilder {
 
         int[] indexes = new OperationIndices(qubits.length, firstIndex, secondIndex).calculateIndexesOfQubits();
 
-        unusualCNOTAndTilda(indexes, currentMatrix);
+        transformCNOT(indexes, currentMatrix, commands);
 
-        commandsFromClientDTO.setLogicalAddressingCommandFromClientList(commandsFromClient);
-        return new Gson().toJson(commandsFromClientDTO);
+        return commands;
     }
 
-    private void unusualCNOTAndTilda(int[] indexes, ComplexMatrix resTilda) {
+    private void transformCNOT(int[] indexes, ComplexMatrix currentTildaMatrix,
+                               List<LogicalAddressingCommandFromClient> commands) {
         //addressOfQubit - адрес кубита, к которому применяется контрол нот
         //countOfQubit нужен для того, чтобы знать, сколько букв C
         //кол-во C = countOfQubit-1
 
         int CountOfQubit = qubits.length;
         if (CountOfQubit > 2) {
-
             //начало записи в массив
             int helpQubitIndex; //indexes of helper |0> qubits
             String[][] GIGANT = new String[indexes.length][CountOfQubit - 2];
@@ -98,9 +92,9 @@ public class CommandsBuilder {
 
                 int counter = 0;
                 while (counter < 2) {
-                    if (qubits[qubitsIndex] == indexes[i])
+                    if (qubits[qubitsIndex] == indexes[i]) {
                         qubitsIndex++;
-                    else {
+                    } else {
                         if (counter == 0) {
                             s[0] = "" + qubits[qubitsIndex];
                         } else {
@@ -114,7 +108,6 @@ public class CommandsBuilder {
                 helpQubitIndex++;
 
                 int count = 1;
-                //заполняем s[i]
                 while (count < CountOfQubit - 1 - 1) {
                     int secondIndex = s[count - 1].indexOf(">");
                     //helpQubitIndex = CountOfQubit+count+1;
@@ -154,7 +147,7 @@ public class CommandsBuilder {
                     qubit1 = Integer.parseInt(str.substring(0, ind1));
                     qubit2 = Integer.parseInt(str.substring(ind1 + 1, ind2));
                     qubit3 = Integer.parseInt(str.substring(ind2 + 1));
-                    applyCCNOT(qubit1, qubit2, qubit3);
+                    transformCCNOT(qubit1, qubit2, qubit3, commands);
                 }
                 //возвращаем значение нулевому вспомогательному кубиту
                 //последнее значение не смотрим, потому что там нет
@@ -167,7 +160,7 @@ public class CommandsBuilder {
                     qubit2 = Integer.parseInt(str.substring(ind1 + 1, ind2));
                     qubit3 = Integer.parseInt(str.substring(ind2 + 1));
                     if (qubit3 > CountOfQubit) {
-                        applyCCNOT(qubit1, qubit2, qubit3);
+                        transformCCNOT(qubit1, qubit2, qubit3, commands);
                     }
                 }
             }
@@ -181,19 +174,17 @@ public class CommandsBuilder {
                 qubit1 = Integer.parseInt(str.substring(0, ind1));
                 qubit2 = Integer.parseInt(str.substring(ind1 + 1, ind2));
                 qubit3 = Integer.parseInt(str.substring(ind2 + 1));
-                applyCCNOT(qubit1, qubit2, qubit3);
+                transformCCNOT(qubit1, qubit2, qubit3, commands);
             }
             str = GIGANT[GIGANT.length - 1][GIGANT[GIGANT.length - 1].length - 1];
             ind1 = str.indexOf("&");
             ind2 = str.indexOf(">");
             qubit1 = Integer.parseInt(str.substring(0, ind1));
             qubit2 = Integer.parseInt(str.substring(ind1 + 1, ind2));
-            qubit3 = Integer.parseInt(str.substring(ind2 + 1));
 
-            System.out.println("Tilda " + qubit1 + " " + qubit2 + " " + qubit3);
-            applyCCNOT(qubit1, qubit2, Math.max(qubit1, qubit2) + 1);
-            decompositionTildaOperator(Math.max(qubit1, qubit2) + 1, qubit2, resTilda);
-            applyCCNOT(qubit1, qubit2, Math.max(qubit1, qubit2) + 1);
+            transformCCNOT(qubit1, qubit2, Math.max(qubit1, qubit2) + 1, commands);
+            transformTilda(Math.max(qubit1, qubit2) + 1, qubit2, currentTildaMatrix, commands);
+            transformCCNOT(qubit1, qubit2, Math.max(qubit1, qubit2) + 1, commands);
 
             for (int j = GIGANT[GIGANT.length - 1].length - 2; j > -1; j--) {
                 str = GIGANT[GIGANT.length - 1][j];
@@ -204,7 +195,7 @@ public class CommandsBuilder {
                 qubit2 = Integer.parseInt(str.substring(ind1 + 1, ind2));
                 qubit3 = Integer.parseInt(str.substring(ind2 + 1));
                 if (qubit3 > CountOfQubit) {
-                    applyCCNOT(qubit1, qubit2, qubit3);
+                    transformCCNOT(qubit1, qubit2, qubit3, commands);
                 }
             }
 
@@ -220,7 +211,7 @@ public class CommandsBuilder {
                     qubit1 = Integer.parseInt(str.substring(0, ind1));
                     qubit2 = Integer.parseInt(str.substring(ind1 + 1, ind2));
                     qubit3 = Integer.parseInt(str.substring(ind2 + 1));
-                    applyCCNOT(qubit1, qubit2, qubit3);
+                    transformCCNOT(qubit1, qubit2, qubit3, commands);
                 }
 
                 for (int j = GIGANT[i].length - 2; j > -1; j--) {
@@ -232,7 +223,7 @@ public class CommandsBuilder {
                     qubit2 = Integer.parseInt(str.substring(ind1 + 1, ind2));
                     qubit3 = Integer.parseInt(str.substring(ind2 + 1));
                     if (qubit3 > CountOfQubit) {
-                        applyCCNOT(qubit1, qubit2, qubit3);
+                        transformCCNOT(qubit1, qubit2, qubit3, commands);
                     }
                 }
 
@@ -240,22 +231,22 @@ public class CommandsBuilder {
         } else {
             for (int i = 0; i < indexes.length - 1; i++) {
                 if (indexes[i] == 1) {
-                    applyCNOT(2, 1);
+                    commands.addAll(operatorCNOT(2, 1));
                 } else {
-                    applyCNOT(1, 2);
+                    commands.addAll(operatorCNOT(1, 2));
                 }
             }
             if (indexes[indexes.length - 1] == 1) {
-                decompositionTildaOperator(2, 1, resTilda);
+                transformTilda(2, 1, currentTildaMatrix, commands);
             } else {
-                decompositionTildaOperator(1, 2, resTilda);
+                transformTilda(1, 2, currentTildaMatrix, commands);
             }
 
             for (int i = indexes.length - 1; i >= 0; i--) {
                 if (indexes[i] == 1) {
-                    applyCNOT(2, 1);
+                    commands.addAll(operatorCNOT(2, 1));
                 } else {
-                    applyCNOT(1, 2);
+                    commands.addAll(operatorCNOT(1, 2));
                 }
             }
         }
@@ -263,25 +254,27 @@ public class CommandsBuilder {
 
     // разложение тильда матрицы на повороты
     //после разложения получим матрицы A,B,C и контролируемый оператор переделаем в неконтролируемый
-    private void decompositionTildaOperator(int controlQubitNumber, int toQubitNumber, ComplexMatrix resTilda) {
-        Complex det1 = resTilda.getValue(0, 0).multiply(resTilda.getValue(1, 1));
-        Complex det2 = resTilda.getValue(0, 1).multiply(resTilda.getValue(1, 0));
+    private void transformTilda(int controlQubitNumber, int toQubitNumber, ComplexMatrix tildaMatrix,
+                                List<LogicalAddressingCommandFromClient> commands) {
+        Complex det1 = tildaMatrix.getValue(0, 0).multiply(tildaMatrix.getValue(1, 1));
+        Complex det2 = tildaMatrix.getValue(0, 1).multiply(tildaMatrix.getValue(1, 0));
         Complex det = det1.sub(det2); // определитель матрицы
 
         double gamma = Math.acos(det.getReal()) / 2;
 
-        Complex A = resTilda.getValue(0, 0).multiply(new Complex(Math.cos(gamma), Math.sin(gamma)));
-        Complex B = resTilda.getValue(0, 1).multiply(new Complex(Math.cos(gamma), Math.sin(gamma)));
+        Complex A = tildaMatrix.getValue(0, 0).multiply(new Complex(Math.cos(gamma), Math.sin(gamma)));
+        Complex B = tildaMatrix.getValue(0, 1).multiply(new Complex(Math.cos(gamma), Math.sin(gamma)));
 
         double Teta = 2 * Math.acos(A.getReal());
 
         if (Math.abs(Teta) > 0.0001) {
+            //TODO
             double nx = (-1) * B.getImaginary() / Math.sin(Teta / 2);//координата вектора n по x
             double ny = (-1) * B.getReal() / Math.sin(Teta / 2);
             double nz = (-1) * A.getImaginary() / Math.sin(Teta / 2);
 
             double alpha = 0, beta = 0, lambda = 0;
-            //альфа, бета и лямбда нужны, чтобы разложить resTilda на A,B,C
+            //альфа, бета и лямбда нужны, чтобы разложить tildaMatrix на A,B,C
             if (nx != 0 && Math.cos(Teta) != 0) {
                 lambda = (Math.atan(ny / nx) + Math.atan(nz * Math.sin(Teta) / Math.cos(Teta))) / 2;
                 alpha = ((-1) * Math.atan(ny / nx) + Math.atan(nz * Math.sin(Teta) / Math.cos(Teta))) / 2;
@@ -290,71 +283,111 @@ public class CommandsBuilder {
                 }
             }
 
-            System.out.println(alpha + " " + beta + " " + lambda);
-            applyCNOT(controlQubitNumber, toQubitNumber);
+            commands.addAll(operatorCNOT(controlQubitNumber, toQubitNumber));
         }
     }
 
-    //преобразование CCNOT в CNOT
-    private void applyCCNOT(int qubit1, int qubit2, int qubit3) {
+    private void transformCCNOT(int qubit1, int qubit2, int qubit3,
+                                List<LogicalAddressingCommandFromClient> commands) {
         //реализация огроменной схемы из H, T, T*, S
-        applyHadamar(qubit3);
-        applyCNOT(qubit2, qubit3);
-        applyTHermitian(qubit3);
-        applyCNOT(qubit1, qubit3);
-        applyT(qubit3);
-        applyCNOT(qubit2, qubit3);
-        applyTHermitian(qubit3);
-        applyCNOT(qubit1, qubit3);
-        applyT(qubit3);
-        applyHadamar(qubit3);
-        applyTHermitian(qubit2);
-        applyCNOT(qubit1, qubit2);
-        applyTHermitian(qubit2);
-        applyCNOT(qubit1, qubit2);
-        applyS(qubit2);
-        applyT(qubit1);
-        System.out.println("----------------------------------------------------------------------------------");
+
+        commands.addAll(operatorHadamar(qubit3));
+        commands.addAll(operatorCNOT(qubit2, qubit3));
+        commands.addAll(operatorTHermitian(qubit3));
+        commands.addAll(operatorCNOT(qubit1, qubit3));
+        commands.addAll(operatorT(qubit3));
+        commands.addAll(operatorCNOT(qubit2, qubit3));
+        commands.addAll(operatorTHermitian(qubit3));
+        commands.addAll(operatorCNOT(qubit1, qubit3));
+        commands.addAll(operatorT(qubit3));
+        commands.addAll(operatorHadamar(qubit3));
+        commands.addAll(operatorTHermitian(qubit2));
+        commands.addAll(operatorCNOT(qubit1, qubit2));
+        commands.addAll(operatorTHermitian(qubit2));
+        commands.addAll(operatorCNOT(qubit1, qubit2));
+        commands.addAll(operatorS(qubit2));
+        commands.addAll(operatorT(qubit1));
     }
 
-    public void applyHadamar(int qubit) {
-        //System.out.println("Hadamar");
-        commandsFromClient.add(new LogicalAddressingCommandFromClient(CommandTypes.PHASE, Math.PI / 2, new LogicalQubitAddressFromClient(qubit)));
-        commandsFromClient.add(new LogicalAddressingCommandFromClient(
-                CommandTypes.QET, Math.PI, new LogicalQubitAddressFromClient(qubit)));
-        commandsFromClient.add(new LogicalAddressingCommandFromClient(
-                CommandTypes.PHASE, Math.PI / 2, new LogicalQubitAddressFromClient(qubit)));
-        System.out.println("PHASE(PI/2) " + qubit);
-        System.out.println("QET(PI/2) " + qubit);
-        System.out.println("PHASE(PI/2) " + qubit);
+    public List<LogicalAddressingCommandFromClient> operatorHadamar(int qubit) {
+        //System.out.println("PHASE(PI/2) " + qubit);
+        //System.out.println("QET(PI/2) " + qubit);
+        //System.out.println("PHASE(PI/2) " + qubit);
 
+        List<LogicalAddressingCommandFromClient> commands = new ArrayList<>();
+        commands.add(new LogicalAddressingCommandFromClient(
+                CommandTypes.PHASE,
+                Math.PI / 2,
+                new LogicalQubitAddressFromClient(qubit))
+        );
+
+        commands.add(new LogicalAddressingCommandFromClient(
+                CommandTypes.QET,
+                Math.PI,
+                new LogicalQubitAddressFromClient(qubit))
+        );
+
+        commands.add(new LogicalAddressingCommandFromClient(
+                CommandTypes.PHASE,
+                Math.PI / 2,
+                new LogicalQubitAddressFromClient(qubit))
+        );
+        return commands;
     }
 
-    public void applyCNOT(int qubit1, int qubit2) {
-        commandsFromClient.add(new LogicalAddressingCommandFromClient(
-                CommandTypes.CQET, Math.PI, new LogicalQubitAddressFromClient(qubit1), new LogicalQubitAddressFromClient(qubit2)));
-        commandsFromClient.add(new LogicalAddressingCommandFromClient(
-                CommandTypes.PHASE, Math.PI / 4, new LogicalQubitAddressFromClient(qubit1)));
-        System.out.println("CQET " + qubit1 + " " + qubit2);
-        System.out.println("PHASE(PI/2) " + qubit1);
+    public List<LogicalAddressingCommandFromClient> operatorCNOT(int qubit1, int qubit2) {
+        //System.out.println("CQET(PI)" + qubit1 + " " + qubit2);
+        //System.out.println("PHASE(PI/2) " + qubit1);
+
+        List<LogicalAddressingCommandFromClient> commands = new ArrayList<>();
+        commands.add(new LogicalAddressingCommandFromClient(
+                CommandTypes.CQET,
+                Math.PI,
+                new LogicalQubitAddressFromClient(qubit1),
+                new LogicalQubitAddressFromClient(qubit2))
+        );
+        commands.add(new LogicalAddressingCommandFromClient(
+                CommandTypes.PHASE,
+                Math.PI / 4,
+                new LogicalQubitAddressFromClient(qubit1))
+        );
+        return commands;
     }
 
-    public void applyT(int qubit) {
-        commandsFromClient.add(new LogicalAddressingCommandFromClient(
-                CommandTypes.PHASE, Math.PI / 2, new LogicalQubitAddressFromClient(qubit)));
-        System.out.println("PHASE(PI/4) " + qubit);
+    public List<LogicalAddressingCommandFromClient> operatorT(int qubit) {
+        //System.out.println("PHASE(PI/4) " + qubit);
+
+        List<LogicalAddressingCommandFromClient> commands = new ArrayList<>();
+        commands.add(new LogicalAddressingCommandFromClient(
+                CommandTypes.PHASE,
+                Math.PI / 2,
+                new LogicalQubitAddressFromClient(qubit))
+        );
+        return commands;
     }
 
-    public void applyTHermitian(int qubit) {
-        commandsFromClient.add(new LogicalAddressingCommandFromClient(
-                CommandTypes.PHASE, -Math.PI / 2, new LogicalQubitAddressFromClient(qubit)));
-        System.out.println("PHASE(-PI/2) " + qubit);
+    public List<LogicalAddressingCommandFromClient> operatorTHermitian(int qubit) {
+        //System.out.println("PHASE(-PI/2) " + qubit);
+
+        List<LogicalAddressingCommandFromClient> commands = new ArrayList<>();
+        commands.add(new LogicalAddressingCommandFromClient(
+                CommandTypes.PHASE,
+                -Math.PI / 2,
+                new LogicalQubitAddressFromClient(qubit))
+        );
+        return commands;
     }
 
-    public void applyS(int qubit) {
-        commandsFromClient.add(new LogicalAddressingCommandFromClient(
-                CommandTypes.PHASE, Math.PI / 2, new LogicalQubitAddressFromClient(qubit)));
-        System.out.println("PHASE(PI/2) " + qubit);
+    public List<LogicalAddressingCommandFromClient> operatorS(int qubit) {
+        //System.out.println("PHASE(PI/2) " + qubit);
+
+        List<LogicalAddressingCommandFromClient> commands = new ArrayList<>();
+        commands.add(new LogicalAddressingCommandFromClient(
+                CommandTypes.PHASE,
+                Math.PI / 2,
+                new LogicalQubitAddressFromClient(qubit))
+        );
+        return commands;
     }
 
 

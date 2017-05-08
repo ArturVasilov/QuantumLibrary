@@ -50,4 +50,11 @@ public class LogicalAddressingCommandFromClient {
         mCommandParam = commandParam;
         mQubit_1 = qubit_1;
     }
+
+    @Override
+    public String toString() {
+        String operands = String.valueOf(mQubit_1.getLogicalQubitAddress())
+                + (mQubit_2 == null ? "" : "," + mQubit_2.getLogicalQubitAddress());
+        return String.format("Command: %s(%d), operands={%s}",mCommandType, (int) Math.toDegrees(mCommandParam), operands);
+    }
 }

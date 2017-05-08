@@ -1,6 +1,9 @@
 import integration.CommandsBuilder;
+import memorymanager.service_for_controller.commands.LogicalAddressingCommandFromClient;
 import ru.kpfu.arturvasilov.core.Complex;
 import ru.kpfu.arturvasilov.core.ComplexMatrix;
+
+import java.util.List;
 
 /**
  * @author Artur Vasilov
@@ -33,7 +36,11 @@ public class QuantumDemo {
 
         matrix = matrix.multiply(new Complex(0.5, 0));
 
-        System.out.println(new CommandsBuilder(addresses).commandsForOperator(matrix));
+        //System.out.println(new CommandsBuilder(addresses).commandsForOperator(matrix));
+        List<LogicalAddressingCommandFromClient> commandsList = new CommandsBuilder(addresses).commandsForOperator(matrix);
+        for (LogicalAddressingCommandFromClient command : commandsList) {
+            System.out.println(command);
+        }
     }
 
 }

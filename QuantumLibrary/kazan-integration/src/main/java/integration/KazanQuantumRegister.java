@@ -1,8 +1,13 @@
 package integration;
 
+import com.google.gson.Gson;
 import memorymanager.service_for_controller.ServiceManager;
+import memorymanager.service_for_controller.commands.CommandsFromClientDTO;
+import memorymanager.service_for_controller.commands.LogicalAddressingCommandFromClient;
 import ru.kpfu.arturvasilov.core.ComplexMatrix;
 import ru.kpfu.arturvasilov.core.computer.QuantumRegister;
+
+import java.util.List;
 
 /**
  * @author Artur Vasilov
@@ -24,6 +29,10 @@ public class KazanQuantumRegister implements QuantumRegister {
         serviceManager = ServiceManager.getServiceManager();
     }
 
+    public static boolean[] nativeMeasure(long registerId) {
+        return new boolean[0];
+    }
+
     @Override
     public long getId() {
         return id;
@@ -35,8 +44,20 @@ public class KazanQuantumRegister implements QuantumRegister {
             throw new IllegalArgumentException("Only unitary operators could be applied");
         }
 
-        String commands = new CommandsBuilder(qubits).commandsForOperator(operator);
+        List<LogicalAddressingCommandFromClient> commandsList = new CommandsBuilder(qubits).commandsForOperator(operator);
+        printCommands(commandsList);
+
+        CommandsFromClientDTO commandsFromClient = new CommandsFromClientDTO();
+        commandsFromClient.setLogicalAddressingCommandFromClientList(commandsList);
+        commandsFromClient.setQubitCount(qubitsCount);
+        String commands = new Gson().toJson(commandsList);
         serviceManager.putCommandsToExecutionQueue("ARTUR", commands);
+    }
+
+    private void printCommands(List<LogicalAddressingCommandFromClient> commands) {
+        for (LogicalAddressingCommandFromClient command : commands) {
+            System.out.println(command);
+        }
     }
 
     @Override
@@ -72,6 +93,6 @@ public class KazanQuantumRegister implements QuantumRegister {
 
     @Override
     public boolean[] measure() {
-        return new boolean[0];
+        return nativeMeasure(id);
     }
 }
