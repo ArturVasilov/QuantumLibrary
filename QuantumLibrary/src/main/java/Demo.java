@@ -7,6 +7,8 @@ import ru.kpfu.arturvasilov.core.computer.QuantumComputer;
 import ru.kpfu.arturvasilov.core.computer.QuantumRegister;
 import ru.kpfu.arturvasilov.core.universal.UniversalMemoryManager;
 
+import java.util.Arrays;
+
 /**
  * @author Artur Vasilov
  */
@@ -34,6 +36,7 @@ public class Demo {
         int number = BooleanFunction.arrayToInt(result);
         System.out.println("Random number = " + number);*/
 
+
         BooleanFunction xorFunction = new BooleanFunction(2) {
             @Override
             protected boolean actualCall(boolean[] arguments) {
@@ -50,6 +53,7 @@ public class Demo {
         boolean isConstant = measureResult.substring(0, measureResult.length() - 1).equals("00");
         System.out.println("x + y is balanced? " + !isConstant);
 
+        QuantumComputer.destroyRegister(register.getId());
         //System.out.println(QuantumCryptography.singleQubitHash(4).measure()[0]);
 
         /*ComplexMatrix u = ComplexMatrix.zeros(4);

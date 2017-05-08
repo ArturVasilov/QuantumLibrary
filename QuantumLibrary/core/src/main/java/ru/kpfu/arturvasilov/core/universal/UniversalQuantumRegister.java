@@ -37,6 +37,12 @@ public class UniversalQuantumRegister implements QuantumRegister {
     }
 
     @Override
+    public long getId() {
+        //id for universal quantum register means nothing
+        return 0;
+    }
+
+    @Override
     public void apply(ComplexMatrix operator) {
         if (operator.matrix.length != register.size()) {
             throw new IllegalArgumentException("Operator size is incorrect");
@@ -87,8 +93,8 @@ public class UniversalQuantumRegister implements QuantumRegister {
         for (int i = 0; i < register.size(); i++) {
             generateNumbers[i] = i;
             Complex complex = register.get(i);
-            probabilities[i] = complex.doubleA() * complex.doubleA()
-                    + complex.doubleB() * complex.doubleB();
+            probabilities[i] = complex.getReal() * complex.getReal()
+                    + complex.getImaginary() * complex.getImaginary();
         }
 
         EnumeratedIntegerDistribution distribution =
