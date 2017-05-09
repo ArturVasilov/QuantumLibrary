@@ -48,7 +48,7 @@ public class UniversalQuantumRegister implements QuantumRegister {
             throw new IllegalArgumentException("Operator size is incorrect");
         }
         if (!operator.isUnitary()) {
-            throw new IllegalArgumentException("Only unitary operators could be applied");
+            //throw new IllegalArgumentException("Only unitary operators could be applied");
         }
 
         register = register.multiplyOnMatrix(operator);
