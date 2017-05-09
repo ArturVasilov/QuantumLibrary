@@ -36,6 +36,13 @@ public class KazanMemoryManager implements QuantumMemoryManager {
         nativeInit(registerId, qubitsCount);
         QuantumRegister quantumRegister = new KazanQuantumRegister(registerId, qubitsCount);
 
+        changeRegister(initialState, quantumRegister);
+
+        createdRegisters.put(registerId, quantumRegister);
+        return quantumRegister;
+    }
+
+    private void changeRegister(String initialState, QuantumRegister quantumRegister) {
         ComplexMatrix initialStateMatrix = ComplexMatrix.identity(1);
         for (int i = 0; i < initialState.length(); i++) {
             if (initialState.charAt(i) == '0') {
@@ -45,9 +52,6 @@ public class KazanMemoryManager implements QuantumMemoryManager {
             }
         }
         quantumRegister.apply(initialStateMatrix);
-
-        createdRegisters.put(registerId, quantumRegister);
-        return quantumRegister;
     }
 
     @Override

@@ -40,7 +40,7 @@ public class CommandsBuilder {
                 currentMatrix.setValue(firstIndex, firstIndex, result.getValue(firstIndex, firstIndex).conjugate().multiply(multiplier));
                 currentMatrix.setValue(firstIndex, secondIndex, result.getValue(secondIndex, firstIndex).conjugate().multiply(multiplier));
                 currentMatrix.setValue(secondIndex, firstIndex, result.getValue(secondIndex, firstIndex).conjugate().multiply(multiplier));
-                currentMatrix.setValue(secondIndex, secondIndex, result.getValue(firstIndex, firstIndex).conjugate().multiply(multiplier));
+                currentMatrix.setValue(secondIndex, secondIndex, result.getValue(firstIndex, firstIndex).multiply(new Complex(-1, 0)).multiply(multiplier));
 
                 result = currentMatrix.multiply(result);
                 currentMatrix = currentMatrix.transpose();

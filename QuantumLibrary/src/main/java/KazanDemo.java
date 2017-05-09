@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author Artur Vasilov
  */
-public class QuantumDemo {
+public class KazanDemo {
 
     public static void main(String[] args) {
         int[] addresses = new int[]{0, 1, 2};

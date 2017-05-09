@@ -14,6 +14,8 @@ import java.util.List;
  */
 public class KazanQuantumRegister implements QuantumRegister {
 
+    private static final String USER_ID = "ARTUR_VASILOV";
+
     private final long id;
 
     private final ServiceManager serviceManager;
@@ -51,7 +53,7 @@ public class KazanQuantumRegister implements QuantumRegister {
         commandsFromClient.setLogicalAddressingCommandFromClientList(commandsList);
         commandsFromClient.setQubitCount(qubitsCount);
         String commands = new Gson().toJson(commandsList);
-        serviceManager.putCommandsToExecutionQueue("ARTUR", commands);
+        serviceManager.putCommandsToExecutionQueue(USER_ID, commands);
     }
 
     private void printCommands(List<LogicalAddressingCommandFromClient> commands) {
