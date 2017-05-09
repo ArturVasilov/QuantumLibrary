@@ -1,6 +1,8 @@
 <component name="libraryTable">
   <library name="Maven: ru.arturvasilov.kpfu:quantumlibrary-kazan-integration:0.5">
-    <CLASSES />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/ru/arturvasilov/kpfu/quantumlibrary-kazan-integration/0.5/quantumlibrary-kazan-integration-0.5.jar!/" />
+    </CLASSES>
     <JAVADOC>
       <root url="jar://$MAVEN_REPOSITORY$/ru/arturvasilov/kpfu/quantumlibrary-kazan-integration/0.5/quantumlibrary-kazan-integration-0.5-javadoc.jar!/" />
     </JAVADOC>

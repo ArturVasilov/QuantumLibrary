@@ -22,7 +22,6 @@ public class Demo {
                 Demo.onInitializationFailed(error);
             }
         });
-
     }
 
     private static void onInitializationSucceed() {
