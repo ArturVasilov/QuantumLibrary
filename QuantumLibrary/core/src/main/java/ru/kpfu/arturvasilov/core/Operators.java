@@ -44,6 +44,28 @@ public final class Operators {
         return ComplexMatrix.fromRealArray(array);
     }
 
+    public static ComplexMatrix rotationX(double thetaInRadians) {
+        double cos = Math.cos(thetaInRadians / 2);
+        double sin = Math.sin(thetaInRadians / 2);
+        ComplexMatrix result = ComplexMatrix.zeros(2);
+        result.setValue(0, 0, new Complex(cos, 0));
+        result.setValue(0, 1, new Complex(0, -sin));
+        result.setValue(1, 0, new Complex(0, -sin));
+        result.setValue(1, 1, new Complex(cos, 0));
+        return result;
+    }
+
+    public static ComplexMatrix rotationY(double thetaInRadians) {
+        double cos = Math.cos(thetaInRadians / 2);
+        double sin = Math.sin(thetaInRadians / 2);
+        ComplexMatrix result = ComplexMatrix.zeros(2);
+        result.setValue(0, 0, new Complex(cos, 0));
+        result.setValue(0, 1, new Complex(-sin, 0));
+        result.setValue(1, 0, new Complex(sin, 0));
+        result.setValue(1, 1, new Complex(cos, 0));
+        return result;
+    }
+
     public static ComplexMatrix swap() {
         ComplexMatrix matrix = ComplexMatrix.zeros(4);
         matrix.setValue(0, 0, new Complex(1, 0));

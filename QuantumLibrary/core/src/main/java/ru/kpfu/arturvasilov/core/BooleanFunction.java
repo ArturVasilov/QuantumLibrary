@@ -1,5 +1,8 @@
 package ru.kpfu.arturvasilov.core;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Artur Vasilov
  */
@@ -77,5 +80,19 @@ public abstract class BooleanFunction {
             currentPow *= 2;
         }
         return value;
+    }
+
+    public static boolean[] binaryRepresentation(int number) {
+        List<Boolean> result = new ArrayList<>();
+        while (number > 0) {
+            result.add(0, number % 2 == 1);
+            number /= 2;
+        }
+
+        boolean[] binary = new boolean[result.size()];
+        for (int i = 0; i < result.size(); i++) {
+            binary[i] = result.get(i);
+        }
+        return binary;
     }
 }
