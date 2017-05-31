@@ -8,7 +8,11 @@ import ru.kpfu.arturvasilov.core.computer.QuantumRegister;
 /**
  * @author Artur Vasilov
  */
-public class SingleQubitQuantumHashFunction implements QuantumHashFunction {
+public class SingleQubitQuantumHashFunction extends BaseQuantumHashFunction {
+
+    public SingleQubitQuantumHashFunction(QuantumHashesEqualityTestFunction equalityTestFunction) {
+        super(equalityTestFunction);
+    }
 
     @Override
     public QuantumHashResult hash(int number) {
@@ -17,10 +21,5 @@ public class SingleQubitQuantumHashFunction implements QuantumHashFunction {
         QuantumRegister register = QuantumComputer.createNewRegister("0");
         register.apply(Operators.rotationY(thetaInRadians));
         return new QuantumHashResult(register);
-    }
-
-    @Override
-    public boolean compareWithHash(QuantumHashResult expectedHash, int number) {
-        return false;
     }
 }

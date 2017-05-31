@@ -94,6 +94,12 @@ public class KazanQuantumRegister implements QuantumRegister {
     }
 
     @Override
+    public QuantumRegister concatWith(QuantumRegister register) {
+        //TODO : call fake native method
+        return null;
+    }
+
+    @Override
     public boolean[] measure() {
         return nativeMeasure(id);
     }

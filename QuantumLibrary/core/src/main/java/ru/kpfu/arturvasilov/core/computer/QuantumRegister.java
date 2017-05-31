@@ -13,5 +13,7 @@ public interface QuantumRegister {
 
     void applyAtPositions(ComplexMatrix operator, int startQubit);
 
+    QuantumRegister concatWith(QuantumRegister register);
+
     boolean[] measure();
 }

@@ -85,6 +85,12 @@ public class UniversalQuantumRegister implements QuantumRegister {
     }
 
     @Override
+    public QuantumRegister concatWith(QuantumRegister register) {
+        //TODO : concat registers
+        return null;
+    }
+
+    @Override
     public boolean[] measure() {
         boolean[] result = new boolean[qubitsCount];
 
