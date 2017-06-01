@@ -1,7 +1,7 @@
 import hashing.QuantumHashFunction;
 import hashing.QuantumHashResult;
-import hashing.SingleQubitQuantumHashFunction;
-import hashing.SwapTestEqualityFunction;
+import hashing.multiple.SingleQubitRegistersQuantumHashFunction;
+import hashing.tests.SwapTestEqualityFunction;
 import qkd.QuantumKeyUser;
 import ru.kpfu.arturvasilov.core.computer.InitializationCallback;
 import ru.kpfu.arturvasilov.core.computer.QuantumComputer;
@@ -46,12 +46,12 @@ public class QuantumCryptographyDemo {
     private static void quantumHashingDemo() {
         System.out.println("Demo for quantum hashing:");
 
-        int value = 5;
-        int errorHash = 10;
+        int value = 20;
+        int errorHash = 30;
 
         System.out.println("Real value = " + value);
 
-        QuantumHashFunction hashFunction = new SingleQubitQuantumHashFunction(new SwapTestEqualityFunction());
+        QuantumHashFunction hashFunction = new SingleQubitRegistersQuantumHashFunction(new SwapTestEqualityFunction());
         QuantumHashResult hashResult = hashFunction.hash(value);
 
         System.out.println("Testing for incorrect value (e.g. " + errorHash + "):");

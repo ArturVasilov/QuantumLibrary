@@ -1,5 +1,7 @@
 package hashing;
 
+import hashing.tests.QuantumHashesEqualityTestFunction;
+
 /**
  * @author Artur Vasilov
  */

@@ -1,4 +1,6 @@
-package hashing;
+package hashing.tests;
+
+import hashing.QuantumHashResult;
 
 /**
  * @author Artur Vasilov

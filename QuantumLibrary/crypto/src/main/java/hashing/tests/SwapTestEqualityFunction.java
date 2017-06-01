@@ -1,5 +1,6 @@
-package hashing;
+package hashing.tests;
 
+import hashing.QuantumHashResult;
 import ru.kpfu.arturvasilov.core.Operators;
 import ru.kpfu.arturvasilov.core.computer.QuantumComputer;
 import ru.kpfu.arturvasilov.core.computer.QuantumRegister;

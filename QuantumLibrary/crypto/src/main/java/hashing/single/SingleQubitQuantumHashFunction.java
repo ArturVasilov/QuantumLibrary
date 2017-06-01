@@ -1,5 +1,8 @@
-package hashing;
+package hashing.single;
 
+import hashing.BaseQuantumHashFunction;
+import hashing.QuantumHashResult;
+import hashing.tests.QuantumHashesEqualityTestFunction;
 import ru.kpfu.arturvasilov.core.BooleanFunction;
 import ru.kpfu.arturvasilov.core.Operators;
 import ru.kpfu.arturvasilov.core.computer.QuantumComputer;
