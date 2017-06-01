@@ -8,9 +8,11 @@ import java.util.List;
 /**
  * @author Artur Vasilov
  */
-public class KazanDemo {
+public class KazanQuantumComputerIntegrationDemo {
 
     public static void main(String[] args) {
+        System.out.println("Demo for Kazan integration");
+
         int[] addresses = new int[]{0, 1, 2};
 
         ComplexMatrix matrix = new ComplexMatrix(4);
@@ -36,7 +38,11 @@ public class KazanDemo {
 
         matrix = matrix.multiply(new Complex(0.5, 0));
 
-        //System.out.println(new CommandsBuilder(addresses).commandsForOperator(matrix));
+        System.out.println("Operator matrix:");
+        System.out.println(matrix.toString());
+        System.out.println();
+        System.out.println("Transforming matrix to base of PHASE, QET and CQET:");
+
         List<LogicalAddressingCommandFromClient> commandsList = new CommandsBuilder(addresses).commandsForOperator(matrix);
         for (LogicalAddressingCommandFromClient command : commandsList) {
             System.out.println(command);

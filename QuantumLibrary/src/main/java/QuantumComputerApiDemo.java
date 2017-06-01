@@ -8,29 +8,38 @@ import ru.kpfu.arturvasilov.core.universal.UniversalMemoryManager;
 /**
  * @author Artur Vasilov
  */
-public class Demo {
+public class QuantumComputerApiDemo {
 
     public static void main(String[] args) {
         QuantumComputer.init(new UniversalMemoryManager(), new InitializationCallback() {
             @Override
             public void onInitializationSucceed() {
-                Demo.onInitializationSucceed();
+                randomNumberGeneratorDemo();
+                System.out.println();
+                deutschJozsaAlgorithmDemo();
             }
 
             @Override
             public void onInitializationFailed(Throwable error) {
-                Demo.onInitializationFailed(error);
+                QuantumComputerApiDemo.onInitializationFailed(error);
             }
         });
     }
 
-    private static void onInitializationSucceed() {
-        /*QuantumRegister register = QuantumComputer.createNewRegister("00000");
+    private static void randomNumberGeneratorDemo() {
+        System.out.println("Generating random number in range [0, 31]:");
+
+        QuantumRegister register = QuantumComputer.createNewRegister("00000");
         register.apply(Operators.hadamar().tensorPow(5));
         boolean[] result = register.measure();
         int number = BooleanFunction.arrayToInt(result);
-        System.out.println("Random number = " + number);*/
+        System.out.println("Random number = " + number);
 
+        QuantumComputer.destroyRegister(register.getId());
+    }
+
+    private static void deutschJozsaAlgorithmDemo() {
+        System.out.println("Demo for Deutsch-Jozsa algorithm");
         BooleanFunction xorFunction = new BooleanFunction(2) {
             @Override
             protected boolean actualCall(boolean[] arguments) {
@@ -53,5 +62,4 @@ public class Demo {
     private static void onInitializationFailed(Throwable error) {
         System.out.println(String.format("Error during initialization: %s", error.getMessage()));
     }
-
 }
