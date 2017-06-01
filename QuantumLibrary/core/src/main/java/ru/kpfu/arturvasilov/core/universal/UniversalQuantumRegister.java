@@ -5,6 +5,9 @@ import ru.kpfu.arturvasilov.core.Complex;
 import ru.kpfu.arturvasilov.core.ComplexMatrix;
 import ru.kpfu.arturvasilov.core.ComplexVector;
 import ru.kpfu.arturvasilov.core.computer.QuantumRegister;
+import ru.kpfu.arturvasilov.core.utils.MathUtils;
+
+import java.util.Collections;
 
 /**
  * @author Artur Vasilov
@@ -85,9 +88,22 @@ public class UniversalQuantumRegister implements QuantumRegister {
     }
 
     @Override
-    public QuantumRegister concatWith(QuantumRegister register) {
-        //TODO : concat registers
-        return null;
+    public QuantumRegister concatWith(QuantumRegister quantumRegister) {
+        if (!(quantumRegister instanceof UniversalQuantumRegister)) {
+            throw new IllegalArgumentException("Universal quantum register could be concatenated only with UniversalQuantumRegister");
+        }
+        UniversalQuantumRegister universalRegister = (UniversalQuantumRegister) quantumRegister;
+        int registerSize = MathUtils.log2(universalRegister.register.size()) + MathUtils.log2(register.size());
+        String initialState = String.join("", Collections.nCopies(registerSize, "0"));
+        UniversalQuantumRegister connectedRegister = new UniversalQuantumRegister(initialState);
+
+        for (int i = 0; i < universalRegister.register.size(); i++) {
+            for (int j = 0; j < register.size(); j++) {
+                int index = i * register.size() + j;
+                connectedRegister.register.set(index, register.get(j).multiply(universalRegister.register.get(i)));
+            }
+        }
+        return connectedRegister;
     }
 
     @Override

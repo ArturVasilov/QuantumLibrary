@@ -16,7 +16,7 @@ public class SwapTestEqualityFunction implements QuantumHashesEqualityTestFuncti
         }
         for (int index = 0; index < first.getHashRegisters().size(); index++) {
             QuantumRegister firstQubit = first.getHashRegisters().get(index);
-            QuantumRegister secondQubit = first.getHashRegisters().get(index);
+            QuantumRegister secondQubit = second.getHashRegisters().get(index);
             QuantumRegister resultRegister = QuantumComputer.createNewRegister("0")
                     .concatWith(firstQubit)
                     .concatWith(secondQubit);

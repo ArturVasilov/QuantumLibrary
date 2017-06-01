@@ -35,6 +35,10 @@ public class KazanQuantumRegister implements QuantumRegister {
         return new boolean[0];
     }
 
+    private static void nativeConcat(long firstRegisterId, long secondRegisterUdId) {
+        // do nothing
+    }
+
     @Override
     public long getId() {
         return id;
@@ -95,8 +99,8 @@ public class KazanQuantumRegister implements QuantumRegister {
 
     @Override
     public QuantumRegister concatWith(QuantumRegister register) {
-        //TODO : call fake native method
-        return null;
+        nativeConcat(getId(), register.getId());
+        return this;
     }
 
     @Override
