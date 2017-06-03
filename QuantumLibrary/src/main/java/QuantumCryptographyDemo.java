@@ -1,11 +1,15 @@
 import hashing.QuantumHashFunction;
 import hashing.QuantumHashResult;
 import hashing.multiple.SingleQubitRegistersQuantumHashFunction;
+import hashing.tests.QuantumHashesEqualityTestFunction;
 import hashing.tests.SwapTestEqualityFunction;
+import hashing.tests.UniversalTestFunction;
 import qkd.QuantumKeyUser;
 import ru.kpfu.arturvasilov.core.computer.InitializationCallback;
 import ru.kpfu.arturvasilov.core.computer.QuantumComputer;
 import ru.kpfu.arturvasilov.core.universal.UniversalMemoryManager;
+import signature.QuantumSignatureUser;
+import signature.SignedBitMessage;
 
 /**
  * @author Artur Vasilov
@@ -63,6 +67,23 @@ public class QuantumCryptographyDemo {
 
     private static void quantumDigitalSignatureDemo() {
         System.out.println("Demo for quantum digital signature algorithm:");
+
+        QuantumHashesEqualityTestFunction testFunction = new UniversalTestFunction();
+        QuantumHashFunction hashFunction = new SingleQubitRegistersQuantumHashFunction(testFunction);
+        QuantumSignatureUser alice = new QuantumSignatureUser(hashFunction);
+        QuantumSignatureUser bob = new QuantumSignatureUser(hashFunction);
+
+        alice.generateKey();
+        SignedBitMessage aliceMessage = alice.createMessage(1);
+        boolean isFromAlice = bob.verify(aliceMessage, alice);
+
+        if (isFromAlice) {
+            System.out.println("Message is from Alice");
+        } else {
+            System.out.println("Error during testing signatures");
+        }
+
+        alice.discardKeys();
     }
 
     private static void onInitializationFailed(Throwable error) {

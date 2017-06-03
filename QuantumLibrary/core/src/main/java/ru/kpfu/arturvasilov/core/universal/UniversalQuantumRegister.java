@@ -132,4 +132,16 @@ public class UniversalQuantumRegister implements QuantumRegister {
 
         return result;
     }
+
+    public boolean equals(UniversalQuantumRegister quantumRegister) {
+        if (qubitsCount != quantumRegister.qubitsCount) {
+            return false;
+        }
+        for (int i = 0; i < register.size(); i++) {
+            if (!register.get(i).equals(quantumRegister.register.get(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
