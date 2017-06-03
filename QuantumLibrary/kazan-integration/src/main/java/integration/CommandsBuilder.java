@@ -52,7 +52,7 @@ public class CommandsBuilder {
                 tildaMatrix.setValue(0, 1, currentMatrix.getValue(firstIndex, secondIndex));
                 tildaMatrix.setValue(1, 0, currentMatrix.getValue(secondIndex, firstIndex));
                 tildaMatrix.setValue(1, 1, currentMatrix.getValue(secondIndex, secondIndex));
-                transformCNOT(indexes, tildaMatrix, commands);
+                operatorCNOT(indexes, tildaMatrix, commands);
             }
         }
 
@@ -68,163 +68,93 @@ public class CommandsBuilder {
 
         int[] indexes = new OperationIndices(qubits.length, firstIndex, secondIndex).calculateIndexesOfQubits();
 
-        transformCNOT(indexes, currentMatrix, commands);
+        operatorCNOT(indexes, currentMatrix, commands);
 
         return commands;
     }
 
-    private void transformCNOT(int[] indexes, ComplexMatrix currentTildaMatrix,
-                               List<LogicalAddressingCommandFromClient> commands) {
-        //addressOfQubit - адрес кубита, к которому применяется контрол нот
-        //countOfQubit нужен для того, чтобы знать, сколько букв C
-        //кол-во C = countOfQubit-1
-
-        int CountOfQubit = qubits.length;
-        if (CountOfQubit > 2) {
-            //начало записи в массив
-            int helpQubitIndex; //indexes of helper |0> qubits
-            String[][] GIGANT = new String[indexes.length][CountOfQubit - 2];
+    private void operatorCNOT(int[] indexes, ComplexMatrix currentTildaMatrix,
+                              List<LogicalAddressingCommandFromClient> commands) {
+        int qubitsCount = qubits.length;
+        if (qubitsCount > 2) {
+            int helperQubitIndex;
+            String[][] allOperations = new String[indexes.length][qubitsCount - 2];
 
             for (int i = 0; i < indexes.length; i++) {
-                helpQubitIndex = CountOfQubit + 1;
-                String[] s = new String[CountOfQubit - 2];
+                helperQubitIndex = qubitsCount + 1;
+                String[] operations = new String[qubitsCount - 2];
                 int qubitsIndex = 0;
 
-                int counter = 0;
-                while (counter < 2) {
+                int operationsIndex = 0;
+                while (operationsIndex < 2) {
                     if (qubits[qubitsIndex] == indexes[i]) {
                         qubitsIndex++;
                     } else {
-                        if (counter == 0) {
-                            s[0] = "" + qubits[qubitsIndex];
+                        if (operationsIndex == 0) {
+                            operations[0] = String.valueOf(qubits[qubitsIndex]);
                         } else {
-                            s[0] = s[0] + "&" + qubits[qubitsIndex] + ">" + helpQubitIndex;
+                            operations[0] += "&" + qubits[qubitsIndex] + ">" + helperQubitIndex;
                         }
                         qubitsIndex++;
-                        counter++;
+                        operationsIndex++;
                     }
                 }
-
-                helpQubitIndex++;
+                helperQubitIndex++;
 
                 int count = 1;
-                while (count < CountOfQubit - 1 - 1) {
-                    int secondIndex = s[count - 1].indexOf(">");
-                    //helpQubitIndex = CountOfQubit+count+1;
-                    s[count] = s[count - 1].substring(secondIndex + 1) + "&";
+                while (count < qubitsCount - 2) {
+                    int secondIndex = operations[count - 1].indexOf(">");
+                    operations[count] = operations[count - 1].substring(secondIndex + 1) + "&";
                     if (qubits[qubitsIndex] == indexes[i]) {
                         qubitsIndex++;
                     }
-                    if (count != CountOfQubit - 3) {
-                        //последний элемент - записываем в кубит indexes[i];
-                        s[count] = s[count] + qubits[qubitsIndex] + ">" + helpQubitIndex;
+                    if (count == qubitsCount - 3) {
+                        operations[count] += qubits[qubitsIndex] + ">" + indexes[i];
                     } else {
-                        s[count] = s[count] + qubits[qubitsIndex] + ">" + indexes[i];
+                        operations[count] += qubits[qubitsIndex] + ">" + helperQubitIndex;
                     }
 
                     qubitsIndex++;
                     count++;
-                    helpQubitIndex++;
+                    helperQubitIndex++;
                 }
 
-                System.arraycopy(s, 0, GIGANT[i], 0, s.length);
+                System.arraycopy(operations, 0, allOperations[i], 0, operations.length);
             }
 
-            //конец записи в массив
-            String str;
-            int ind1;
-            int ind2;
-            int qubit1;
-            int qubit2;
-            int qubit3;
-
-            for (int i = 0; i < GIGANT.length - 1; i++) {
-                for (int j = 0; j < GIGANT[i].length; j++) {
-                    str = GIGANT[i][j];
-                    ind1 = str.indexOf("&");
-                    ind2 = str.indexOf(">");
-
-                    qubit1 = Integer.parseInt(str.substring(0, ind1));
-                    qubit2 = Integer.parseInt(str.substring(ind1 + 1, ind2));
-                    qubit3 = Integer.parseInt(str.substring(ind2 + 1));
-                    transformCCNOT(qubit1, qubit2, qubit3, commands);
+            for (int i = 0; i < allOperations.length - 1; i++) {
+                for (int j = 0; j < allOperations[i].length; j++) {
+                    applyCCNOTIfNeeded(allOperations[i][j], commands, false);
                 }
-                //возвращаем значение нулевому вспомогательному кубиту
-                //последнее значение не смотрим, потому что там нет
-                for (int j = GIGANT[i].length - 2; j > -1; j--) {
-                    str = GIGANT[i][j];
-                    ind1 = str.indexOf("&");
-                    ind2 = str.indexOf(">");
-
-                    qubit1 = Integer.parseInt(str.substring(0, ind1));
-                    qubit2 = Integer.parseInt(str.substring(ind1 + 1, ind2));
-                    qubit3 = Integer.parseInt(str.substring(ind2 + 1));
-                    if (qubit3 > CountOfQubit) {
-                        transformCCNOT(qubit1, qubit2, qubit3, commands);
-                    }
+                for (int j = allOperations[i].length - 2; j > -1; j--) {
+                    applyCCNOTIfNeeded(allOperations[i][j], commands, true);
                 }
             }
-
-            //Tilda
-            for (int j = 0; j < GIGANT[GIGANT.length - 1].length - 1; j++) {
-                str = GIGANT[GIGANT.length - 1][j];
-                ind1 = str.indexOf("&");
-                ind2 = str.indexOf(">");
-
-                qubit1 = Integer.parseInt(str.substring(0, ind1));
-                qubit2 = Integer.parseInt(str.substring(ind1 + 1, ind2));
-                qubit3 = Integer.parseInt(str.substring(ind2 + 1));
-                transformCCNOT(qubit1, qubit2, qubit3, commands);
-            }
-            str = GIGANT[GIGANT.length - 1][GIGANT[GIGANT.length - 1].length - 1];
-            ind1 = str.indexOf("&");
-            ind2 = str.indexOf(">");
-            qubit1 = Integer.parseInt(str.substring(0, ind1));
-            qubit2 = Integer.parseInt(str.substring(ind1 + 1, ind2));
-
-            transformCCNOT(qubit1, qubit2, Math.max(qubit1, qubit2) + 1, commands);
-            transformTilda(Math.max(qubit1, qubit2) + 1, qubit2, currentTildaMatrix, commands);
-            transformCCNOT(qubit1, qubit2, Math.max(qubit1, qubit2) + 1, commands);
-
-            for (int j = GIGANT[GIGANT.length - 1].length - 2; j > -1; j--) {
-                str = GIGANT[GIGANT.length - 1][j];
-                ind1 = str.indexOf("&");
-                ind2 = str.indexOf(">");
-
-                qubit1 = Integer.parseInt(str.substring(0, ind1));
-                qubit2 = Integer.parseInt(str.substring(ind1 + 1, ind2));
-                qubit3 = Integer.parseInt(str.substring(ind2 + 1));
-                if (qubit3 > CountOfQubit) {
-                    transformCCNOT(qubit1, qubit2, qubit3, commands);
-                }
+            for (int j = 0; j < allOperations[allOperations.length - 1].length - 1; j++) {
+                applyCCNOTIfNeeded(allOperations[allOperations.length - 1][j], commands, false);
             }
 
-            //возвращаем базис
-            //System.out.println("=============================================================================");
+            String operation = allOperations[allOperations.length - 1][allOperations[allOperations.length - 1].length - 1];
+            int firstIndex = operation.indexOf("&");
+            int secondIndex = operation.indexOf(">");
+            int firstQubit = Integer.parseInt(operation.substring(0, firstIndex));
+            int secondQubit = Integer.parseInt(operation.substring(firstIndex + 1, secondIndex));
 
-            for (int i = GIGANT.length - 2; i > -1; i--) {
-                for (int j = 0; j < GIGANT[i].length - 1; j++) {
-                    str = GIGANT[i][j];
-                    ind1 = str.indexOf("&");
-                    ind2 = str.indexOf(">");
+            operatorCCNOT(firstQubit, secondQubit, Math.max(firstQubit, secondQubit) + 1, commands);
+            operatorTilda(Math.max(firstQubit, secondQubit) + 1, secondQubit, currentTildaMatrix, commands);
+            operatorCCNOT(firstQubit, secondQubit, Math.max(firstQubit, secondQubit) + 1, commands);
 
-                    qubit1 = Integer.parseInt(str.substring(0, ind1));
-                    qubit2 = Integer.parseInt(str.substring(ind1 + 1, ind2));
-                    qubit3 = Integer.parseInt(str.substring(ind2 + 1));
-                    transformCCNOT(qubit1, qubit2, qubit3, commands);
+            for (int j = allOperations[allOperations.length - 1].length - 2; j > -1; j--) {
+                applyCCNOTIfNeeded(allOperations[allOperations.length - 1][j], commands, true);
+            }
+
+            for (int i = allOperations.length - 2; i > -1; i--) {
+                for (int j = 0; j < allOperations[i].length - 1; j++) {
+                    applyCCNOTIfNeeded(allOperations[i][j], commands, false);
                 }
 
-                for (int j = GIGANT[i].length - 2; j > -1; j--) {
-                    str = GIGANT[i][j];
-                    ind1 = str.indexOf("&");
-                    ind2 = str.indexOf(">");
-
-                    qubit1 = Integer.parseInt(str.substring(0, ind1));
-                    qubit2 = Integer.parseInt(str.substring(ind1 + 1, ind2));
-                    qubit3 = Integer.parseInt(str.substring(ind2 + 1));
-                    if (qubit3 > CountOfQubit) {
-                        transformCCNOT(qubit1, qubit2, qubit3, commands);
-                    }
+                for (int j = allOperations[i].length - 2; j > -1; j--) {
+                    applyCCNOTIfNeeded(allOperations[i][j], commands, true);
                 }
 
             }
@@ -237,9 +167,9 @@ public class CommandsBuilder {
                 }
             }
             if (indexes[indexes.length - 1] == 1) {
-                transformTilda(2, 1, currentTildaMatrix, commands);
+                operatorTilda(2, 1, currentTildaMatrix, commands);
             } else {
-                transformTilda(1, 2, currentTildaMatrix, commands);
+                operatorTilda(1, 2, currentTildaMatrix, commands);
             }
 
             for (int i = indexes.length - 1; i >= 0; i--) {
@@ -252,45 +182,32 @@ public class CommandsBuilder {
         }
     }
 
-    // разложение тильда матрицы на повороты
-    //после разложения получим матрицы A,B,C и контролируемый оператор переделаем в неконтролируемый
-    private void transformTilda(int controlQubitNumber, int toQubitNumber, ComplexMatrix tildaMatrix,
-                                List<LogicalAddressingCommandFromClient> commands) {
-        Complex det1 = tildaMatrix.getValue(0, 0).multiply(tildaMatrix.getValue(1, 1));
-        Complex det2 = tildaMatrix.getValue(0, 1).multiply(tildaMatrix.getValue(1, 0));
-        Complex det = det1.sub(det2); // определитель матрицы
+    private void applyCCNOTIfNeeded(String operation, List<LogicalAddressingCommandFromClient> commands, boolean withCheck) {
+        int firstIndex = operation.indexOf("&");
+        int secondIndex = operation.indexOf(">");
 
+        int firstQubit = Integer.parseInt(operation.substring(0, firstIndex));
+        int secondQubit = Integer.parseInt(operation.substring(firstIndex + 1, secondIndex));
+        int thirdQubit = Integer.parseInt(operation.substring(secondIndex + 1));
+        if (!withCheck || thirdQubit > qubits.length) {
+            operatorCCNOT(firstQubit, secondQubit, thirdQubit, commands);
+        }
+    }
+
+    private void operatorTilda(int controlQubitNumber, int toQubitNumber, ComplexMatrix tildaMatrix,
+                               List<LogicalAddressingCommandFromClient> commands) {
+        Complex det = tildaMatrix.getValue(0, 0).multiply(tildaMatrix.getValue(1, 1))
+                .sub(tildaMatrix.getValue(0, 1).multiply(tildaMatrix.getValue(1, 0)));
         double gamma = Math.acos(det.getReal()) / 2;
-
         Complex A = tildaMatrix.getValue(0, 0).multiply(new Complex(Math.cos(gamma), Math.sin(gamma)));
-        Complex B = tildaMatrix.getValue(0, 1).multiply(new Complex(Math.cos(gamma), Math.sin(gamma)));
-
-        double Teta = 2 * Math.acos(A.getReal());
-
-        if (Math.abs(Teta) > 0.0001) {
-            //TODO
-            double nx = (-1) * B.getImaginary() / Math.sin(Teta / 2);//координата вектора n по x
-            double ny = (-1) * B.getReal() / Math.sin(Teta / 2);
-            double nz = (-1) * A.getImaginary() / Math.sin(Teta / 2);
-
-            double alpha = 0, beta = 0, lambda = 0;
-            //альфа, бета и лямбда нужны, чтобы разложить tildaMatrix на A,B,C
-            if (nx != 0 && Math.cos(Teta) != 0) {
-                lambda = (Math.atan(ny / nx) + Math.atan(nz * Math.sin(Teta) / Math.cos(Teta))) / 2;
-                alpha = ((-1) * Math.atan(ny / nx) + Math.atan(nz * Math.sin(Teta) / Math.cos(Teta))) / 2;
-                if (Math.cos(lambda + alpha) != 0) {
-                    beta = Math.acos(Math.cos(Teta) / Math.cos(lambda + alpha));
-                }
-            }
-
+        double theta = 2 * Math.acos(A.getReal());
+        if (Math.abs(theta) > 0.0001) {
             commands.addAll(operatorCNOT(controlQubitNumber, toQubitNumber));
         }
     }
 
-    private void transformCCNOT(int qubit1, int qubit2, int qubit3,
-                                List<LogicalAddressingCommandFromClient> commands) {
-        //реализация огроменной схемы из H, T, T*, S
-
+    private void operatorCCNOT(int qubit1, int qubit2, int qubit3,
+                               List<LogicalAddressingCommandFromClient> commands) {
         commands.addAll(operatorHadamar(qubit3));
         commands.addAll(operatorCNOT(qubit2, qubit3));
         commands.addAll(operatorTHermitian(qubit3));
@@ -310,10 +227,6 @@ public class CommandsBuilder {
     }
 
     public List<LogicalAddressingCommandFromClient> operatorHadamar(int qubit) {
-        //System.out.println("PHASE(PI/2) " + qubit);
-        //System.out.println("QET(PI/2) " + qubit);
-        //System.out.println("PHASE(PI/2) " + qubit);
-
         List<LogicalAddressingCommandFromClient> commands = new ArrayList<>();
         commands.add(new LogicalAddressingCommandFromClient(
                 CommandTypes.PHASE,
@@ -336,9 +249,6 @@ public class CommandsBuilder {
     }
 
     public List<LogicalAddressingCommandFromClient> operatorCNOT(int qubit1, int qubit2) {
-        //System.out.println("CQET(PI)" + qubit1 + " " + qubit2);
-        //System.out.println("PHASE(PI/2) " + qubit1);
-
         List<LogicalAddressingCommandFromClient> commands = new ArrayList<>();
         commands.add(new LogicalAddressingCommandFromClient(
                 CommandTypes.CQET,
@@ -355,8 +265,6 @@ public class CommandsBuilder {
     }
 
     public List<LogicalAddressingCommandFromClient> operatorT(int qubit) {
-        //System.out.println("PHASE(PI/4) " + qubit);
-
         List<LogicalAddressingCommandFromClient> commands = new ArrayList<>();
         commands.add(new LogicalAddressingCommandFromClient(
                 CommandTypes.PHASE,
@@ -367,8 +275,6 @@ public class CommandsBuilder {
     }
 
     public List<LogicalAddressingCommandFromClient> operatorTHermitian(int qubit) {
-        //System.out.println("PHASE(-PI/2) " + qubit);
-
         List<LogicalAddressingCommandFromClient> commands = new ArrayList<>();
         commands.add(new LogicalAddressingCommandFromClient(
                 CommandTypes.PHASE,
@@ -379,8 +285,6 @@ public class CommandsBuilder {
     }
 
     public List<LogicalAddressingCommandFromClient> operatorS(int qubit) {
-        //System.out.println("PHASE(PI/2) " + qubit);
-
         List<LogicalAddressingCommandFromClient> commands = new ArrayList<>();
         commands.add(new LogicalAddressingCommandFromClient(
                 CommandTypes.PHASE,
