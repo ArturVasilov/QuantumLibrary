@@ -52,5 +52,4 @@ public class OperationIndices {
         }
         return result.toArray(new String[result.size()]);
     }
-
 }

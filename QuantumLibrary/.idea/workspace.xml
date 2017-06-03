@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="50c462a0-853d-4a15-b05d-f324be0c9eae" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/integration/CommandsBuilder.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/integration/CommandsBuilder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/test/java/ComplexMatrixTest.java" afterPath="$PROJECT_DIR$/core/src/test/java/ComplexMatrixTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kazan-integration/src/main/java/integration/OperationIndices.java" afterPath="$PROJECT_DIR$/kazan-integration/src/main/java/integration/OperationIndices.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/KazanQuantumComputerIntegrationDemo.java" afterPath="$PROJECT_DIR$/src/main/java/KazanQuantumComputerIntegrationDemo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/QuantumCryptographyDemo.java" afterPath="$PROJECT_DIR$/src/main/java/QuantumCryptographyDemo.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,24 +41,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Operators.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/ru/kpfu/arturvasilov/core/Operators.java">
+      <file leaf-file-name="QuantumCryptographyDemo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/QuantumCryptographyDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
-              <caret line="57" column="32" lean-forward="false" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
+            <state relative-caret-position="85">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="70" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuantumCryptographyDemo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/QuantumCryptographyDemo.java">
+      <file leaf-file-name="KazanMemoryManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/KazanMemoryManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="54" column="45" lean-forward="false" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state relative-caret-position="104">
+              <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OperationIndices.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/OperationIndices.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="54" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ComplexMatrixTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/test/java/ComplexMatrixTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="383">
+              <caret line="236" column="26" lean-forward="false" selection-start-line="236" selection-start-column="26" selection-end-line="236" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -75,54 +96,29 @@
       <file leaf-file-name="KazanQuantumComputerIntegrationDemo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/KazanQuantumComputerIntegrationDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="45" column="105" lean-forward="false" selection-start-line="45" selection-start-column="105" selection-end-line="45" selection-end-column="105" />
+            <state relative-caret-position="85">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="50" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandsBuilder.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CommandsBuilder.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/CommandsBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="77" column="30" lean-forward="false" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
+            <state relative-caret-position="119">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="295" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ParametersProvider.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/crypto/src/main/java/hashing/multiple/ParametersProvider.java">
+      <file leaf-file-name="QuantumComputerApiDemo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/QuantumComputerApiDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="21" lean-forward="false" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+            <state relative-caret-position="85">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="64" selection-end-column="1" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseQuantumHashFunction.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/crypto/src/main/java/hashing/BaseQuantumHashFunction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultParametersProvider.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/crypto/src/main/java/hashing/multiple/DefaultParametersProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="23" column="47" lean-forward="false" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
-              <folding>
-                <element signature="e#183#184#0" expanded="false" />
-                <element signature="e#237#238#0" expanded="false" />
-                <element signature="e#368#369#0" expanded="false" />
-                <element signature="e#395#396#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -175,7 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/commands/CommandsFromClientDTO.java" />
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/results/TopLevelResult.java" />
         <option value="$PROJECT_DIR$/kazan-integration/pom.xml" />
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/addresses/LogicalQubitAddressFromClient.java" />
@@ -189,7 +184,6 @@
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/integration/MatrixSplitter.java" />
         <option value="$PROJECT_DIR$/kazan-integration/src/test/java/integration/GreyCodeTest.java" />
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/integration/Quantum.java" />
-        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/integration/OperationIndices.java" />
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/commands/LogicalAddressingCommandFromClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/QuantumDemo.java" />
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/ServiceManager.java" />
@@ -216,16 +210,18 @@
         <option value="$PROJECT_DIR$/src/main/java/QuantumComputerApiDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/KazanDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/CryptographyDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/KazanQuantumComputerIntegrationDemo.java" />
         <option value="$PROJECT_DIR$/crypto/src/main/java/hashing/SingleQubitsRegistersQuantumHashFunction.java" />
         <option value="$PROJECT_DIR$/crypto/src/main/java/hashing/tests/SwapTestEqualityFunction.java" />
         <option value="$PROJECT_DIR$/crypto/src/main/java/hashing/single/SingleQubitQuantumHashFunction.java" />
         <option value="$PROJECT_DIR$/crypto/src/main/java/hashing/multiple/ParametersProvider.java" />
         <option value="$PROJECT_DIR$/crypto/src/main/java/hashing/multiple/SingleQubitsRegistersQuantumHashFunction.java" />
         <option value="$PROJECT_DIR$/crypto/src/main/java/hashing/multiple/DefaultParametersProvider.java" />
-        <option value="$PROJECT_DIR$/src/main/java/QuantumCryptographyDemo.java" />
         <option value="$PROJECT_DIR$/crypto/src/main/java/hashing/multiple/SingleQubitRegistersQuantumHashFunction.java" />
         <option value="$PROJECT_DIR$/kazan-integration/src/main/java/integration/CommandsBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/KazanQuantumComputerIntegrationDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/QuantumCryptographyDemo.java" />
+        <option value="$PROJECT_DIR$/kazan-integration/src/main/java/integration/OperationIndices.java" />
+        <option value="$PROJECT_DIR$/core/src/test/java/ComplexMatrixTest.java" />
       </list>
     </option>
   </component>
@@ -243,7 +239,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1912" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
@@ -458,6 +454,14 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1164,7 +1168,7 @@
       <workItem from="1496167196592" duration="48000" />
       <workItem from="1496249438673" duration="599000" />
       <workItem from="1496417224521" duration="2947000" />
-      <workItem from="1496469769953" duration="2299000" />
+      <workItem from="1496469769953" duration="2784000" />
     </task>
     <task id="LOCAL-00001" summary="Added initial integration for kazan quantum model">
       <created>1491937594175</created>
@@ -1278,7 +1282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496340043698</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Small refactoring for commands builder for kazan integration">
+      <created>1496475269354</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1496475269354</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1314,10 +1325,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112548000" />
+    <option name="totallyTimeSpent" value="113033000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1375,7 +1386,8 @@
     <MESSAGE value="Clean up project" />
     <MESSAGE value="Added ability to concat registers to use quantum hashing in practice" />
     <MESSAGE value="Added more complicated quantum hashing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more complicated quantum hashing" />
+    <MESSAGE value="Small refactoring for commands builder for kazan integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small refactoring for commands builder for kazan integration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1464,13 +1476,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/test/java/ComplexMatrixTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3555">
-          <caret line="244" column="5" lean-forward="false" selection-start-line="244" selection-start-column="5" selection-end-line="244" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/test/java/OperatorsTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1524,14 +1529,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Tets.java" />
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/KazanMemoryManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/memorymanager/service_for_controller/commands/LogicalAddressingCommandFromClient.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1543,13 +1540,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1564">
           <caret line="101" column="40" lean-forward="false" selection-start-line="101" selection-start-column="40" selection-end-line="101" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/OperationIndices.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="23" column="21" lean-forward="false" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="99" />
         </state>
       </provider>
     </entry>
@@ -1591,13 +1581,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/QuantumComputerApiDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="988">
-          <caret line="64" column="1" lean-forward="false" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/crypto/src/main/java/hashing/tests/QuantumHashesEqualityTestFunction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1618,6 +1601,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="3179" column="26" lean-forward="false" selection-start-line="3179" selection-start-column="26" selection-end-line="3179" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1653,16 +1637,6 @@
             <element signature="e#237#238#0" expanded="false" />
             <element signature="e#368#369#0" expanded="false" />
             <element signature="e#395#396#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/QuantumCryptographyDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="54" column="45" lean-forward="false" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1705,18 +1679,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/QuantumComputerApiDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="64" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/KazanQuantumComputerIntegrationDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="45" column="105" lean-forward="false" selection-start-line="45" selection-start-column="105" selection-end-line="45" selection-end-column="105" />
+        <state relative-caret-position="85">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="50" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/QuantumCryptographyDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="70" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/KazanMemoryManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/CommandsBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="77" column="30" lean-forward="false" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
+        <state relative-caret-position="119">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="295" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kazan-integration/src/main/java/integration/OperationIndices.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="54" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/test/java/ComplexMatrixTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="236" column="26" lean-forward="false" selection-start-line="236" selection-start-column="26" selection-end-line="236" selection-end-column="26" />
           <folding />
         </state>
       </provider>

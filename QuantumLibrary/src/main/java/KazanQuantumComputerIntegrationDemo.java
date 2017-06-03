@@ -48,5 +48,4 @@ public class KazanQuantumComputerIntegrationDemo {
             System.out.println(command);
         }
     }
-
 }

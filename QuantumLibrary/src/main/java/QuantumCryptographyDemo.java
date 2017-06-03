@@ -68,5 +68,4 @@ public class QuantumCryptographyDemo {
     private static void onInitializationFailed(Throwable error) {
         System.out.println(String.format("Error during initialization: %s", error.getMessage()));
     }
-
 }
